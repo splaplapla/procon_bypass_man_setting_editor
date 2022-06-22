@@ -12,7 +12,11 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   mode: process.env.NODE_ENV || "development",
-  entry:  "./src/app.tsx",
+  entry:  [
+    "webpack/hot/dev-server.js",
+    "webpack-dev-server/client/index.js?hot=true&live-reload=true",
+    "./src/app.tsx",
+  ],
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
   },
@@ -42,15 +46,9 @@ module.exports = {
 
   devServer: {
     hot: true,
-    historyApiFallback: true,
-    overlay: {
-      warnings: true,
-      errors: true,
-    },
-    proxy: {
-      '/api': {
-        target: 'http://localhost:9090',
-      }
-    },
+    client: {
+      overlay: true,
+      progress: true,
+    }
   },
 };

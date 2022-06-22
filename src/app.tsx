@@ -1,10 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 
 export const Top: React.FC = () => {
-  return(
-    <h1>hello</h1>
-  )
-}
+  return <h1>1hello4</h1>;
+};
 
-ReactDOM.render(<Top />, document.getElementById("app"));
+const container = document.getElementById('app');
+if (container) {
+    const root = createRoot(container);
+    root.render(<Top />);
+}
