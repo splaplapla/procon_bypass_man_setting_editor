@@ -28,18 +28,18 @@ export type Remap = {
   to: Array<Button>;
 };
 
-export type ButtonInLayer = {
+export type ButtonsSettingInLayer = {
   flip?: Flip;
   macro?: Macro; // deprecated
   remap?: Remap;
   open: boolean;
 };
 
-type _ButtonsInLayer = {
-  [key in Button]: ButtonInLayer;
+type _ButtonsSettingInLayer = {
+  [key in Button]: ButtonsSettingInLayer;
 };
 
-export type ButtonsInLayer = _ButtonsInLayer & {
+export type ButtonsInLayer = _ButtonsSettingInLayer & {
   macro?: Macro; // TODO macroTableという名前にしたい
   mode?: ModeTable;
 };
@@ -60,4 +60,23 @@ export type Layers = {
 export type ButtonsSettingType = {
   prefix_keys_for_changing_layer: Array<Button>;
   layers: Layers;
+};
+
+
+
+// i wanna use below
+
+export type Layer = _ButtonsSettingInLayer & {
+  macro?: Macro; // TODO macroTableという名前にしたい
+  mode?: ModeTable;
+};
+
+export type SettingType = {
+  prefix_keys_for_changing_layer: Array<Button>;
+  installed_macros?: InstalledPlugin;
+  installed_modes?: InstalledPlugin;
+  up: Layer;
+  right: Layer;
+  down: Layer;
+  left: Layer;
 };
