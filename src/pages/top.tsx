@@ -4,10 +4,9 @@ import { buttons, Button } from "../types/button";
 import {
   ButtonsInLayer,
   Layers,
-  ButtonsSettingType,
+  SettingType,
 } from "../types/buttons_setting_type";
 import { LayerReducer } from "../reducers/layer_reducer";
-import { LayerKey } from "../types/layer_key";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
 
 type EditorProviderProps = {
@@ -36,15 +35,18 @@ const EditorProvider: React.FC = ({ children }: EditorProviderProps) => {
     installed_modes: {},
   };
   const [prefixKeys, setPrefixKeys] = useState([]);
+
+  /*
   const [layers, layersDispatch] = useReducer(
     LayerReducer,
     initLayers as Layers
   );
+   */
   const value = {
-    layers,
+    // layers,
+    // layersDispatch,
     prefixKeys,
     setPrefixKeys,
-    layersDispatch,
   };
   return(
     <ButtonsSettingContext.Provider value={value}>
@@ -56,8 +58,8 @@ const EditorProvider: React.FC = ({ children }: EditorProviderProps) => {
 
 export const Top: React.FC = () => {
   return(
-    <>
+    <EditorProvider>
       <Editor />
-    </>
+    </EditorProvider>
   )
 };
