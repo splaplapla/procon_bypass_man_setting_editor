@@ -10,12 +10,12 @@ import { useModal } from "../hooks/useModal";
 export const PrefixKeysForm: React.FC = () => {
   const [modalProps, openModal] = useModal();
 
-  const { setting, layersDispatch } = useContext(
+  const { setting, settingDispatch } = useContext(
     ButtonsSettingContext
   );
 
   const updatePrefixKeys = (buttons: Array<Button>) => {
-      layersDispatch({
+      settingDispatch({
         type: updatePrefixKeysType,
         payload: { buttons: buttons },
       });
