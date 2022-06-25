@@ -13,27 +13,21 @@ type EditorProviderProps = {
   children: React.ReactNode;
 };
 
+const defaultLayer = buttons.reduce((acc, item) => {
+  acc[item] = { open: false };
+  return acc;
+}, {} as Layer);
+
 const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
   const initSetting: Setting = {
-    up: buttons.reduce((a, i) => {
-      a[i] = { open: false };
-      return a;
-    }, {} as Layer),
-    right: buttons.reduce((a, i) => {
-      a[i] = { open: false };
-      return a;
-    }, {} as Layer),
-    down: buttons.reduce((a, i) => {
-      a[i] = { open: false };
-      return a;
-    }, {} as Layer),
-    left: buttons.reduce((a, i) => {
-      a[i] = { open: false };
-      return a;
-    }, {} as Layer),
+    up: Object.assign({}, defaultLayer),
+    right: Object.assign({}, defaultLayer),
+    down: Object.assign({}, defaultLayer),
+    left: Object.assign({}, defaultLayer),
     prefixKeys: [],
     installed_macros: {},
   };
+
   const [setting, layersDispatch] = useReducer(
     LayerReducer,
     initSetting
@@ -43,6 +37,7 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
     setting,
     layersDispatch,
   };
+
   return(
     <ButtonsSettingContext.Provider value={value}>
       {children}
