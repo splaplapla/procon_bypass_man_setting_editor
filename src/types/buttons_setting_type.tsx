@@ -16,7 +16,7 @@ export type StructMode = {
   name: string;
 };
 
-export type Macro = {
+export type MacroTable = {
   [key in string]: Array<Button>;
 };
 
@@ -30,7 +30,7 @@ export type Remap = {
 
 export type ButtonsSettingInLayer = {
   flip?: Flip;
-  macro?: Macro; // deprecated
+  macro?: MacroTable;
   remap?: Remap;
   open: boolean;
 };
@@ -44,14 +44,14 @@ export type InstalledPlugin = {
 };
 
 export type Layer = _ButtonsSettingInLayer & {
-  macro?: Macro; // TODO macroTableという名前にしたい
+  macro?: MacroTable; // TODO macroTableという名前にしたい
   mode?: ModeTable;
 };
 
 export type Setting = {
+  // installed_modes?: InstalledPlugin; // 優先度が低いので今は実装しない
   prefixKeys: Array<Button>;
   installed_macros: InstalledPlugin;
-  // installed_modes?: InstalledPlugin; // 優先度が低いので今は実装しない
   up: Layer;
   right: Layer;
   down: Layer;

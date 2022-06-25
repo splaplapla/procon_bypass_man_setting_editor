@@ -1,7 +1,7 @@
 import { buttons, Button } from "../types/button";
 import { LayerKey } from "../types/layer_key";
 import {
-  Macro,
+  MacroTable,
   StructMacro,
   Setting
 } from "../types/buttons_setting_type";
