@@ -10,10 +10,10 @@ import { LayerReducer } from "../reducers/layer_reducer";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
 
 type EditorProviderProps = {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
-const EditorProvider: React.FC = ({ children }: EditorProviderProps) => {
+const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
   const initLayers: Layers = {
     up: buttons.reduce((a, i) => {
       a[i] = { open: false };
