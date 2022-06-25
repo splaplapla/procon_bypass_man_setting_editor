@@ -39,32 +39,9 @@ type _ButtonsSettingInLayer = {
   [key in Button]: ButtonsSettingInLayer;
 };
 
-export type ButtonsInLayer = _ButtonsSettingInLayer & {
-  macro?: Macro; // TODO macroTableという名前にしたい
-  mode?: ModeTable;
-};
-
 export type InstalledPlugin = {
   [key in string]: boolean;
 };
-
-export type Layers = {
-  up: ButtonsInLayer;
-  right: ButtonsInLayer;
-  down: ButtonsInLayer;
-  left: ButtonsInLayer;
-  installed_macros?: InstalledPlugin;
-  installed_modes?: InstalledPlugin;
-};
-
-export type ButtonsSettingType = {
-  prefix_keys_for_changing_layer: Array<Button>;
-  layers: Layers;
-};
-
-
-
-// i wanna use below
 
 export type Layer = _ButtonsSettingInLayer & {
   macro?: Macro; // TODO macroTableという名前にしたい
