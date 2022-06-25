@@ -11,8 +11,18 @@ export type Plugin = {
 };
 
 // plugins.
-export const AvailablePlugins = [
+export const AvailablePlugins: Array<Plugin> = [
   {
+    sumabura: {
+      modes: [],
+      macros: [
+        {
+          display_name: "xxx",
+          class_namespace: "ProconBypassMan::Splatoon2::Macro::FastReturn",
+        },
+      ]
+    },
+  }, {
     splatoon2: {
       modes: [
         {
@@ -22,25 +32,26 @@ export const AvailablePlugins = [
       ],
       macros: [
         {
-          display_name: "splatoon2.fast_return",
+          display_name: "fast_return",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::FastReturn",
         },
         {
-          display_name: "splatoon2.jump_right",
+          display_name: "jump_right",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::JumpToRightKey",
         },
         {
-          display_name: "splatoon2.jump_up",
+          display_name: "jump_up",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::JumpToUpKey",
         },
         {
-          display_name: "splatoon2.jump_left",
+          display_name: "jump_left",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::JumpToLeftKey",
         },
       ],
-    },
-  } as Plugin,
+    }
+  }
 ];
+
 
 export const MacroNameMap = AvailablePlugins.reduce((hash, item: Plugin) => {
   for (const [name, plugin] of Object.entries(item)) {

@@ -14,7 +14,7 @@ import {
   uninstallMacroType,
 } from "../reducers/old_layer_reducer";
 
-const macroClassNamespaces = AvailablePlugins.map((v) => {
+const macroClassNamespaces = AvailablePlugins.map((v, k) => {
   return Object.entries(v).map((v) => {
     const name = v[0];
     const plugin = v[1];
@@ -22,9 +22,17 @@ const macroClassNamespaces = AvailablePlugins.map((v) => {
       return m.class_namespace;
     });
   });
+}) .flat() .flat();
+
+let gameMacroTable = {} as any;
+const gamesAndMacros = AvailablePlugins.forEach((plugins) => {
+  for(let pluginKey in plugins) {
+    let gameAssetTable = plugins[pluginKey]
+    gameMacroTable[pluginKey] = []
+    gameMacroTable[pluginKey] = gameAssetTable['macros']
+  }
 })
-  .flat()
-  .flat();
+
 
 type Props = {
   classNamespace: string;
@@ -62,15 +70,31 @@ export const InstallableMacro = ({ classNamespace }: Props) => {
 export const InstallableMacros = () => {
   return (
     <>
-      {macroClassNamespaces.map((classNamespace, i) => {
-        return (
-          <div key={i}>
-            <label>
-              <InstallableMacro classNamespace={classNamespace} />
-            </label>
-          </div>
-        );
-      })}
+      {
+        Object.keys(gameMacroTable).map((key, index) => {
+          return(
+            <>
+              <div key={index}>
+                <h3>{key}</h3>
+                <ul>
+                {
+                  gameMacroTable[key].map((item: any, index: any) => {
+                    return(
+                      <li key={key}>
+                        <label>
+                          <InstallableMacro classNamespace={item['class_namespace']} />
+                          {item['display_name']}
+                        </label>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+              </div>
+            </>
+          )
+        })
+      }
     </>
   );
 };

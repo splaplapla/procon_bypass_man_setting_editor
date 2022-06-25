@@ -23,7 +23,6 @@ export const Editor: React.FC = () => {
   };
 
 
-  // {<InstallableMacros />}
   return(
     <>
       <h1>設定ファイルエディタ</h1>
@@ -34,6 +33,7 @@ export const Editor: React.FC = () => {
       </div>
 
       <h3>インストール可能なマクロ</h3>
+      {<InstallableMacros />}
       <h3>設定中のプレフィックスキー</h3>
       <div
         css={css`

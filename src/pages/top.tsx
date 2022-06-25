@@ -53,7 +53,6 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
   );
 };
 
-
 export const Top: React.FC = () => {
   return(
     <EditorProvider>

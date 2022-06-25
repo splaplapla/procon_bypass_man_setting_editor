@@ -21,13 +21,13 @@ export type ACTION_TYPE = {
 export const LayerReducer = (layers: Layers, action: ACTION_TYPE) => {
   switch (action.type) {
     case applyMacroType:
-    // const structMacro = action.payload.macro;
-    //   if (!structMacro) {
-    //     return { ...layers };
-    //   }
-    //   const macroTable = (layers[layerKey].macro as Macro) || ({} as Macro);
-    //   macroTable[structMacro.name] = structMacro.if_pressed.sort();
-    //   layers[layerKey].macro = macroTable;
+      // const structMacro = action.payload.macro;
+      //   if (!structMacro) {
+      //     return { ...layers };
+      //   }
+      //   const macroTable = (layers[layerKey].macro as Macro) || ({} as Macro);
+      //   macroTable[structMacro.name] = structMacro.if_pressed.sort();
+      //   layers[layerKey].macro = macroTable;
       return { ...layers };
     default:
       console.log("一致しないaction typeです");
