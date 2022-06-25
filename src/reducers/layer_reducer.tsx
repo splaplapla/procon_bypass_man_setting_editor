@@ -7,6 +7,7 @@ import {
 } from "../types/buttons_setting_type";
 
 
+export const updatePrefixKeys = Symbol("x");
 export const applyMacroType = Symbol("x");
 export const installMacroType = Symbol("x");
 export const uninstallMacroType = Symbol("x");
@@ -24,6 +25,9 @@ export type ACTION_TYPE = {
 } | {
   type: typeof uninstallMacroType;
   payload: { macro: string, }
+} | {
+  type: typeof updatePrefixKeys;
+  payload: { buttons: Array<Button>, }
 }
 
 export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
@@ -42,6 +46,9 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
       return { ...setting };
     case uninstallMacroType:
       setting.installed_macros[action.payload.macro] = false;
+      return { ...setting };
+    case updatePrefixKeys:
+      setting.prefixKeys = action.payload.buttons;
       return { ...setting };
     default:
       console.log("一致しないaction typeです");

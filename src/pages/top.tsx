@@ -14,8 +14,7 @@ type EditorProviderProps = {
 };
 
 const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
-  const initLayers: Setting = {
-    prefix_keys_for_changing_layer: [],
+  const initSetting: Setting = {
     up: buttons.reduce((a, i) => {
       a[i] = { open: false };
       return a;
@@ -32,19 +31,17 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
       a[i] = { open: false };
       return a;
     }, {} as Layer),
+    prefixKeys: [],
     installed_macros: {},
   };
-  const [prefixKeys, setPrefixKeys] = useState([]);
   const [setting, layersDispatch] = useReducer(
     LayerReducer,
-    initLayers
+    initSetting
   );
 
   const value = {
     setting,
     layersDispatch,
-    prefixKeys,
-    setPrefixKeys,
   };
   return(
     <ButtonsSettingContext.Provider value={value}>

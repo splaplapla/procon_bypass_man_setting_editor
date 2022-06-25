@@ -72,7 +72,7 @@ export type Layer = _ButtonsSettingInLayer & {
 };
 
 export type Setting = {
-  prefix_keys_for_changing_layer: Array<Button>;
+  prefixKeys: Array<Button>;
   installed_macros: InstalledPlugin;
   // installed_modes?: InstalledPlugin; // 優先度が低いので今は実装しない
   up: Layer;
