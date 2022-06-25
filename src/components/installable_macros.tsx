@@ -12,7 +12,7 @@ import {
 import {
   installMacroType,
   uninstallMacroType,
-} from "../reducers/layer_reducer";
+} from "../reducers/old_layer_reducer";
 
 const macroClassNamespaces = AvailablePlugins.map((v) => {
   return Object.entries(v).map((v) => {

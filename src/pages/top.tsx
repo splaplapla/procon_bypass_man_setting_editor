@@ -2,11 +2,11 @@ import React, { useState, useReducer, useContext } from "react";
 import { Editor } from '../components/editor'
 import { buttons, Button } from "../types/button";
 import {
-  ButtonsInLayer,
-  Layers,
-  SettingType,
+  Layer,
+  InstalledPlugin,
+  Setting,
 } from "../types/buttons_setting_type";
-// import { LayerReducer } from "../reducers/layer_reducer";
+import { LayerReducer } from "../reducers/layer_reducer";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
 
 type EditorProviderProps = {
@@ -14,37 +14,35 @@ type EditorProviderProps = {
 };
 
 const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
-  const initLayers: Layers = {
+  const initLayers: Setting = {
+    prefix_keys_for_changing_layer: [],
     up: buttons.reduce((a, i) => {
       a[i] = { open: false };
       return a;
-    }, {} as ButtonsInLayer),
+    }, {} as Layer),
     right: buttons.reduce((a, i) => {
       a[i] = { open: false };
       return a;
-    }, {} as ButtonsInLayer),
+    }, {} as Layer),
     down: buttons.reduce((a, i) => {
       a[i] = { open: false };
       return a;
-    }, {} as ButtonsInLayer),
+    }, {} as Layer),
     left: buttons.reduce((a, i) => {
       a[i] = { open: false };
       return a;
-    }, {} as ButtonsInLayer),
-    installed_macros: {},
-    installed_modes: {},
+    }, {} as Layer),
+    installed_macros: {} as InstalledPlugin,
   };
   const [prefixKeys, setPrefixKeys] = useState([]);
-
-  /*
   const [layers, layersDispatch] = useReducer(
     LayerReducer,
-    initLayers as Layers
+    initLayers as Setting
   );
-   */
+
   const value = {
-    // layers,
-    // layersDispatch,
+    layers,
+    layersDispatch,
     prefixKeys,
     setPrefixKeys,
   };
