@@ -9,6 +9,19 @@ export const Editor: React.FC = () => {
   //const { prefixKeys } = useContext(ButtonsSettingContext);
   const [modalProps, openModal] = useModal();
 
+  const { prefixKeys, setPrefixKeys } = useContext(
+    ButtonsSettingContext
+  );
+
+  const handlePrefixKeysField = () => {
+    openModal({
+      title: "キープレフィックスの変更",
+      prefill: prefixKeys,
+      callbackOnSubmit: setPrefixKeys,
+    });
+  };
+
+
   return(
     <>
       <h1>設定ファイルエディタ</h1>
@@ -21,7 +34,6 @@ export const Editor: React.FC = () => {
       <h3>インストール可能なマクロ</h3>
       xxx<br />
       <h3>設定中のプレフィックスキー</h3>
-      xxx<br />
       <div
         css={css`
           position: relative;
@@ -30,8 +42,9 @@ export const Editor: React.FC = () => {
       >
         <input
           type="text"
-          value={'a'}
+          value={prefixKeys.join(', ')}
           readOnly={true}
+          onClick={handlePrefixKeysField}
         />
         {<ButtonsModal {...(modalProps as ModalProps)} />}
       </div>

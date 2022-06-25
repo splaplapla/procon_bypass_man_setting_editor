@@ -6,7 +6,7 @@ import {
   Layers,
   SettingType,
 } from "../types/buttons_setting_type";
-import { LayerReducer } from "../reducers/layer_reducer";
+// import { LayerReducer } from "../reducers/layer_reducer";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
 
 type EditorProviderProps = {
