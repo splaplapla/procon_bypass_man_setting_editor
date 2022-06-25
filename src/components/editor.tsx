@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { InstallableMacros } from "../components/installable_macros";
 import { PrefixKeysForm } from "../components/prefix_keys_form";
 import { LayersTab } from "../components/layers_tab";
+import { layerKeys } from "../types/layer_key";
 import { ButtonsPanel } from "../components/buttons_panel";
 
 export const Editor: React.FC = () => {
@@ -22,10 +23,9 @@ export const Editor: React.FC = () => {
       <PrefixKeysForm />
 
       <LayersTab>
-        <ButtonsPanel layerKey={"up"} />
-        <ButtonsPanel layerKey={"right"} />
-        <ButtonsPanel layerKey={"down"} />
-        <ButtonsPanel layerKey={"left"} />
+        {layerKeys.map((layerKey, index) => (
+          <ButtonsPanel layerKey={layerKey} />
+        ))}
       </LayersTab>
     </>
   );

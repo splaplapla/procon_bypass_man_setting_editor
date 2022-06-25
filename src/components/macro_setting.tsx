@@ -7,7 +7,5 @@ type Props = {
 };
 
 export const MacroSetting: React.FC<Props> = ({ layerKey }) => {
-  return(
-    <></>
-  )
-}
+  return <></>;
+};
