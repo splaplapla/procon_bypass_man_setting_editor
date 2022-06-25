@@ -1,3 +1,5 @@
+/** @jsx jsx */
+
 import { jsx, css } from "@emotion/react";
 import React, { useContext } from "react";
 import { ModalProps } from "../components/buttons_modal";
@@ -28,7 +30,6 @@ export const PrefixKeysForm: React.FC = () => {
     <>
       <div
         css={css`
-          position: relative;
           margin-bottom: 20px;
         `}
       >

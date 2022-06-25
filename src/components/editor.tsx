@@ -1,7 +1,11 @@
+/** @jsx jsx */
+
 import { jsx, css } from "@emotion/react";
-import React from "react";
+import React, { useState } from "react";
 import { InstallableMacros } from "../components/installable_macros";
 import { PrefixKeysForm } from "../components/prefix_keys_form";
+import { LayersTab } from "../components/layers_tab";
+import { ButtonsPanels } from "../components/buttons_panels";
 
 export const Editor: React.FC = () => {
   return (
@@ -16,6 +20,10 @@ export const Editor: React.FC = () => {
 
       <h3>設定中のプレフィックスキー</h3>
       <PrefixKeysForm />
+
+      <LayersTab>
+        <ButtonsPanels />
+      </LayersTab>
     </>
   );
 };

@@ -1,10 +1,6 @@
 import { buttons, Button } from "../types/button";
 import { LayerKey } from "../types/layer_key";
-import {
-  MacroTable,
-  StructMacro,
-  Setting,
-} from "../types/setting";
+import { MacroTable, StructMacro, Setting } from "../types/setting";
 
 export const updatePrefixKeysType = Symbol("key");
 export const applyMacroType = Symbol("key");
