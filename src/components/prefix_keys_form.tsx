@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { ModalProps } from "../components/buttons_modal";
 import { Button } from "../types/button";
 import { ButtonsModal } from "../components/buttons_modal";
-import { updatePrefixKeys } from "../reducers/layer_reducer";
+import { updatePrefixKeysType } from "../reducers/layer_reducer";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
 import { useModal } from "../hooks/useModal";
 
@@ -14,9 +14,9 @@ export const PrefixKeysForm: React.FC = () => {
     ButtonsSettingContext
   );
 
-  const update = (buttons: Array<Button>) => {
+  const updatePrefixKeys = (buttons: Array<Button>) => {
       layersDispatch({
-        type: updatePrefixKeys,
+        type: updatePrefixKeysType,
         payload: { buttons: buttons },
       });
     }
@@ -25,7 +25,7 @@ export const PrefixKeysForm: React.FC = () => {
     openModal({
       title: "キープレフィックスの変更",
       prefill: setting.prefixKeys,
-      callbackOnSubmit: update,
+      callbackOnSubmit: updatePrefixKeys,
     });
   };
 
