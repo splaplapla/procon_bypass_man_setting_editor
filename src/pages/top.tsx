@@ -4,6 +4,7 @@ import { buttons, Button } from "../types/button";
 import { Layer, Setting } from "../types/setting";
 import { LayerReducer } from "../reducers/layer_reducer";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
+import _ from "lodash";
 
 type EditorProviderProps = {
   children: React.ReactNode;
@@ -16,10 +17,10 @@ const defaultLayer = buttons.reduce((acc, item) => {
 
 const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
   const initSetting: Setting = {
-    up: Object.assign({}, defaultLayer),
-    right: Object.assign({}, defaultLayer),
-    down: Object.assign({}, defaultLayer),
-    left: Object.assign({}, defaultLayer),
+    up: _.cloneDeep(defaultLayer),
+    right: _.cloneDeep(defaultLayer),
+    down: _.cloneDeep(defaultLayer),
+    left: _.cloneDeep(defaultLayer),
     prefixKeys: [],
     installed_macros: {},
   };

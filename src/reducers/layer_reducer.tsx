@@ -6,6 +6,8 @@ export const updatePrefixKeysType = Symbol("key");
 export const applyMacroType = Symbol("key");
 export const installMacroType = Symbol("key");
 export const uninstallMacroType = Symbol("key");
+export const openMenuType = Symbol("key");
+export const closeMenuType = Symbol("key");
 
 export type ACTION_TYPE =
   | {
@@ -27,7 +29,13 @@ export type ACTION_TYPE =
   | {
       type: typeof updatePrefixKeysType;
       payload: { buttons: Array<Button> };
-    };
+    } | {
+      type: typeof openMenuType;
+      payload: { layerKey: LayerKey, button: Button },
+    } | {
+      type: typeof closeMenuType;
+      payload: { layerKey: LayerKey, button: Button },
+    }
 
 export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
   switch (action.type) {
@@ -48,6 +56,12 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
       return { ...setting };
     case updatePrefixKeysType:
       setting.prefixKeys = action.payload.buttons;
+      return { ...setting };
+    case openMenuType:
+    setting[action.payload.layerKey][action.payload.button].open = true
+      return { ...setting };
+    case closeMenuType:
+     setting[action.payload.layerKey][action.payload.button].open = false
       return { ...setting };
     default:
       console.log("一致しないaction typeです", action);
