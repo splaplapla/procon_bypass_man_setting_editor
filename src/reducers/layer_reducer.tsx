@@ -3,32 +3,35 @@ import { LayerKey } from "../types/layer_key";
 import {
   MacroTable,
   StructMacro,
-  Setting
+  Setting,
 } from "../types/buttons_setting_type";
-
 
 export const updatePrefixKeysType = Symbol("key");
 export const applyMacroType = Symbol("key");
 export const installMacroType = Symbol("key");
 export const uninstallMacroType = Symbol("key");
 
-export type ACTION_TYPE = {
-  type: typeof applyMacroType;
-  payload: {
-    layerKey: LayerKey;
-    button: Button | undefined;
-    macro: StructMacro;
-  };
-} | {
-  type: typeof installMacroType;
-  payload: { macro: string, }
-} | {
-  type: typeof uninstallMacroType;
-  payload: { macro: string, }
-} | {
-  type: typeof updatePrefixKeysType;
-  payload: { buttons: Array<Button>, }
-}
+export type ACTION_TYPE =
+  | {
+      type: typeof applyMacroType;
+      payload: {
+        layerKey: LayerKey;
+        button: Button | undefined;
+        macro: StructMacro;
+      };
+    }
+  | {
+      type: typeof installMacroType;
+      payload: { macro: string };
+    }
+  | {
+      type: typeof uninstallMacroType;
+      payload: { macro: string };
+    }
+  | {
+      type: typeof updatePrefixKeysType;
+      payload: { buttons: Array<Button> };
+    };
 
 export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
   switch (action.type) {
@@ -54,4 +57,4 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
       console.log("一致しないaction typeです", action);
       return { ...setting };
   }
-}
+};

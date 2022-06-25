@@ -1,11 +1,7 @@
 import React, { useState, useReducer, useContext } from "react";
-import { Editor } from '../components/editor'
+import { Editor } from "../components/editor";
 import { buttons, Button } from "../types/button";
-import {
-  Layer,
-  InstalledPlugin,
-  Setting,
-} from "../types/buttons_setting_type";
+import { Layer, InstalledPlugin, Setting } from "../types/buttons_setting_type";
 import { LayerReducer } from "../reducers/layer_reducer";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
 
@@ -28,17 +24,14 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
     installed_macros: {},
   };
 
-  const [setting, settingDispatch] = useReducer(
-    LayerReducer,
-    initSetting
-  );
+  const [setting, settingDispatch] = useReducer(LayerReducer, initSetting);
 
   const value = {
     setting,
     settingDispatch,
   };
 
-  return(
+  return (
     <ButtonsSettingContext.Provider value={value}>
       {children}
     </ButtonsSettingContext.Provider>
@@ -46,9 +39,9 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
 };
 
 export const Top: React.FC = () => {
-  return(
+  return (
     <EditorProvider>
       <Editor />
     </EditorProvider>
-  )
+  );
 };

@@ -9,18 +9,13 @@ import { useModal } from "../hooks/useModal";
 
 export const PrefixKeysForm: React.FC = () => {
   const [modalProps, openModal] = useModal();
-
-  const { setting, settingDispatch } = useContext(
-    ButtonsSettingContext
-  );
-
+  const { setting, settingDispatch } = useContext(ButtonsSettingContext);
   const updatePrefixKeys = (buttons: Array<Button>) => {
-      settingDispatch({
-        type: updatePrefixKeysType,
-        payload: { buttons: buttons },
-      });
-    }
-
+    settingDispatch({
+      type: updatePrefixKeysType,
+      payload: { buttons: buttons },
+    });
+  };
   const handlePrefixKeysField = () => {
     openModal({
       title: "キープレフィックスの変更",
@@ -29,7 +24,7 @@ export const PrefixKeysForm: React.FC = () => {
     });
   };
 
-  return(
+  return (
     <>
       <div
         css={css`
@@ -39,12 +34,12 @@ export const PrefixKeysForm: React.FC = () => {
       >
         <input
           type="text"
-          value={setting.prefixKeys.join(', ')}
+          value={setting.prefixKeys.join(", ")}
           readOnly={true}
           onClick={handlePrefixKeysField}
         />
         <ButtonsModal {...(modalProps as ModalProps)} />
       </div>
     </>
-  )
-}
+  );
+};

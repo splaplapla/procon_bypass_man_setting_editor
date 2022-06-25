@@ -4,11 +4,11 @@ import { InstallableMacros } from "../components/installable_macros";
 import { PrefixKeysForm } from "../components/prefix_keys_form";
 
 export const Editor: React.FC = () => {
-  return(
+  return (
     <>
       <h1>設定ファイルエディタ</h1>
       <div>
-        <a href="#" >エクスポートする</a>
+        <a href="#">エクスポートする</a>
       </div>
 
       <h3>インストール可能なマクロ</h3>
@@ -17,5 +17,5 @@ export const Editor: React.FC = () => {
       <h3>設定中のプレフィックスキー</h3>
       <PrefixKeysForm />
     </>
-  )
-}
+  );
+};

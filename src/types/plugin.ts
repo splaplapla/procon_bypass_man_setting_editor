@@ -20,9 +20,10 @@ export const AvailablePlugins: Array<Plugin> = [
           display_name: "xxx",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::FastReturn",
         },
-      ]
+      ],
     },
-  }, {
+  },
+  {
     splatoon2: {
       modes: [
         {
@@ -48,6 +49,6 @@ export const AvailablePlugins: Array<Plugin> = [
           class_namespace: "ProconBypassMan::Splatoon2::Macro::JumpToLeftKey",
         },
       ],
-    }
-  }
+    },
+  },
 ];
