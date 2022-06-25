@@ -18,7 +18,7 @@ export const AvailablePlugins: Array<Plugin> = [
       macros: [
         {
           display_name: "xxx",
-          class_namespace: "ProconBypassMan::Splatoon2::Macro::FastReturn",
+          class_namespace: "ProconBypassMan::Sumabura::Macro::FastReturn",
         },
       ],
     },

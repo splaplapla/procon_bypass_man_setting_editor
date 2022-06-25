@@ -4,26 +4,18 @@ import { jsx, css } from "@emotion/react";
 import React, { useState } from "react";
 import { LayerKey, layerKeys } from "../types/layer_key";
 
-interface LayerRef {
-  setVisibility(status: string): string;
-}
-
 type Props = {
-  children: React.ReactNode;
+  children: Array<React.ReactNode>;
 };
 
 export const LayersTab: React.FC<Props> = ({ children }) => {
   const [selectedLayer, setSelectedLayer] = useState<LayerKey>("up");
-  const layerRefs = layerKeys.map((l) => ({} as LayerRef));
   const switchLayer = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     if (event.target instanceof HTMLElement) {
-      setSelectedLayer(event.target.dataset.layerKey as LayerKey);
-      layerRefs.forEach((r) => r.setVisibility("hidden"));
-      layerRefs[Number(event.target.dataset.layerKeyIndex)].setVisibility(
-        "shown"
-      );
+      const layerKey = event.target.dataset.layerKey as LayerKey;
+      setSelectedLayer(layerKey);
     }
   };
 
@@ -55,7 +47,7 @@ export const LayersTab: React.FC<Props> = ({ children }) => {
     `;
   };
 
-  const liClassName = (layer: LayerKey) => {
+  const tabVisibilityClassName = (layer: LayerKey) => {
     if (layer === selectedLayer) {
       return "active";
     } else {
@@ -63,28 +55,37 @@ export const LayersTab: React.FC<Props> = ({ children }) => {
     }
   };
 
+  const panelVisibilityStyle = (layerKey: LayerKey) => {
+    if (tabVisibilityClassName(layerKey) == "active") {
+      return css`
+        display: block;
+      `;
+    } else {
+      return css`
+        display: none;
+      `;
+    }
+  };
+
   return (
     <>
-      <div
-        css={css`
-          display: table;
-        `}
-      >
-        <ul css={layersTabStyle()}>
-          {layerKeys.map((l, index) => (
-            <li key={l} className={liClassName(l)}>
-              <a
-                data-layer-key-index={index}
-                data-layer-key={l}
-                onClick={switchLayer}
-              >
-                {l}
-              </a>
-            </li>
-          ))}
-        </ul>
-        {children}
-      </div>
+      <ul css={layersTabStyle()}>
+        {layerKeys.map((layerKey, index) => (
+          <li key={layerKey} className={tabVisibilityClassName(layerKey)}>
+            <a
+              data-layer-key-index={index}
+              data-layer-key={layerKey}
+              onClick={switchLayer}
+            >
+              {layerKey}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {layerKeys.map((layerKey, index) => (
+        <div css={panelVisibilityStyle(layerKey)}>{children[index]}</div>
+      ))}
     </>
   );
 };

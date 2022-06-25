@@ -8,7 +8,7 @@ type Props = {
 export const ButtonsPanel: React.FC<Props> = ({ layerKey }) => {
   return (
     <>
-      ここにボタンがだーって出ます
+      ここにボタンがだーって出ます({layerKey})
       <br />
     </>
   );
