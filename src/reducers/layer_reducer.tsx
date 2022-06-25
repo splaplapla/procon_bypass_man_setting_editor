@@ -4,7 +4,7 @@ import {
   MacroTable,
   StructMacro,
   Setting,
-} from "../types/buttons_setting_type";
+} from "../types/setting";
 
 export const updatePrefixKeysType = Symbol("key");
 export const applyMacroType = Symbol("key");
