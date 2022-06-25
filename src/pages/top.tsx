@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useContext } from "react";
 import { Editor } from "../components/editor";
 import { buttons, Button } from "../types/button";
-import { Layer, InstalledPlugin, Setting } from "../types/setting";
+import { Layer, Setting } from "../types/setting";
 import { LayerReducer } from "../reducers/layer_reducer";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
 

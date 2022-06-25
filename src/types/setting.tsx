@@ -1,5 +1,4 @@
 import { Button } from "./button";
-import { LayerKey } from "./layer_key";
 
 export type Flip = {
   if_pressed?: Array<Button>;
@@ -24,11 +23,11 @@ export type ModeTable = {
   [key in string]: boolean;
 };
 
-export type Remap = {
+type Remap = {
   to: Array<Button>;
 };
 
-export type ButtonsSettingInLayer = {
+type ButtonsSettingInLayer = {
   flip?: Flip;
   macro?: MacroTable;
   remap?: Remap;
@@ -39,7 +38,7 @@ type _ButtonsSettingInLayer = {
   [key in Button]: ButtonsSettingInLayer;
 };
 
-export type InstalledPlugin = {
+type InstalledPlugin = {
   [key in string]: boolean;
 };
 
