@@ -4,25 +4,13 @@ import { jsx, css } from "@emotion/react";
 import React, { useState, useEffect, useContext } from "react";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
 import {
-  Plugin,
-  PluginBody,
   AvailablePlugins,
-  MacroNameMap,
+  PluginBody,
 } from "../types/plugin";
 import {
   installMacroType,
   uninstallMacroType,
 } from "../reducers/layer_reducer";
-
-const macroClassNamespaces = AvailablePlugins.map((v, k) => {
-  return Object.entries(v).map((v) => {
-    const name = v[0];
-    const plugin = v[1];
-    return plugin.macros.map((m) => {
-      return m.class_namespace;
-    });
-  });
-}) .flat() .flat();
 
 let gameMacroTable = {} as any;
 const gamesAndMacros = AvailablePlugins.forEach((plugins) => {
@@ -32,7 +20,6 @@ const gamesAndMacros = AvailablePlugins.forEach((plugins) => {
     gameMacroTable[pluginKey] = gameAssetTable['macros']
   }
 })
-
 
 type Props = {
   classNamespace: string;
@@ -55,6 +42,7 @@ export const InstallableMacro = ({ classNamespace }: Props) => {
       });
     }
   };
+
   return (
     <>
       <input
@@ -62,7 +50,6 @@ export const InstallableMacro = ({ classNamespace }: Props) => {
         onChange={handleClick}
         checked={isChecked(classNamespace)}
       />{" "}
-      {MacroNameMap[classNamespace]}
     </>
   );
 };
@@ -77,7 +64,7 @@ export const InstallableMacros = () => {
               <h3>{key}</h3>
               <ul>
                 {
-                  gameMacroTable[key].map((item: any, index: any) => {
+                  gameMacroTable[key].map((item: PluginBody, index: number) => {
                     return(
                       <li key={index}>
                         <label>
@@ -96,4 +83,3 @@ export const InstallableMacros = () => {
     </>
   );
 };
-
