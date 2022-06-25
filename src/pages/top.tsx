@@ -32,16 +32,16 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
       a[i] = { open: false };
       return a;
     }, {} as Layer),
-    installed_macros: {} as InstalledPlugin,
+    installed_macros: {},
   };
   const [prefixKeys, setPrefixKeys] = useState([]);
-  const [layers, layersDispatch] = useReducer(
+  const [setting, layersDispatch] = useReducer(
     LayerReducer,
-    initLayers as Setting
+    initLayers
   );
 
   const value = {
-    layers,
+    setting,
     layersDispatch,
     prefixKeys,
     setPrefixKeys,

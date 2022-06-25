@@ -12,7 +12,7 @@ import {
 import {
   installMacroType,
   uninstallMacroType,
-} from "../reducers/old_layer_reducer";
+} from "../reducers/layer_reducer";
 
 const macroClassNamespaces = AvailablePlugins.map((v, k) => {
   return Object.entries(v).map((v) => {
@@ -38,20 +38,20 @@ type Props = {
   classNamespace: string;
 };
 export const InstallableMacro = ({ classNamespace }: Props) => {
-  const { layers, layersDispatch } = useContext(ButtonsSettingContext);
+  const { setting, layersDispatch } = useContext(ButtonsSettingContext);
   const isChecked = (name: string) => {
-    return layers.installed_macros[name] || false;
+    return setting.installed_macros[name] || false;
   };
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (isChecked(classNamespace)) {
       layersDispatch({
         type: uninstallMacroType,
-        payload: { installed_macro: classNamespace },
+        payload: { macro: classNamespace },
       });
     } else {
       layersDispatch({
         type: installMacroType,
-        payload: { installed_macro: classNamespace },
+        payload: { macro: classNamespace },
       });
     }
   };
@@ -73,14 +73,13 @@ export const InstallableMacros = () => {
       {
         Object.keys(gameMacroTable).map((key, index) => {
           return(
-            <>
-              <div key={index}>
-                <h3>{key}</h3>
-                <ul>
+            <div key={index}>
+              <h3>{key}</h3>
+              <ul>
                 {
                   gameMacroTable[key].map((item: any, index: any) => {
                     return(
-                      <li key={key}>
+                      <li key={index}>
                         <label>
                           <InstallableMacro classNamespace={item['class_namespace']} />
                           {item['display_name']}
@@ -90,8 +89,7 @@ export const InstallableMacros = () => {
                   })
                 }
               </ul>
-              </div>
-            </>
+            </div>
           )
         })
       }

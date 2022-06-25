@@ -33,7 +33,7 @@ export const Editor: React.FC = () => {
       </div>
 
       <h3>インストール可能なマクロ</h3>
-      {<InstallableMacros />}
+      <InstallableMacros />
       <h3>設定中のプレフィックスキー</h3>
       <div
         css={css`
@@ -47,7 +47,7 @@ export const Editor: React.FC = () => {
           readOnly={true}
           onClick={handlePrefixKeysField}
         />
-        {<ButtonsModal {...(modalProps as ModalProps)} />}
+        <ButtonsModal {...(modalProps as ModalProps)} />
       </div>
     </>
   )
