@@ -23,6 +23,10 @@ export const ButtonsModal = ({
   prefill,
   visible,
 }: ModalProps) => {
+  if (!visible) {
+    return null;
+  }
+
   const [checkedButtonMap, setCheckedButtonMap] = useState(
     prefill.reduce(
       (a, b) => {
@@ -35,10 +39,6 @@ export const ButtonsModal = ({
       }, {} as CheckedButtons)
     )
   );
-
-  if (!visible) {
-    return null;
-  }
 
   const handleSubmit = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
