@@ -14,19 +14,19 @@ type ButtonProps = {
 };
 
 export const ButtonInPanel: React.FC<ButtonProps> = ({ layerKey, name }) => {
-  const { setting, settingDispatch } = useContext(ButtonsSettingContext);
+  const { setting, layerDispatch } = useContext(ButtonsSettingContext);
   const isOpenMenu = () => {
     return setting[layerKey][name].open;
   };
   const handleToggle = () => {
     if (isOpenMenu()) {
-      settingDispatch({
+      layerDispatch({
         // 閉じる
         type: closeMenuType,
         payload: { layerKey: layerKey, button: name },
       });
     } else {
-      settingDispatch({
+      layerDispatch({
         // 開く
         type: openMenuType,
         payload: { layerKey: layerKey, button: name },

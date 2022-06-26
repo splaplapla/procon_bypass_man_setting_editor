@@ -4,7 +4,7 @@ import { jsx, css } from "@emotion/react";
 import React, { useContext } from "react";
 import { useModal } from "../hooks/useModal";
 import { Button } from "../types/button";
-import { updatePrefixKeysType } from "../reducers/layer_reducer";
+import { updatePrefixKeysType } from "../reducers/setting_reducer";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
 import { ButtonsModal } from "../components/buttons_modal";
 

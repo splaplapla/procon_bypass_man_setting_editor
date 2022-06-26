@@ -18,7 +18,6 @@ export const ButtonMenuInPanel: React.FC<ButtonProps> = ({
   layerKey,
   name,
 }) => {
-
   return (
     <>
       <div

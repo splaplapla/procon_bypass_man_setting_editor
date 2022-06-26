@@ -2,7 +2,6 @@ import { buttons, Button } from "../types/button";
 import { LayerKey } from "../types/layer_key";
 import { MacroTable, StructMacro, Setting, Flip } from "../types/setting";
 
-export const updatePrefixKeysType = Symbol("key");
 export const applyMacroType = Symbol("key");
 
 // in button
@@ -24,10 +23,6 @@ export type ACTION_TYPE =
         button: Button | undefined;
         macro: StructMacro;
       };
-    }
-  | {
-      type: typeof updatePrefixKeysType;
-      payload: { buttons: Array<Button> };
     }
   | {
       type: typeof openMenuType;
@@ -81,9 +76,6 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
       //   macroTable[structMacro.name] = structMacro.if_pressed.sort();
       //   layers[layerKey].macro = macroTable;
       return { ...setting };
-    case updatePrefixKeysType:
-      setting.prefixKeys = action.payload.buttons;
-      return { ...setting };
     case openMenuType:
       setting[action.payload.layerKey][action.payload.button].open = true;
       return { ...setting };
@@ -91,23 +83,40 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
       setting[action.payload.layerKey][action.payload.button].open = false;
       return { ...setting };
     case disableFlipButtonType:
-      setting[action.payload.layerKey][action.payload.button] = { open: true, flip: { enable: false } }
+      setting[action.payload.layerKey][action.payload.button] = {
+        open: true,
+        flip: { enable: false },
+      };
       return { ...setting };
     case alwaysFlipButtonType:
-      setting[action.payload.layerKey][action.payload.button] = { open: true, flip: { enable: true, if_pressed: [] } }
+      setting[action.payload.layerKey][action.payload.button] = {
+        open: true,
+        flip: { enable: true, if_pressed: [] },
+      };
       return { ...setting };
     case flipIfPressedSelfButtonType:
-      setting[action.payload.layerKey][action.payload.button] = { open: true, flip: { enable: true, if_pressed: [action.payload.button] } }
+      setting[action.payload.layerKey][action.payload.button] = {
+        open: true,
+        flip: { enable: true, if_pressed: [action.payload.button] },
+      };
       return { ...setting };
     case flipIfPressedSomeButtonsType:
-      const flip = setting[action.payload.layerKey][action.payload.button].flip as Flip
-      flip.if_pressed = action.payload.targetButtons
-      setting[action.payload.layerKey][action.payload.button] = { open: true, flip: flip }
+      const flip = setting[action.payload.layerKey][action.payload.button]
+        .flip as Flip;
+      flip.if_pressed = action.payload.targetButtons;
+      setting[action.payload.layerKey][action.payload.button] = {
+        open: true,
+        flip: flip,
+      };
       return { ...setting };
     case ignoreButtonsInFlipingButtonType:
-      const flip1 = setting[action.payload.layerKey][action.payload.button].flip as Flip
+      const flip1 = setting[action.payload.layerKey][action.payload.button]
+        .flip as Flip;
       flip1.force_neutral = action.payload.targetButtons;
-      setting[action.payload.layerKey][action.payload.button] = { open: true, flip: flip1 }
+      setting[action.payload.layerKey][action.payload.button] = {
+        open: true,
+        flip: flip1,
+      };
       return { ...setting };
     default:
       console.log("一致しないaction typeです", action);

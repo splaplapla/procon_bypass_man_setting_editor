@@ -26,13 +26,13 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
     installed_macros: {},
   };
 
-  const [setting, settingDispatch] = useReducer(LayerReducer, initSetting);
-  const [unusedSetting, settingNextDispatch] = useReducer(SettingReducer, setting);
+  const [setting, layerDispatch] = useReducer(LayerReducer, initSetting);
+  const [unusedSetting, settingDispatch] = useReducer(SettingReducer, setting);
 
   const value = {
     setting,
-    settingDispatch, // will bel layer dispacher
-    settingNextDispatch,
+    layerDispatch,
+    settingDispatch,
   };
 
   return (

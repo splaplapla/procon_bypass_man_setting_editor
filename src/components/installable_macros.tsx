@@ -22,18 +22,18 @@ type Props = {
   classNamespace: string;
 };
 export const InstallableMacro = ({ classNamespace }: Props) => {
-  const { setting, settingNextDispatch } = useContext(ButtonsSettingContext);
+  const { setting, settingDispatch } = useContext(ButtonsSettingContext);
   const isChecked = (name: string) => {
     return setting.installed_macros[name] || false;
   };
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (isChecked(classNamespace)) {
-      settingNextDispatch({
+      settingDispatch({
         type: uninstallMacroType,
         payload: { macro: classNamespace },
       });
     } else {
-      settingNextDispatch({
+      settingDispatch({
         type: installMacroType,
         payload: { macro: classNamespace },
       });

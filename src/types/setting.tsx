@@ -43,7 +43,7 @@ type InstalledPlugin = {
 };
 
 export type Layer = _ButtonsSettingInLayer & {
-  macro?: MacroTable; // TODO macroTableという名前にしたい
+  macro?: MacroTable;
   mode?: ModeTable;
 };
 
