@@ -2,40 +2,32 @@
 
 import { jsx, css } from "@emotion/react";
 import React, { useState, useContext } from "react";
-import { LayerKey } from "../types/layer_key";
-import { Button, buttons } from "../types/button";
-import { ButtonsSettingContext } from "./../contexts/buttons_setting";
-import {
-  openMenuType,
-  closeMenuType,
-} from "../reducers/layer_reducer";
+import { LayerKey } from "../../types/layer_key";
+import { Button, buttons } from "../../types/button";
+import { ButtonsSettingContext } from "./../../contexts/buttons_setting";
+import { openMenuType, closeMenuType } from "../../reducers/layer_reducer";
+import { ButtonMenuInPanel } from "../../components/buttons_panel/button_menu_in_panel";
 
-type Props = {
+type ButtonProps = {
   layerKey: LayerKey;
   name: Button;
 };
 
-export const ButtonMenuInPanel: React.FC<Props> = ({ layerKey, name }) => {
-  return (
-    <>opened</>
-  )
-}
-
-export const ButtonInPanel: React.FC<Props> = ({ layerKey, name }) => {
+export const ButtonInPanel: React.FC<ButtonProps> = ({ layerKey, name }) => {
   const { setting, settingDispatch } = useContext(ButtonsSettingContext);
   const isOpenMenu = () => {
     return setting[layerKey][name].open;
   };
   const handleToggle = () => {
     if (isOpenMenu()) {
-      // 閉じる
       settingDispatch({
+        // 閉じる
         type: closeMenuType,
         payload: { layerKey: layerKey, button: name },
       });
     } else {
-      // 開く
       settingDispatch({
+        // 開く
         type: openMenuType,
         payload: { layerKey: layerKey, button: name },
       });
@@ -49,12 +41,7 @@ export const ButtonInPanel: React.FC<Props> = ({ layerKey, name }) => {
         {name}
       </label>
 
-      {isOpenMenu() && (
-        <ButtonMenuInPanel
-          name={name}
-          layerKey={layerKey}
-        />
-      )}
+      {isOpenMenu() && <ButtonMenuInPanel name={name} layerKey={layerKey} />}
     </>
-  )
-}
+  );
+};

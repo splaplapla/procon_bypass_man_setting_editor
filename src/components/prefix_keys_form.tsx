@@ -2,12 +2,11 @@
 
 import { jsx, css } from "@emotion/react";
 import React, { useContext } from "react";
-import { ModalProps } from "../components/buttons_modal";
+import { useModal } from "../hooks/useModal";
 import { Button } from "../types/button";
-import { ButtonsModal } from "../components/buttons_modal";
 import { updatePrefixKeysType } from "../reducers/layer_reducer";
 import { ButtonsSettingContext } from "./../contexts/buttons_setting";
-import { useModal } from "../hooks/useModal";
+import { ButtonsModal } from "../components/buttons_modal";
 
 export const PrefixKeysForm: React.FC = () => {
   const [modalProps, openModal] = useModal();
@@ -39,7 +38,7 @@ export const PrefixKeysForm: React.FC = () => {
           readOnly={true}
           onClick={handlePrefixKeysField}
         />
-        <ButtonsModal {...(modalProps as ModalProps)} />
+        <ButtonsModal {...modalProps} />
       </div>
     </>
   );

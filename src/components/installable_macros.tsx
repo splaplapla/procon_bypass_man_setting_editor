@@ -7,7 +7,7 @@ import { AvailablePlugins, PluginBody } from "../types/plugin";
 import {
   installMacroType,
   uninstallMacroType,
-} from "../reducers/layer_reducer";
+} from "../reducers/setting_reducer";
 
 let gameMacroTable = {} as any;
 const gamesAndMacros = AvailablePlugins.forEach((plugins) => {
@@ -22,18 +22,18 @@ type Props = {
   classNamespace: string;
 };
 export const InstallableMacro = ({ classNamespace }: Props) => {
-  const { setting, settingDispatch } = useContext(ButtonsSettingContext);
+  const { setting, settingNextDispatch } = useContext(ButtonsSettingContext);
   const isChecked = (name: string) => {
     return setting.installed_macros[name] || false;
   };
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (isChecked(classNamespace)) {
-      settingDispatch({
+      settingNextDispatch({
         type: uninstallMacroType,
         payload: { macro: classNamespace },
       });
     } else {
-      settingDispatch({
+      settingNextDispatch({
         type: installMacroType,
         payload: { macro: classNamespace },
       });

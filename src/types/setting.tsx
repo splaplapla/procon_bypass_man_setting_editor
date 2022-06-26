@@ -23,7 +23,7 @@ export type ModeTable = {
   [key in string]: boolean;
 };
 
-type Remap = {
+export type Remap = {
   to: Array<Button>;
 };
 
