@@ -7,6 +7,7 @@ import { LayerKey } from "../../types/layer_key";
 import { Button, buttons } from "../../types/button";
 import { ButtonsSettingContext } from "./../../contexts/buttons_setting";
 import { FlipSettingInButtonMenu } from "./flip_setting_in_button_menu";
+import { RemapSettingInButtonMenu } from "./remap_setting_in_button_menu";
 import { ButtonState } from "./../../lib/button_state";
 
 type ButtonProps = {
@@ -25,9 +26,8 @@ export const ButtonMenuInPanel: React.FC<ButtonProps> = ({
           position: relative;
         `}
       >
-        <fieldset>
           <FlipSettingInButtonMenu layerKey={layerKey} name={name} />
-        </fieldset>
+          <RemapSettingInButtonMenu layerKey={layerKey} name={name} />
       </div>
     </>
   );

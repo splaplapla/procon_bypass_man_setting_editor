@@ -99,72 +99,74 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
 
   return (
     <>
-      <ButtonsModal {...modalProps} />
-
-      <legend>
-        <strong>連打設定</strong>
-      </legend>
-
-      <label>
-        <input
-          type="radio"
-          onClick={handleNullFlipValue}
-          checked={buttonState.isDisabledFlip()}
-          readOnly={true}
-        />
-        無効
-      </label>
-      <br />
-
-      <label>
-        <input
-          type="radio"
-          onClick={handleFlipValue}
-          checked={buttonState.isAlwaysFlip()}
-          readOnly={true}
-        />
-        常に連打する
-      </label>
-      <br />
-
-      <label>
-        <input
-          type="radio"
-          onClick={openIfPressedRadioboxModal}
-          checked={buttonState.isFlipIfPressedSelf()}
-          readOnly={true}
-        />
-        このボタンを押している時だけ連打する({name})
-      </label>
-      <br />
-
-      <label>
-        <input
-          type="radio"
-          onClick={openIfPressedSomeButtonsModal}
-          checked={buttonState.isFlipIfPressedSomeButtons()}
-          readOnly={true}
-        />
-        特定のボタンを押したときだけ連打する
-        {flipIfPressedSomeButtons.length > 0 &&
-          `(${flipIfPressedSomeButtons.join(", ")})`}
-      </label>
-
       <fieldset>
+        <ButtonsModal {...modalProps} />
+
         <legend>
-          <strong>連打オプション</strong>
+          <strong>連打設定</strong>
         </legend>
+
         <label>
           <input
-            type="checkbox"
-            onChange={handleIgnoreButton}
-            checked={forceNeutralButtons.length > 0}
-            disabled={buttonState.isDisabledFlip()}
+            type="radio"
+            onClick={handleNullFlipValue}
+            checked={buttonState.isDisabledFlip()}
+            readOnly={true}
           />
-          連打中は特定のボタンの入力を無視する
-          {forceNeutralButtons.length > 0 &&
-            `(${forceNeutralButtons.join(", ")})`}
+          無効
         </label>
+        <br />
+
+        <label>
+          <input
+            type="radio"
+            onClick={handleFlipValue}
+            checked={buttonState.isAlwaysFlip()}
+            readOnly={true}
+          />
+          常に連打する
+        </label>
+        <br />
+
+        <label>
+          <input
+            type="radio"
+            onClick={openIfPressedRadioboxModal}
+            checked={buttonState.isFlipIfPressedSelf()}
+            readOnly={true}
+          />
+          このボタンを押している時だけ連打する({name})
+        </label>
+        <br />
+
+        <label>
+          <input
+            type="radio"
+            onClick={openIfPressedSomeButtonsModal}
+            checked={buttonState.isFlipIfPressedSomeButtons()}
+            readOnly={true}
+          />
+          特定のボタンを押したときだけ連打する
+          {flipIfPressedSomeButtons.length > 0 &&
+            `(${flipIfPressedSomeButtons.join(", ")})`}
+        </label>
+
+        <fieldset>
+          <legend>
+            <strong>連打オプション</strong>
+          </legend>
+          <label>
+            <input
+              type="checkbox"
+              onChange={handleIgnoreButton}
+              checked={forceNeutralButtons.length > 0}
+              disabled={buttonState.isDisabledFlip()}
+            />
+            連打中は特定のボタンの入力を無視する
+            {forceNeutralButtons.length > 0 &&
+              `(${forceNeutralButtons.join(", ")})`}
+          </label>
+        </fieldset>
       </fieldset>
     </>
   );

@@ -1,6 +1,6 @@
 import { buttons, Button } from "../types/button";
 import { LayerKey } from "../types/layer_key";
-import { MacroTable, StructMacro, Setting, Flip } from "../types/setting";
+import { MacroTable, StructMacro, Setting, Flip, Remap } from "../types/setting";
 
 export const applyMacroType = Symbol("key");
 
@@ -14,6 +14,7 @@ export const alwaysFlipButtonType = Symbol("key");
 export const flipIfPressedSelfButtonType = Symbol("key");
 export const flipIfPressedSomeButtonsType = Symbol("key");
 export const ignoreButtonsInFlipingButtonType = Symbol("key");
+export const remapType = Symbol("remap");
 
 export type ACTION_TYPE =
   | {
@@ -59,13 +60,23 @@ export type ACTION_TYPE =
         button: Button;
         targetButtons: Array<Button>;
       };
-    };
+  }
+  | {
+      type: typeof remapType;
+      payload: {
+        layerKey: LayerKey;
+        button: Button;
+        targetButtons: Array<Button>;
+      };
+    }
 
 export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
   const layerKey = action.payload.layerKey as LayerKey;
   const button = action.payload.button as Button;
   const flip =
     (layerKey && button && setting[layerKey][button].flip) || ({} as Flip);
+  const remap =
+    (layerKey && button && setting[layerKey][button]?.remap) || ({} as Remap);
 
   switch (action.type) {
     case applyMacroType:
@@ -120,6 +131,11 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
         open: true,
         flip: flip,
       };
+      return { ...setting };
+    case remapType:
+      flip.enable = false;
+      remap.to = action.payload.targetButtons;
+      setting[layerKey][button] = { flip: flip, remap: remap, open: true };
       return { ...setting };
     default:
       console.log("一致しないaction typeです", action);
