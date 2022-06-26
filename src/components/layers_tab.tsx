@@ -84,7 +84,7 @@ export const LayersTab: React.FC<Props> = ({ children }) => {
       </ul>
 
       {layerKeys.map((layerKey, index) => (
-        <div css={panelVisibilityStyle(layerKey)}>{children[index]}</div>
+        <div key={index} css={panelVisibilityStyle(layerKey)}>{children[index]}</div>
       ))}
     </>
   );

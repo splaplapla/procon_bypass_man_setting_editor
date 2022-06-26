@@ -23,7 +23,7 @@ export const Editor: React.FC = () => {
 
       <LayersTab>
         {layerKeys.map((layerKey, index) => (
-          <ButtonsPanel layerKey={layerKey} />
+          <ButtonsPanel layerKey={layerKey} key={index} />
         ))}
       </LayersTab>
     </>
