@@ -11,7 +11,6 @@ import { ButtonsPanel } from "../components/buttons_panel";
 export const Editor: React.FC = () => {
   return (
     <>
-      <h1>設定ファイルエディタ</h1>
       <div>
         <a href="#">エクスポートする</a>
       </div>

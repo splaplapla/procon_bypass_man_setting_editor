@@ -62,9 +62,10 @@ export type ACTION_TYPE =
     };
 
 export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
-  // const layerKey = action.payload?.layerKey as LayerKey;
-  // const button = action.payload?.button as Button;
-  // const flip = (layerKey && button && setting[layerKey][button]?.flip) || ({} as Flip);
+  const layerKey = action.payload.layerKey as LayerKey;
+  const button = action.payload.button as Button;
+  const flip =
+    (layerKey && button && setting[layerKey][button].flip) || ({} as Flip);
 
   switch (action.type) {
     case applyMacroType:
@@ -83,39 +84,41 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
       setting[action.payload.layerKey][action.payload.button].open = false;
       return { ...setting };
     case disableFlipButtonType:
+      flip.enable = false;
       setting[action.payload.layerKey][action.payload.button] = {
         open: true,
-        flip: { enable: false },
+        flip: flip,
       };
       return { ...setting };
     case alwaysFlipButtonType:
+      flip.if_pressed = [];
+      flip.enable = true;
       setting[action.payload.layerKey][action.payload.button] = {
         open: true,
-        flip: { enable: true, if_pressed: [] },
+        flip: flip,
       };
       return { ...setting };
     case flipIfPressedSelfButtonType:
+      flip.if_pressed = [action.payload.button];
+      flip.enable = true;
       setting[action.payload.layerKey][action.payload.button] = {
         open: true,
-        flip: { enable: true, if_pressed: [action.payload.button] },
+        flip: flip,
       };
       return { ...setting };
     case flipIfPressedSomeButtonsType:
-      const flip = setting[action.payload.layerKey][action.payload.button]
-        .flip as Flip;
       flip.if_pressed = action.payload.targetButtons;
+      flip.enable = true;
       setting[action.payload.layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };
       return { ...setting };
     case ignoreButtonsInFlipingButtonType:
-      const flip1 = setting[action.payload.layerKey][action.payload.button]
-        .flip as Flip;
-      flip1.force_neutral = action.payload.targetButtons;
+      flip.force_neutral = action.payload.targetButtons;
       setting[action.payload.layerKey][action.payload.button] = {
         open: true,
-        flip: flip1,
+        flip: flip,
       };
       return { ...setting };
     default:
