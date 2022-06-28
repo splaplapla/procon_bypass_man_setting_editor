@@ -3,7 +3,7 @@
 import { jsx, css } from "@emotion/react";
 import React, { useState, useContext } from "react";
 import { LayerKey } from "../types/layer_key";
-import { MacroSetting } from "./../components/macro_setting";
+import { MacroSettings } from "./../components/macro_settings";
 import { ButtonInPanel } from "./../components/buttons_panel/button_in_panel";
 import { buttons } from "../types/button";
 
@@ -32,7 +32,7 @@ export const ButtonsPanel: React.FC<Props> = ({ layerKey }) => {
   return (
     <>
       <h4>マクロ</h4>
-      <MacroSetting layerKey={layerKey} />
+      <MacroSettings layerKey={layerKey} />
 
       <h4>各ボタンの設定</h4>
       <div css={ulStyle}>
