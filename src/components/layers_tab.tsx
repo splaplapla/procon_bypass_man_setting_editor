@@ -24,6 +24,7 @@ export const LayersTab: React.FC<Props> = ({ children }) => {
       list-style: none;
       display: flex;
       margin: 0;
+      margin-top: 30px;
       padding: 0;
       border-left: 1px solid #aaa;
       margin-bottom: 30px;

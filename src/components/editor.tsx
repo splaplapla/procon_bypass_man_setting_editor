@@ -15,11 +15,19 @@ export const Editor: React.FC = () => {
         <a href="#">エクスポートする</a>
       </div>
 
-      <h3>インストール可能なマクロ</h3>
-      <InstallableMacros />
+      <fieldset>
+        <legend>
+          <h3>インストール可能なマクロ</h3>
+        </legend>
+        <InstallableMacros />
+      </fieldset>
 
-      <h3>設定中のプレフィックスキー</h3>
-      <PrefixKeysForm />
+      <fieldset>
+        <legend>
+          <h3>設定中のプレフィックスキー</h3>
+          <PrefixKeysForm />
+        </legend>
+      </fieldset>
 
       <LayersTab>
         {layerKeys.map((layerKey, index) => (
