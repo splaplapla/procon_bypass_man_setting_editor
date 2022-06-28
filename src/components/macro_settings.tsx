@@ -30,7 +30,6 @@ export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
                     return (
                       <li key={index}>
                         <label>
-                          {item["class_namespace"]}
                           {item["display_name"]}
                         </label>
                       </li>
