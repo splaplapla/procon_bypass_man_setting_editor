@@ -1,6 +1,12 @@
 import { buttons, Button } from "../types/button";
 import { LayerKey } from "../types/layer_key";
-import { MacroTable, StructMacro, Setting, Flip, Remap } from "../types/setting";
+import {
+  MacroTable,
+  StructMacro,
+  Setting,
+  Flip,
+  Remap,
+} from "../types/setting";
 
 export const applyMacroType = Symbol("key");
 
@@ -60,7 +66,7 @@ export type ACTION_TYPE =
         button: Button;
         targetButtons: Array<Button>;
       };
-  }
+    }
   | {
       type: typeof remapType;
       payload: {
@@ -68,7 +74,7 @@ export type ACTION_TYPE =
         button: Button;
         targetButtons: Array<Button>;
       };
-    }
+    };
 
 export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
   const layerKey = action.payload.layerKey as LayerKey;

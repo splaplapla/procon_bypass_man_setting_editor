@@ -3,20 +3,11 @@
 import { jsx, css } from "@emotion/react";
 import React, { useState, useEffect, useContext } from "react";
 import { SettingContext } from "./../contexts/buttons_setting";
-import { AvailablePlugins, PluginBody } from "../types/plugin";
+import { AvailablePlugins, PluginBody, gameMacroTable } from "../types/plugin";
 import {
   installMacroType,
   uninstallMacroType,
 } from "../reducers/setting_reducer";
-
-let gameMacroTable = {} as any;
-const gamesAndMacros = AvailablePlugins.forEach((plugins) => {
-  for (let pluginKey in plugins) {
-    let gameAssetTable = plugins[pluginKey];
-    gameMacroTable[pluginKey] = [];
-    gameMacroTable[pluginKey] = gameAssetTable["macros"];
-  }
-});
 
 type Props = {
   classNamespace: string;

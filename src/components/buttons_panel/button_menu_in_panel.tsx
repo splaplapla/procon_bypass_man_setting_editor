@@ -26,8 +26,8 @@ export const ButtonMenuInPanel: React.FC<ButtonProps> = ({
           position: relative;
         `}
       >
-          <FlipSettingInButtonMenu layerKey={layerKey} name={name} />
-          <RemapSettingInButtonMenu layerKey={layerKey} name={name} />
+        <FlipSettingInButtonMenu layerKey={layerKey} name={name} />
+        <RemapSettingInButtonMenu layerKey={layerKey} name={name} />
       </div>
     </>
   );

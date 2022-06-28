@@ -6,9 +6,7 @@ import { LayerKey } from "../../types/layer_key";
 import { SettingContext } from "./../../contexts/buttons_setting";
 import { ButtonsModal } from "../../components/buttons_modal";
 import { ButtonState } from "./../../lib/button_state";
-import {
-  remapType
-} from "../../reducers/layer_reducer";
+import { remapType } from "../../reducers/layer_reducer";
 
 type ButtonProps = {
   layerKey: LayerKey;
@@ -16,9 +14,9 @@ type ButtonProps = {
 };
 
 export const RemapSettingInButtonMenu: React.FC<ButtonProps> = ({
-  layerKey, name
+  layerKey,
+  name,
 }) => {
-
   const [modalProps, openModal] = useModal();
   const { setting, layerDispatch } = useContext(SettingContext);
   const buttonValue = setting[layerKey][name] || {};
@@ -62,5 +60,5 @@ export const RemapSettingInButtonMenu: React.FC<ButtonProps> = ({
         </label>
       </fieldset>
     </>
-  )
-}
+  );
+};

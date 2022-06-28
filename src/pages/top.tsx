@@ -36,9 +36,7 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
   };
 
   return (
-    <SettingContext.Provider value={value}>
-      {children}
-    </SettingContext.Provider>
+    <SettingContext.Provider value={value}>{children}</SettingContext.Provider>
   );
 };
 
