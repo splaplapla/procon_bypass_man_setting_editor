@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import { Button, buttons } from "../../types/button";
 import { useModal } from "../../hooks/useModal";
 import { LayerKey } from "../../types/layer_key";
-import { ButtonsSettingContext } from "./../../contexts/buttons_setting";
+import { SettingContext } from "./../../contexts/buttons_setting";
 import { ButtonsModal } from "../../components/buttons_modal";
 import { ButtonState } from "./../../lib/button_state";
 import {
@@ -20,7 +20,7 @@ export const RemapSettingInButtonMenu: React.FC<ButtonProps> = ({
 }) => {
 
   const [modalProps, openModal] = useModal();
-  const { setting, layerDispatch } = useContext(ButtonsSettingContext);
+  const { setting, layerDispatch } = useContext(SettingContext);
   const buttonValue = setting[layerKey][name] || {};
   const buttonState = new ButtonState(
     name,

@@ -5,7 +5,7 @@ import React, { useState, useContext } from "react";
 import { useModal } from "../../hooks/useModal";
 import { LayerKey } from "../../types/layer_key";
 import { Button, buttons } from "../../types/button";
-import { ButtonsSettingContext } from "./../../contexts/buttons_setting";
+import { SettingContext } from "./../../contexts/buttons_setting";
 import {
   disableFlipButtonType,
   alwaysFlipButtonType,
@@ -26,7 +26,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
   name,
 }) => {
   const [modalProps, openModal] = useModal();
-  const { setting, layerDispatch } = useContext(ButtonsSettingContext);
+  const { setting, layerDispatch } = useContext(SettingContext);
 
   const buttonValue = setting[layerKey][name] || {};
   const buttonState = new ButtonState(

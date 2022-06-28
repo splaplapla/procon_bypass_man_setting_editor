@@ -4,7 +4,7 @@ import { buttons, Button } from "../types/button";
 import { Layer, Setting } from "../types/setting";
 import { LayerReducer } from "../reducers/layer_reducer";
 import { SettingReducer } from "../reducers/setting_reducer";
-import { ButtonsSettingContext } from "./../contexts/buttons_setting";
+import { SettingContext } from "./../contexts/buttons_setting";
 import _ from "lodash";
 
 type EditorProviderProps = {
@@ -36,9 +36,9 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
   };
 
   return (
-    <ButtonsSettingContext.Provider value={value}>
+    <SettingContext.Provider value={value}>
       {children}
-    </ButtonsSettingContext.Provider>
+    </SettingContext.Provider>
   );
 };
 

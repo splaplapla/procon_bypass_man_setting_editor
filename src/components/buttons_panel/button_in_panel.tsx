@@ -4,7 +4,7 @@ import { jsx, css } from "@emotion/react";
 import React, { useState, useContext } from "react";
 import { LayerKey } from "../../types/layer_key";
 import { Button, buttons } from "../../types/button";
-import { ButtonsSettingContext } from "./../../contexts/buttons_setting";
+import { SettingContext } from "./../../contexts/buttons_setting";
 import { openMenuType, closeMenuType } from "../../reducers/layer_reducer";
 import { ButtonMenuInPanel } from "../../components/buttons_panel/button_menu_in_panel";
 
@@ -14,7 +14,7 @@ type ButtonProps = {
 };
 
 export const ButtonInPanel: React.FC<ButtonProps> = ({ layerKey, name }) => {
-  const { setting, layerDispatch } = useContext(ButtonsSettingContext);
+  const { setting, layerDispatch } = useContext(SettingContext);
   const isOpenMenu = () => {
     return setting[layerKey][name].open;
   };

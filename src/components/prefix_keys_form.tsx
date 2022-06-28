@@ -5,12 +5,12 @@ import React, { useContext } from "react";
 import { useModal } from "../hooks/useModal";
 import { Button } from "../types/button";
 import { updatePrefixKeysType } from "../reducers/setting_reducer";
-import { ButtonsSettingContext } from "./../contexts/buttons_setting";
+import { SettingContext } from "./../contexts/buttons_setting";
 import { ButtonsModal } from "../components/buttons_modal";
 
 export const PrefixKeysForm: React.FC = () => {
   const [modalProps, openModal] = useModal();
-  const { setting, settingDispatch } = useContext(ButtonsSettingContext);
+  const { setting, settingDispatch } = useContext(SettingContext);
   const updatePrefixKeys = (buttons: Array<Button>) => {
     settingDispatch({
       type: updatePrefixKeysType,

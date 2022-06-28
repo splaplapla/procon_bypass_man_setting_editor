@@ -2,7 +2,7 @@
 
 import { jsx, css } from "@emotion/react";
 import React, { useState, useEffect, useContext } from "react";
-import { ButtonsSettingContext } from "./../contexts/buttons_setting";
+import { SettingContext } from "./../contexts/buttons_setting";
 import { AvailablePlugins, PluginBody } from "../types/plugin";
 import {
   installMacroType,
@@ -22,7 +22,7 @@ type Props = {
   classNamespace: string;
 };
 export const InstallableMacro = ({ classNamespace }: Props) => {
-  const { setting, settingDispatch } = useContext(ButtonsSettingContext);
+  const { setting, settingDispatch } = useContext(SettingContext);
   const isChecked = (name: string) => {
     return setting.installed_macros[name] || false;
   };
