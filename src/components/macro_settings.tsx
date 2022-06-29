@@ -10,6 +10,63 @@ import {
   AvailablePlugins,
   gameMacroTable,
 } from "../types/plugin";
+import { applyMacroType } from "../reducers/layer_reducer";
+
+type SettingProps = {
+  layerKey: LayerKey;
+  macroClassName: string;
+  macroDisplayName: string;
+};
+
+// MacroSettig
+import { ButtonsModal } from "../components/buttons_modal";
+import { useModal } from "../hooks/useModal";
+
+const MacroSettig: React.FC<SettingProps> = ({
+  macroClassName,
+  layerKey,
+  macroDisplayName,
+}) => {
+  const { setting, layerDispatch } = useContext(SettingContext);
+  const [modalProps, openModal] = useModal();
+  const ifPressedOfTheMacro = setting[layerKey].macro[macroClassName] || [];
+  const setButtonsForModal = (bs: Array<Button>) => {
+    layerDispatch({
+      type: applyMacroType,
+      payload: {
+        layerKey: layerKey,
+        macroClassName: macroClassName,
+        ifPressed: bs,
+      },
+    });
+  };
+  const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    openModal({
+      title: "マクロを発動するキーの変更",
+      prefill: ifPressedOfTheMacro,
+      callbackOnSubmit: setButtonsForModal,
+    });
+  };
+  const isEnable = ifPressedOfTheMacro.length > 0;
+
+  return (
+    <>
+      <label>
+        <input type="checkbox" onChange={handleClick} checked={isEnable} />
+        {macroDisplayName}
+        {isEnable && `(${ifPressedOfTheMacro.join(", ")}で発動)`}
+      </label>
+
+      <div
+        css={css`
+          position: relative;
+        `}
+      >
+        {<ButtonsModal {...modalProps} />}
+      </div>
+    </>
+  );
+};
 
 type Props = {
   layerKey: LayerKey;
@@ -30,7 +87,11 @@ export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
                     return (
                       <li key={index}>
                         <label>
-                          {item["display_name"]}
+                          <MacroSettig
+                            layerKey={layerKey}
+                            macroClassName={item["class_namespace"]}
+                            macroDisplayName={item["display_name"]}
+                          />
                         </label>
                       </li>
                     );

@@ -15,6 +15,7 @@ const defaultLayer = buttons.reduce((acc, item) => {
   acc[item] = { open: false };
   return acc;
 }, {} as Layer);
+defaultLayer.macro = {};
 
 const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
   const initSetting: Setting = {

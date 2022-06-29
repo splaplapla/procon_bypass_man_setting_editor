@@ -27,8 +27,9 @@ export type ACTION_TYPE =
       type: typeof applyMacroType;
       payload: {
         layerKey: LayerKey;
-        button: Button | undefined;
-        macro: StructMacro;
+        button?: Array<Button>;
+        ifPressed: Array<Button>;
+        macroClassName: string; // TODO typed
       };
     }
   | {
@@ -86,23 +87,18 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
 
   switch (action.type) {
     case applyMacroType:
-      // const structMacro = action.payload.macro;
-      //   if (!structMacro) {
-      //     return { ...layers };
-      //   }
-      //   const macroTable = (layers[layerKey].macro as Macro) || ({} as Macro);
-      //   macroTable[structMacro.name] = structMacro.if_pressed.sort();
-      //   layers[layerKey].macro = macroTable;
+      setting[layerKey].macro[action.payload.macroClassName] =
+        action.payload.ifPressed || [];
       return { ...setting };
     case openMenuType:
-      setting[action.payload.layerKey][action.payload.button].open = true;
+      setting[layerKey][action.payload.button].open = true;
       return { ...setting };
     case closeMenuType:
-      setting[action.payload.layerKey][action.payload.button].open = false;
+      setting[layerKey][action.payload.button].open = false;
       return { ...setting };
     case disableFlipButtonType:
       flip.enable = false;
-      setting[action.payload.layerKey][action.payload.button] = {
+      setting[layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };
@@ -110,7 +106,7 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
     case alwaysFlipButtonType:
       flip.if_pressed = [];
       flip.enable = true;
-      setting[action.payload.layerKey][action.payload.button] = {
+      setting[layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };
@@ -118,7 +114,7 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
     case flipIfPressedSelfButtonType:
       flip.if_pressed = [action.payload.button];
       flip.enable = true;
-      setting[action.payload.layerKey][action.payload.button] = {
+      setting[layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };
@@ -126,14 +122,14 @@ export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
     case flipIfPressedSomeButtonsType:
       flip.if_pressed = action.payload.targetButtons;
       flip.enable = true;
-      setting[action.payload.layerKey][action.payload.button] = {
+      setting[layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };
       return { ...setting };
     case ignoreButtonsInFlipingButtonType:
       flip.force_neutral = action.payload.targetButtons;
-      setting[action.payload.layerKey][action.payload.button] = {
+      setting[layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };

@@ -29,7 +29,6 @@ export type Remap = {
 
 type ButtonsSettingInLayer = {
   flip?: Flip;
-  macro?: MacroTable;
   remap?: Remap;
   open: boolean;
 };
@@ -43,7 +42,7 @@ type InstalledPlugin = {
 };
 
 export type Layer = _ButtonsSettingInLayer & {
-  macro?: MacroTable;
+  macro: MacroTable;
   mode?: ModeTable;
 };
 
