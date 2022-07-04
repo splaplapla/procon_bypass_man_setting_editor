@@ -18,11 +18,11 @@ type SettingProps = {
   macroDisplayName: string;
 };
 
-// MacroSettig
+// MacroSetting
 import { ButtonsModal } from "../components/buttons_modal";
 import { useModal } from "../hooks/useModal";
 
-const MacroSettig: React.FC<SettingProps> = ({
+const MacroSetting: React.FC<SettingProps> = ({
   macroClassName,
   layerKey,
   macroDisplayName,
@@ -87,7 +87,7 @@ export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
                     return (
                       <li key={index}>
                         <label>
-                          <MacroSettig
+                          <MacroSetting
                             layerKey={layerKey}
                             macroClassName={item["class_namespace"]}
                             macroDisplayName={item["display_name"]}
