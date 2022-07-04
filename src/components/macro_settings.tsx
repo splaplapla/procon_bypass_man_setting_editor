@@ -1,3 +1,5 @@
+/** @jsx jsx */
+
 import { jsx, css } from "@emotion/react";
 import React, { useState, useReducer, useContext } from "react";
 import { SettingContext } from "./../contexts/buttons_setting";
