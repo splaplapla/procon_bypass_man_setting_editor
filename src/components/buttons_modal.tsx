@@ -73,6 +73,7 @@ export const ButtonsModal = ({
       height: 400px;
       border: solid;
       background-color: white;
+      z-index: 100;
     `);
   };
   const aStyle = css`
