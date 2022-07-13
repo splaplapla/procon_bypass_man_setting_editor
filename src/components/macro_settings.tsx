@@ -88,13 +88,11 @@ export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
                   if (setting.installed_macros[item["class_namespace"]]) {
                     return (
                       <li key={index}>
-                        <label>
-                          <MacroSetting
-                            layerKey={layerKey}
-                            macroClassName={item["class_namespace"]}
-                            macroDisplayName={item["display_name"]}
-                          />
-                        </label>
+                        <MacroSetting
+                          layerKey={layerKey}
+                          macroClassName={item["class_namespace"]}
+                          macroDisplayName={item["display_name"]}
+                        />
                       </li>
                     );
                   }
