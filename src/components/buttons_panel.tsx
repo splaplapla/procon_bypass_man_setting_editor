@@ -20,13 +20,13 @@ export const ButtonsPanel: React.FC<Props> = ({ layerKey }) => {
     list-style-type: none;
     margin: 0 0 0 1em;
     padding: 0;
-    width: 900px;
+    width: 1650px;
   `;
   const liStyle = css`
     border: 1px solid #aaa;
     margin: 0.2em;
     padding: 0.5em;
-    width: 200px;
+    width: 380px;
   `;
 
   return (
