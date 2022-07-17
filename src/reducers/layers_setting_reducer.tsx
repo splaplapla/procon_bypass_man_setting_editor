@@ -6,6 +6,7 @@ import {
   Setting,
   Flip,
   Remap,
+  LayersSetting,
 } from "../types/setting";
 
 export const applyMacroType = Symbol("key");
@@ -77,70 +78,70 @@ export type ACTION_TYPE =
       };
     };
 
-export const LayerReducer = (setting: Setting, action: ACTION_TYPE) => {
+export const LayersSettingReducer = (layersSetting: LayersSetting, action: ACTION_TYPE) => {
   const layerKey = action.payload.layerKey as LayerKey;
   const button = action.payload.button as Button;
   const flip =
-    (layerKey && button && setting[layerKey][button].flip) || ({} as Flip);
+    (layerKey && button && layersSetting[layerKey][button].flip) || ({} as Flip);
   const remap =
-    (layerKey && button && setting[layerKey][button]?.remap) || ({} as Remap);
+    (layerKey && button && layersSetting[layerKey][button]?.remap) || ({} as Remap);
 
   switch (action.type) {
     case applyMacroType:
-      setting[layerKey].macro[action.payload.macroClassName] =
+      layersSetting[layerKey].macro[action.payload.macroClassName] =
         action.payload.ifPressed || [];
-      return { ...setting };
+      return { ...layersSetting };
     case openMenuType:
-      setting[layerKey][action.payload.button].open = true;
-      return { ...setting };
+      layersSetting[layerKey][action.payload.button].open = true;
+      return { ...layersSetting };
     case closeMenuType:
-      setting[layerKey][action.payload.button].open = false;
-      return { ...setting };
+      layersSetting[layerKey][action.payload.button].open = false;
+      return { ...layersSetting };
     case disableFlipButtonType:
       flip.enable = false;
-      setting[layerKey][action.payload.button] = {
+      layersSetting[layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };
-      return { ...setting };
+      return { ...layersSetting };
     case alwaysFlipButtonType:
       flip.if_pressed = [];
       flip.enable = true;
-      setting[layerKey][action.payload.button] = {
+      layersSetting[layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };
-      return { ...setting };
+      return { ...layersSetting };
     case flipIfPressedSelfButtonType:
       flip.if_pressed = [action.payload.button];
       flip.enable = true;
-      setting[layerKey][action.payload.button] = {
+      layersSetting[layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };
-      return { ...setting };
+      return { ...layersSetting };
     case flipIfPressedSomeButtonsType:
       flip.if_pressed = action.payload.targetButtons;
       flip.enable = true;
-      setting[layerKey][action.payload.button] = {
+      layersSetting[layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };
-      return { ...setting };
+      return { ...layersSetting };
     case ignoreButtonsInFlipingButtonType:
       flip.force_neutral = action.payload.targetButtons;
-      setting[layerKey][action.payload.button] = {
+      layersSetting[layerKey][action.payload.button] = {
         open: true,
         flip: flip,
       };
-      return { ...setting };
+      return { ...layersSetting };
     case remapType:
       flip.enable = false;
       remap.to = action.payload.targetButtons;
-      setting[layerKey][button] = { flip: flip, remap: remap, open: true };
-      return { ...setting };
+      layersSetting[layerKey][button] = { flip: flip, remap: remap, open: true };
+      return { ...layersSetting };
     default:
       console.log("一致しないaction typeです", action);
-      return { ...setting };
+      return { ...layersSetting };
   }
 };

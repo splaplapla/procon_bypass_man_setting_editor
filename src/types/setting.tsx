@@ -46,12 +46,15 @@ export type Layer = _ButtonsSettingInLayer & {
   mode?: ModeTable;
 };
 
-export type Setting = {
-  // installed_modes?: InstalledPlugin; // 優先度が低いので今は実装しない
-  prefixKeys: Array<Button>;
-  installed_macros: InstalledPlugin;
+export type LayersSetting = {
   up: Layer;
   right: Layer;
   down: Layer;
   left: Layer;
+}
+
+export type Setting = {
+  // installed_modes?: InstalledPlugin; // 優先度が低いので今は実装しない
+  prefixKeys: Array<Button>;
+  installed_macros: InstalledPlugin;
 };

@@ -12,7 +12,7 @@ import {
   AvailablePlugins,
   gameMacroTable,
 } from "../types/plugin";
-import { applyMacroType } from "../reducers/layer_reducer";
+import { applyMacroType } from "../reducers/layers_setting_reducer";
 
 type SettingProps = {
   layerKey: LayerKey;
@@ -29,11 +29,11 @@ const MacroSetting: React.FC<SettingProps> = ({
   layerKey,
   macroDisplayName,
 }) => {
-  const { setting, layerDispatch } = useContext(SettingContext);
+  const { layersSetting, layersSettingDispatch } = useContext(SettingContext);
   const [modalProps, openModal] = useModal();
-  const ifPressedOfTheMacro = setting[layerKey].macro[macroClassName] || [];
+  const ifPressedOfTheMacro = layersSetting[layerKey].macro[macroClassName] || [];
   const setButtonsForModal = (bs: Array<Button>) => {
-    layerDispatch({
+    layersSettingDispatch({
       type: applyMacroType,
       payload: {
         layerKey: layerKey,

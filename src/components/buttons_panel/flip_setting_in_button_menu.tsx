@@ -12,7 +12,7 @@ import {
   flipIfPressedSelfButtonType,
   flipIfPressedSomeButtonsType,
   ignoreButtonsInFlipingButtonType,
-} from "../../reducers/layer_reducer";
+} from "../../reducers/layers_setting_reducer";
 import { ButtonsModal } from "../../components/buttons_modal";
 import { ButtonState } from "./../../lib/button_state";
 
@@ -26,9 +26,9 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
   name,
 }) => {
   const [modalProps, openModal] = useModal();
-  const { setting, layerDispatch } = useContext(SettingContext);
+  const { layersSetting, layersSettingDispatch } = useContext(SettingContext);
 
-  const buttonValue = setting[layerKey][name] || {};
+  const buttonValue = layersSetting[layerKey][name] || {};
   const buttonState = new ButtonState(
     name,
     buttonValue.flip,
@@ -37,7 +37,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
 
   // 無効
   const handleNullFlipValue = (e: React.MouseEvent<HTMLInputElement>) => {
-    layerDispatch({
+    layersSettingDispatch({
       type: disableFlipButtonType,
       payload: { layerKey: layerKey, button: name },
     });
@@ -45,7 +45,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
 
   // 常に連打
   const handleFlipValue = (e: React.MouseEvent<HTMLInputElement>) => {
-    layerDispatch({
+    layersSettingDispatch({
       type: alwaysFlipButtonType,
       payload: { layerKey: layerKey, button: name },
     });
@@ -55,7 +55,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
   const openIfPressedRadioboxModal = (
     e: React.MouseEvent<HTMLInputElement>
   ) => {
-    layerDispatch({
+    layersSettingDispatch({
       type: flipIfPressedSelfButtonType,
       payload: { layerKey: layerKey, button: name },
     });
@@ -65,7 +65,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
   const flipIfPressedSomeButtons =
     buttonValue?.flip?.if_pressed || ([] as Array<Button>);
   const setFlipIfPressedSomeButtonsWithPersistence = (bs: Array<Button>) => {
-    layerDispatch({
+    layersSettingDispatch({
       type: flipIfPressedSomeButtonsType,
       payload: { layerKey: layerKey, button: name, targetButtons: bs },
     });
@@ -84,7 +84,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
   const forceNeutralButtons =
     buttonValue.flip?.force_neutral || ([] as Array<Button>);
   const setIgnoreButtonsOnFlipingWithPersistence = (bs: Array<Button>) => {
-    layerDispatch({
+    layersSettingDispatch({
       type: ignoreButtonsInFlipingButtonType,
       payload: { layerKey: layerKey, button: name, targetButtons: bs },
     });

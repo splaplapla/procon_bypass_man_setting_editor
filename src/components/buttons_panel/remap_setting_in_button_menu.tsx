@@ -6,7 +6,7 @@ import { LayerKey } from "../../types/layer_key";
 import { SettingContext } from "./../../contexts/buttons_setting";
 import { ButtonsModal } from "../../components/buttons_modal";
 import { ButtonState } from "./../../lib/button_state";
-import { remapType } from "../../reducers/layer_reducer";
+import { remapType } from "../../reducers/layers_setting_reducer";
 
 type ButtonProps = {
   layerKey: LayerKey;
@@ -18,8 +18,8 @@ export const RemapSettingInButtonMenu: React.FC<ButtonProps> = ({
   name,
 }) => {
   const [modalProps, openModal] = useModal();
-  const { setting, layerDispatch } = useContext(SettingContext);
-  const buttonValue = setting[layerKey][name] || {};
+  const { layersSetting, layersSettingDispatch } = useContext(SettingContext);
+  const buttonValue = layersSetting[layerKey][name] || {};
   const buttonState = new ButtonState(
     name,
     buttonValue.flip,
@@ -27,7 +27,7 @@ export const RemapSettingInButtonMenu: React.FC<ButtonProps> = ({
   );
   // リマップ
   const setRemapButtonsWithPersistence = (bs: Array<Button>) => {
-    layerDispatch({
+    layersSettingDispatch({
       type: remapType,
       payload: { layerKey: layerKey, button: name, targetButtons: bs },
     });

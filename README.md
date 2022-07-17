@@ -14,3 +14,5 @@ TODO
 * export
 * import
 * preview
+* 他のオプションを列挙する
+  * manual macroとか

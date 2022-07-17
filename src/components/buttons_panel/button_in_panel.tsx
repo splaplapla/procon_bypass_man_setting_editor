@@ -5,7 +5,7 @@ import React, { useState, useContext } from "react";
 import { LayerKey } from "../../types/layer_key";
 import { Button, buttons } from "../../types/button";
 import { SettingContext } from "./../../contexts/buttons_setting";
-import { openMenuType, closeMenuType } from "../../reducers/layer_reducer";
+import { openMenuType, closeMenuType } from "../../reducers/layers_setting_reducer";
 import { ButtonMenuInPanel } from "../../components/buttons_panel/button_menu_in_panel";
 
 type ButtonProps = {
@@ -14,19 +14,19 @@ type ButtonProps = {
 };
 
 export const ButtonInPanel: React.FC<ButtonProps> = ({ layerKey, name }) => {
-  const { setting, layerDispatch } = useContext(SettingContext);
+  const { layersSetting, layersSettingDispatch } = useContext(SettingContext);
   const isOpenMenu = () => {
-    return setting[layerKey][name].open;
+    return layersSetting[layerKey][name].open;
   };
   const handleToggle = () => {
     if (isOpenMenu()) {
-      layerDispatch({
+      layersSettingDispatch({
         // 閉じる
         type: closeMenuType,
         payload: { layerKey: layerKey, button: name },
       });
     } else {
-      layerDispatch({
+      layersSettingDispatch({
         // 開く
         type: openMenuType,
         payload: { layerKey: layerKey, button: name },
