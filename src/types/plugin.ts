@@ -17,7 +17,7 @@ export const AvailablePlugins: Array<Plugin> = [
       modes: [],
       macros: [
         {
-          display_name: "xxx",
+          display_name: "a sample macro", // 後で消す
           class_namespace: "ProconBypassMan::Sumabura::Macro::FastReturn",
         },
       ],
@@ -33,20 +33,28 @@ export const AvailablePlugins: Array<Plugin> = [
       ],
       macros: [
         {
-          display_name: "fast_return",
+          display_name: "試合中にリスポーンにスーパージャンプ",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::FastReturn",
         },
         {
-          display_name: "jump_right",
+          display_name: "試合中に右キーに割り当てられている味方へのスーパージャンプ",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::JumpToRightKey",
         },
         {
-          display_name: "jump_up",
+          display_name: "試合中に上キーに割り当てられている味方へのスーパージャンプ",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::JumpToUpKey",
         },
         {
-          display_name: "jump_left",
+          display_name: "試合中に左キーに割り当てられている味方へのスーパージャンプ",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::JumpToLeftKey",
+        },
+        {
+          display_name: "炭酸ボムのチャージ",
+          class_namespace: "ProconBypassMan::Splatoon2::Macro::ChargeTansanBomb",
+        },
+        {
+          display_name: "バブル即割",
+          class_namespace: "ProconBypassMan::Splatoon2::Macro::SokuwariForSplashBomb",
         },
       ],
     },
