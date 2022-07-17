@@ -7,12 +7,17 @@ import { PrefixKeysForm } from "../components/prefix_keys_form";
 import { LayersTab } from "../components/layers_tab";
 import { layerKeys } from "../types/layer_key";
 import { ButtonsPanel } from "../components/buttons_panel";
+import { EditorPreview } from "../components/editor_preview";
 
 export const Editor: React.FC = () => {
   return (
     <>
       <div>
         <a href="#">エクスポートする</a>
+      </div>
+
+      <div>
+        <EditorPreview />
       </div>
 
       <fieldset>
