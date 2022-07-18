@@ -17,10 +17,12 @@ import Col from 'react-bootstrap/Col';
 export const Editor: React.FC = () => {
   return (
     <>
-      <Container>
-        <h1>PBM Setting Editor</h1>
+      <Container className='mt-5'>
         <Row>
-          <Col sm={{ offset: 8 }}  md={{ offset: 8 }}>
+          <Col sm={{ span: 8 }}  md={{ span: 8 }}>
+            <h1>PBM Setting Editor</h1>
+          </Col>
+          <Col>
             <EditorPreview />
           </Col>
         </Row>
