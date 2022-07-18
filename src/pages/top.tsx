@@ -6,6 +6,7 @@ import { SettingReducer } from "../reducers/setting_reducer";
 import { LayersSettingReducer } from "../reducers/layers_setting_reducer";
 import { SettingContext } from "./../contexts/buttons_setting";
 import _ from "lodash";
+import ThemeProvider from 'react-bootstrap/ThemeProvider'
 
 type EditorProviderProps = {
   children: React.ReactNode;
@@ -47,8 +48,13 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
 
 export const Top: React.FC = () => {
   return (
+    <ThemeProvider
+    breakpoints={['md', 'sm']}
+    minBreakpoint="xxs"
+  >
     <EditorProvider>
       <Editor />
     </EditorProvider>
+  </ThemeProvider>
   );
 };

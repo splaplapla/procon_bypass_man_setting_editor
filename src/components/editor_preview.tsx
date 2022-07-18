@@ -12,7 +12,7 @@ export const EditorPreview: React.FC = () => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        テキストファイルとして出力する
       </Button>
 
       <Modal show={show} onHide={handleClose}>
