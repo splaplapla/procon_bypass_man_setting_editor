@@ -16,7 +16,7 @@ import Col from "react-bootstrap/Col";
 export const Editor: React.FC = () => {
   return (
     <>
-      <Container className="mt-5">
+      <Container className="mt-5" css={css`height: 1500px;`}>
         <Row>
           <Col sm={{ span: 8 }} md={{ span: 8 }}>
             <h1>PBM Setting Editor</h1>
