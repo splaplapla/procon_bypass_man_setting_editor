@@ -51,7 +51,7 @@ export type LayersSetting = {
   right: Layer;
   down: Layer;
   left: Layer;
-}
+};
 
 export type Setting = {
   // installed_modes?: InstalledPlugin; // 優先度が低いので今は実装しない

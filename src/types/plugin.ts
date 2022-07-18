@@ -37,24 +37,29 @@ export const AvailablePlugins: Array<Plugin> = [
           class_namespace: "ProconBypassMan::Splatoon2::Macro::FastReturn",
         },
         {
-          display_name: "試合中に右キーに割り当てられている味方へのスーパージャンプ",
+          display_name:
+            "試合中に右キーに割り当てられている味方へのスーパージャンプ",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::JumpToRightKey",
         },
         {
-          display_name: "試合中に上キーに割り当てられている味方へのスーパージャンプ",
+          display_name:
+            "試合中に上キーに割り当てられている味方へのスーパージャンプ",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::JumpToUpKey",
         },
         {
-          display_name: "試合中に左キーに割り当てられている味方へのスーパージャンプ",
+          display_name:
+            "試合中に左キーに割り当てられている味方へのスーパージャンプ",
           class_namespace: "ProconBypassMan::Splatoon2::Macro::JumpToLeftKey",
         },
         {
           display_name: "炭酸ボムのチャージ",
-          class_namespace: "ProconBypassMan::Splatoon2::Macro::ChargeTansanBomb",
+          class_namespace:
+            "ProconBypassMan::Splatoon2::Macro::ChargeTansanBomb",
         },
         {
           display_name: "バブル即割",
-          class_namespace: "ProconBypassMan::Splatoon2::Macro::SokuwariForSplashBomb",
+          class_namespace:
+            "ProconBypassMan::Splatoon2::Macro::SokuwariForSplashBomb",
         },
       ],
     },

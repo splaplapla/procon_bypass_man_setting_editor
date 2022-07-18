@@ -9,17 +9,16 @@ import { layerKeys } from "../types/layer_key";
 import { ButtonsPanel } from "../components/buttons_panel";
 import { EditorPreview } from "../components/editor_preview";
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export const Editor: React.FC = () => {
   return (
     <>
-      <Container className='mt-5'>
+      <Container className="mt-5">
         <Row>
-          <Col sm={{ span: 8 }}  md={{ span: 8 }}>
+          <Col sm={{ span: 8 }} md={{ span: 8 }}>
             <h1>PBM Setting Editor</h1>
           </Col>
           <Col>
@@ -35,8 +34,8 @@ export const Editor: React.FC = () => {
             </div>
 
             <div className="border p-2 mt-4">
-                <h3>設定中のプレフィックスキー</h3>
-                <PrefixKeysForm />
+              <h3>設定中のプレフィックスキー</h3>
+              <PrefixKeysForm />
             </div>
 
             <LayersTab>

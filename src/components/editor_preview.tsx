@@ -1,7 +1,7 @@
 import { jsx, css } from "@emotion/react";
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 export const EditorPreview: React.FC = () => {
   const [show, setShow] = useState(false);
@@ -31,4 +31,4 @@ export const EditorPreview: React.FC = () => {
       </Modal>
     </>
   );
-}
+};

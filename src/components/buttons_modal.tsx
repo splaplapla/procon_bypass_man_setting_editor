@@ -121,12 +121,12 @@ export const ButtonsModal = ({
 
         <div className="row">
           <div className="col-sm">
-              <a href={"#"} onClick={handleCancel} css={aStyle}>
-                変更せず閉じる
-              </a>
-              <a href={"#"} onClick={handleSubmit} css={aStyle}>
-                決定する
-              </a>
+            <a href={"#"} onClick={handleCancel} css={aStyle}>
+              変更せず閉じる
+            </a>
+            <a href={"#"} onClick={handleSubmit} css={aStyle}>
+              決定する
+            </a>
           </div>
         </div>
       </div>

@@ -31,7 +31,8 @@ const MacroSetting: React.FC<SettingProps> = ({
 }) => {
   const { layersSetting, layersSettingDispatch } = useContext(SettingContext);
   const [modalProps, openModal] = useModal();
-  const ifPressedOfTheMacro = layersSetting[layerKey].macro[macroClassName] || [];
+  const ifPressedOfTheMacro =
+    layersSetting[layerKey].macro[macroClassName] || [];
   const setButtonsForModal = (bs: Array<Button>) => {
     layersSettingDispatch({
       type: applyMacroType,
@@ -54,7 +55,7 @@ const MacroSetting: React.FC<SettingProps> = ({
   return (
     <>
       <label>
-        <input type="checkbox" onChange={handleClick} checked={isEnable} />
+        <input type="checkbox" onChange={handleClick} checked={isEnable} />{" "}
         {macroDisplayName}
         {isEnable && `(${ifPressedOfTheMacro.join(", ")}で発動)`}
       </label>
@@ -82,23 +83,21 @@ export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
         return (
           <div key={index}>
             <h3>{gameTitle}</h3>
-            <ul>
-              {gameMacroTable[gameTitle].map(
-                (item: PluginBody, index: number) => {
-                  if (setting.installed_macros[item["class_namespace"]]) {
-                    return (
-                      <li key={index}>
-                        <MacroSetting
-                          layerKey={layerKey}
-                          macroClassName={item["class_namespace"]}
-                          macroDisplayName={item["display_name"]}
-                        />
-                      </li>
-                    );
-                  }
+            {gameMacroTable[gameTitle].map(
+              (item: PluginBody, index: number) => {
+                if (setting.installed_macros[item["class_namespace"]]) {
+                  return (
+                    <div key={index} className="pb-2">
+                      <MacroSetting
+                        layerKey={layerKey}
+                        macroClassName={item["class_namespace"]}
+                        macroDisplayName={item["display_name"]}
+                      />
+                    </div>
+                  );
                 }
-              )}
-            </ul>
+              }
+            )}
           </div>
         );
       })}

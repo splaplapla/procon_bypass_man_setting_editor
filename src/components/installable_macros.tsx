@@ -49,20 +49,18 @@ export const InstallableMacros = () => {
         return (
           <div key={index}>
             <h3>{key}</h3>
-            <ul>
-              {gameMacroTable[key].map((item: PluginBody, index: number) => {
-                return (
-                  <li key={index}>
-                    <label>
-                      <InstallableMacro
-                        classNamespace={item["class_namespace"]}
-                      />
-                      {item["display_name"]}
-                    </label>
-                  </li>
-                );
-              })}
-            </ul>
+            {gameMacroTable[key].map((item: PluginBody, index: number) => {
+              return (
+                <div key={index} className="pb-2">
+                  <label>
+                    <InstallableMacro
+                      classNamespace={item["class_namespace"]}
+                    />
+                    {item["display_name"]}
+                  </label>
+                </div>
+              );
+            })}
           </div>
         );
       })}

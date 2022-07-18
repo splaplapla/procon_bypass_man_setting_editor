@@ -78,13 +78,18 @@ export type ACTION_TYPE =
       };
     };
 
-export const LayersSettingReducer = (layersSetting: LayersSetting, action: ACTION_TYPE) => {
+export const LayersSettingReducer = (
+  layersSetting: LayersSetting,
+  action: ACTION_TYPE
+) => {
   const layerKey = action.payload.layerKey as LayerKey;
   const button = action.payload.button as Button;
   const flip =
-    (layerKey && button && layersSetting[layerKey][button].flip) || ({} as Flip);
+    (layerKey && button && layersSetting[layerKey][button].flip) ||
+    ({} as Flip);
   const remap =
-    (layerKey && button && layersSetting[layerKey][button]?.remap) || ({} as Remap);
+    (layerKey && button && layersSetting[layerKey][button]?.remap) ||
+    ({} as Remap);
 
   switch (action.type) {
     case applyMacroType:
@@ -138,7 +143,11 @@ export const LayersSettingReducer = (layersSetting: LayersSetting, action: ACTIO
     case remapType:
       flip.enable = false;
       remap.to = action.payload.targetButtons;
-      layersSetting[layerKey][button] = { flip: flip, remap: remap, open: true };
+      layersSetting[layerKey][button] = {
+        flip: flip,
+        remap: remap,
+        open: true,
+      };
       return { ...layersSetting };
     default:
       console.log("一致しないaction typeです", action);

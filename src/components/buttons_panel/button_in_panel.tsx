@@ -5,7 +5,10 @@ import React, { useState, useContext } from "react";
 import { LayerKey } from "../../types/layer_key";
 import { Button, buttons } from "../../types/button";
 import { SettingContext } from "./../../contexts/buttons_setting";
-import { openMenuType, closeMenuType } from "../../reducers/layers_setting_reducer";
+import {
+  openMenuType,
+  closeMenuType,
+} from "../../reducers/layers_setting_reducer";
 import { ButtonMenuInPanel } from "../../components/buttons_panel/button_menu_in_panel";
 
 type ButtonProps = {
