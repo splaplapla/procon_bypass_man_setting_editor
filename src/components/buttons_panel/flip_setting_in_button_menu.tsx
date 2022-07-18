@@ -99,7 +99,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
 
   return (
     <>
-      <fieldset>
+      <fieldset className="border m-2 p-2">
         <ButtonsModal {...modalProps} />
 
         <legend>
@@ -151,7 +151,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
             `(${flipIfPressedSomeButtons.join(", ")})`}
         </label>
 
-        <fieldset>
+        <fieldset className="border m-2 p-2">
           <legend>
             <strong>連打オプション</strong>
           </legend>

@@ -29,19 +29,15 @@ export const Editor: React.FC = () => {
 
         <Row>
           <Col>
-            <fieldset className="border p-2 mt-4">
-              <legend>
-                <h3>インストール可能なマクロ</h3>
-              </legend>
+            <div className="border p-2 mt-4">
+              <h3>インストール可能なマクロ</h3>
               <InstallableMacros />
-            </fieldset>
+            </div>
 
-            <fieldset className="border p-2 mt-4">
-              <legend>
+            <div className="border p-2 mt-4">
                 <h3>設定中のプレフィックスキー</h3>
                 <PrefixKeysForm />
-              </legend>
-            </fieldset>
+            </div>
 
             <LayersTab>
               {layerKeys.map((layerKey, index) => (

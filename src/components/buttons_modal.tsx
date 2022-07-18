@@ -98,35 +98,36 @@ export const ButtonsModal = ({
 
   return (
     <>
-      <div css={style()}>
-        <div css={titlestyle}>{title}</div>
-
-        {buttons.map((b, index) => (
-          <div key={index}>
-            <label>
-              <input
-                type="checkbox"
-                value={b}
-                defaultChecked={checkedButtonMap[b]}
-                onChange={handleClick}
-              />
-              {b}
-            </label>
+      <div className="container" css={style()}>
+        <div className="row">
+          <div className="col-sm">
+            <div>{title}</div>
+            {buttons.map((b, index) => (
+              <div key={index}>
+                <label>
+                  <input
+                    type="checkbox"
+                    value={b}
+                    defaultChecked={checkedButtonMap[b]}
+                    onChange={handleClick}
+                  />
+                  {b}
+                </label>
+              </div>
+            ))}
           </div>
-        ))}
-
+        </div>
         <hr />
-        <div
-          css={css`
-            display: flex;
-          `}
-        >
-          <a href={"#"} onClick={handleCancel} css={aStyle}>
-            変更せず閉じる
-          </a>
-          <a href={"#"} onClick={handleSubmit} css={aStyle}>
-            決定する
-          </a>
+
+        <div className="row">
+          <div className="col-sm">
+              <a href={"#"} onClick={handleCancel} css={aStyle}>
+                変更せず閉じる
+              </a>
+              <a href={"#"} onClick={handleSubmit} css={aStyle}>
+                決定する
+              </a>
+          </div>
         </div>
       </div>
     </>

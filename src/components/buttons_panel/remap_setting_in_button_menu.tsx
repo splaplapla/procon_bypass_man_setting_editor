@@ -44,7 +44,7 @@ export const RemapSettingInButtonMenu: React.FC<ButtonProps> = ({
     <>
       <ButtonsModal {...modalProps} />
 
-      <fieldset>
+      <fieldset className="border m-2 p-2">
         <legend>
           <strong>リマップ設定</strong>
         </legend>

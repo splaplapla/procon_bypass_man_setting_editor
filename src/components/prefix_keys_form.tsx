@@ -38,7 +38,9 @@ export const PrefixKeysForm: React.FC = () => {
           readOnly={true}
           onClick={handlePrefixKeysField}
         />
-        <ButtonsModal {...modalProps} />
+        <div css={css`position: absolute`}>
+          <ButtonsModal {...modalProps} />
+        </div>
       </div>
     </>
   );
