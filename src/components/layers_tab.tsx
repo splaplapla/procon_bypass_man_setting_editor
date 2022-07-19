@@ -19,45 +19,16 @@ export const LayersTab: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const layersTabStyle = () => {
-    return css`
-      list-style: none;
-      display: flex;
-      margin: 0;
-      margin-top: 30px;
-      padding: 0;
-      border-left: 1px solid #aaa;
-      margin-bottom: 30px;
-      li {
-        border-top: 1px solid #aaa;
-        border-right: 1px solid #aaa;
-        &.active {
-          border-bottom: 1px solid #white;
-        }
-        &.inactive {
-          border-bottom: 1px solid #aaa;
-        }
-        a {
-          padding: 20px;
-          display: block;
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
-    `;
-  };
-
   const tabVisibilityClassName = (layer: LayerKey) => {
     if (layer === selectedLayer) {
-      return "active";
+      return "active nav-item";
     } else {
-      return "inactive";
+      return "inactive nav-item";
     }
   };
 
   const panelVisibilityStyle = (layerKey: LayerKey) => {
-    if (tabVisibilityClassName(layerKey) == "active") {
+    if (/^active/.test(tabVisibilityClassName(layerKey))) {
       return css`
         display: block;
       `;
@@ -68,15 +39,24 @@ export const LayersTab: React.FC<Props> = ({ children }) => {
     }
   };
 
+  const tabVisibilityAClassName = (layerKey: LayerKey) => {
+    if (/^active/.test(tabVisibilityClassName(layerKey))) {
+      return "nav-link active";
+    } else {
+      return "nav-link";
+    }
+  };
+
   return (
     <>
-      <ul css={layersTabStyle()}>
+      <ul className="nav nav-tabs mt-4">
         {layerKeys.map((layerKey, index) => (
           <li key={layerKey} className={tabVisibilityClassName(layerKey)}>
             <a
               data-layer-key-index={index}
               data-layer-key={layerKey}
               onClick={switchLayer}
+              className={tabVisibilityAClassName(layerKey)}
             >
               {layerKey}
             </a>
@@ -86,6 +66,7 @@ export const LayersTab: React.FC<Props> = ({ children }) => {
 
       {layerKeys.map((layerKey, index) => (
         <div key={index} css={panelVisibilityStyle(layerKey)}>
+          <div className="mb-4" />
           {children[index]}
         </div>
       ))}
