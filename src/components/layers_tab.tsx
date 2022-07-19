@@ -13,6 +13,7 @@ export const LayersTab: React.FC<Props> = ({ children }) => {
   const switchLayer = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
+    event.preventDefault();
     if (event.target instanceof HTMLElement) {
       const layerKey = event.target.dataset.layerKey as LayerKey;
       setSelectedLayer(layerKey);
@@ -57,6 +58,7 @@ export const LayersTab: React.FC<Props> = ({ children }) => {
               data-layer-key={layerKey}
               onClick={switchLayer}
               className={tabVisibilityAClassName(layerKey)}
+              href="#"
             >
               {layerKey}
             </a>
