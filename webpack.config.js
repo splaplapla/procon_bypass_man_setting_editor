@@ -4,11 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const output = {
   filename: "bundle.js",
 }
-if (process.env.NODE_ENV === 'production') {
-  output.path = path.resolve(__dirname, "lib/procon_bypass_man/web/public/");
-} else {
-  output.path = path.resolve(__dirname, "dist");
-}
+output.path = path.resolve(__dirname, "dist");
 
 module.exports = {
   mode: process.env.NODE_ENV || "development",
@@ -27,6 +23,7 @@ module.exports = {
       title: "PBM Web",
       filename: "index.html",
       template: "src/index.html",
+      path: path.resolve(__dirname, 'dist'),
     }),
   ],
   module: {
