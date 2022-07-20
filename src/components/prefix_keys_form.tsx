@@ -35,8 +35,8 @@ export const PrefixKeysForm: React.FC = () => {
         <input
           type="text"
           value={setting.prefixKeys.join(", ")}
-          readOnly={true}
           onClick={handlePrefixKeysField}
+          className="form-control"
         />
         <div
           css={css`
