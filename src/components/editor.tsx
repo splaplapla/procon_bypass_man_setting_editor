@@ -25,6 +25,10 @@ export const Editor: React.FC = () => {
         <Row>
           <Col sm={{ span: 8 }} md={{ span: 8 }}>
             <h1>PBM Setting Generator</h1>
+            <a href="https://github.com/splaplapla/procon_bypass_man">
+              https://github.com/splaplapla/procon_bypass_man
+            </a>{" "}
+            の設定ファイルを生成します
           </Col>
           <Col>
             <Preview />
