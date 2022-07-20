@@ -4,34 +4,6 @@
   http://jedwatson.github.io/classnames
 */
 
-/*! ./Logger */
-
-/*! ./createConsoleLogger */
-
-/*! tapable/lib/SyncBailHook */
-
-/*! webpack/lib/logging/runtime.js */
-
-/*!********************************************!*\
-  !*** ./client-src/modules/logger/index.js ***!
-  \********************************************/
-
-/*!****************************************************!*\
-  !*** ./node_modules/webpack/lib/logging/Logger.js ***!
-  \****************************************************/
-
-/*!*****************************************************!*\
-  !*** ./node_modules/webpack/lib/logging/runtime.js ***!
-  \*****************************************************/
-
-/*!*******************************************************!*\
-  !*** ./client-src/modules/logger/SyncBailHookFake.js ***!
-  \*******************************************************/
-
-/*!*****************************************************************!*\
-  !*** ./node_modules/webpack/lib/logging/createConsoleLogger.js ***!
-  \*****************************************************************/
-
 /**
  * @license
  * Lodash <https://lodash.com/>
