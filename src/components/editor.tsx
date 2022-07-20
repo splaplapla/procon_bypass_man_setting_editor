@@ -7,7 +7,7 @@ import { PrefixKeysForm } from "../components/prefix_keys_form";
 import { LayersTab } from "../components/layers_tab";
 import { layerKeys } from "../types/layer_key";
 import { ButtonsPanel } from "../components/buttons_panel";
-import { EditorPreview } from "../components/editor_preview";
+import { Preview } from "../components/preview";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -27,7 +27,7 @@ export const Editor: React.FC = () => {
             <h1>PBM Setting Generator</h1>
           </Col>
           <Col>
-            <EditorPreview />
+            <Preview />
           </Col>
         </Row>
 

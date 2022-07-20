@@ -109,7 +109,7 @@ export const ButtonsModal = ({
               変更せず閉じる
             </BootstrapButton>{" "}
             <BootstrapButton variant="primary" onClick={handleSubmit}>
-              決定する
+              変更する
             </BootstrapButton>
           </div>
         </div>
