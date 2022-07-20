@@ -12,7 +12,7 @@ export const Preview: React.FC = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const settingText = SettingTextualization({ layers: layersSetting, prefixKeys: setting.prefixKeys, installed_macros: {} });
+  const settingText = SettingTextualization({ layers: layersSetting, prefixKeys: setting.prefixKeys, installed_macros: setting.installed_macros });
 
   return (
     <>

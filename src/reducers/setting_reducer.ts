@@ -28,7 +28,9 @@ export const SettingReducer = (setting: Setting, action: ACTION_TYPE) => {
       setting.installed_macros[action.payload.macro] = true;
       return { ...setting };
     case uninstallMacroType:
-      setting.installed_macros[action.payload.macro] = false;
+      // NOTE 前の実装はfalseを入れていた。falseが入っている前提の実装があるかも
+      // setting.installed_macros[action.payload.macro] = false;
+      delete setting.installed_macros[action.payload.macro]
       console.log(setting);
       return { ...setting };
     default:

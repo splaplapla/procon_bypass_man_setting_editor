@@ -16,8 +16,6 @@ describe("prefixKeysに値があるとき", () => {
 
   it("設定ファイルを出力すること", () => {
     const actual = SettingTextualization({ layers: null, prefixKeys: ["b"], installed_macros: null });
-    yaml.load(actual);
-
     const expected = `version: 1.0
 setting: |-
   prefix_keys_for_changing_layer %i(b)
@@ -38,8 +36,6 @@ setting: |-
 
   it("設定ファイルを出力すること", () => {
     const actual = SettingTextualization({ layers: null, prefixKeys: ["b", "y"], installed_macros: null });
-    yaml.load(actual);
-
     const expected = `version: 1.0
 setting: |-
   prefix_keys_for_changing_layer %i(b y)
@@ -60,4 +56,26 @@ setting: |-
 })
 
 describe("installed_macrosに値があるとき", () => {
+  it("設定ファイルを出力すること", () => {
+    const actual = SettingTextualization({ layers: null, prefixKeys: null, installed_macros: { AAA: true, BBB: true } });
+    const expected = `version: 1.0
+setting: |-
+  install_macro_plugin AAA
+  install_macro_plugin BBB
+
+  prefix_keys_for_changing_layer %i()
+
+  layer :up do
+  end
+
+  layer :right do
+  end
+
+  layer :down do
+  end
+
+  layer :left do
+  end`;
+    expect(actual).toBe(expected);
+  });
 })
