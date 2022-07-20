@@ -6,6 +6,7 @@ import { LayerKey } from "../types/layer_key";
 import { MacroSettings } from "./../components/macro_settings";
 import { ButtonInPanel } from "./../components/buttons_panel/button_in_panel";
 import { buttons } from "../types/button";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
@@ -26,45 +27,47 @@ export const ButtonsPanel: React.FC<Props> = ({ layerKey }) => {
       <MacroSettings layerKey={layerKey} />
 
       <h4>各ボタンの設定</h4>
-      <Row>
-        {buttons.slice(0, 3).map((button, index) => (
-          <Col>
-            <div key={index} css={liStyle}>
-              <ButtonInPanel layerKey={layerKey} name={button} />
-            </div>
-          </Col>
-        ))}
-      </Row>
+      <Container>
+        <Row>
+          {buttons.slice(0, 3).map((button, index) => (
+            <Col>
+              <div key={index} css={liStyle}>
+                <ButtonInPanel layerKey={layerKey} name={button} />
+              </div>
+            </Col>
+          ))}
+        </Row>
 
-      <Row>
-        {buttons.slice(3, 6).map((button, index) => (
-          <Col>
-            <div key={index} css={liStyle}>
-              <ButtonInPanel layerKey={layerKey} name={button} />
-            </div>
-          </Col>
-        ))}
-      </Row>
+        <Row>
+          {buttons.slice(3, 6).map((button, index) => (
+            <Col>
+              <div key={index} css={liStyle}>
+                <ButtonInPanel layerKey={layerKey} name={button} />
+              </div>
+            </Col>
+          ))}
+        </Row>
 
-      <Row>
-        {buttons.slice(6, 9).map((button, index) => (
-          <Col>
-            <div key={index} css={liStyle}>
-              <ButtonInPanel layerKey={layerKey} name={button} />
-            </div>
-          </Col>
-        ))}
-      </Row>
+        <Row>
+          {buttons.slice(6, 9).map((button, index) => (
+            <Col>
+              <div key={index} css={liStyle}>
+                <ButtonInPanel layerKey={layerKey} name={button} />
+              </div>
+            </Col>
+          ))}
+        </Row>
 
-      <Row>
-        {buttons.slice(9, 12).map((button, index) => (
-          <Col>
-            <div key={index} css={liStyle}>
-              <ButtonInPanel layerKey={layerKey} name={button} />
-            </div>
-          </Col>
-        ))}
-      </Row>
+        <Row>
+          {buttons.slice(9, 12).map((button, index) => (
+            <Col>
+              <div key={index} css={liStyle}>
+                <ButtonInPanel layerKey={layerKey} name={button} />
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </>
   );
 };

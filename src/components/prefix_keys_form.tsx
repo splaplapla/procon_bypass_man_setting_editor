@@ -38,7 +38,9 @@ export const PrefixKeysForm: React.FC = () => {
           readOnly={true}
           className="form-control"
         />
-        <a onClick={handlePrefixKeysField} className="form-control">変更する</a>
+        <a onClick={handlePrefixKeysField} className="form-control">
+          変更する
+        </a>
 
         <div
           css={css`
