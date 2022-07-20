@@ -39,8 +39,9 @@ export const ButtonInPanel: React.FC<ButtonProps> = ({ layerKey, name }) => {
 
   return (
     <>
-      <label>
+      <label css={css`display: block`}>
         <input type="checkbox" checked={isOpenMenu()} onChange={handleToggle} />
+        {" "}
         {name}
       </label>
 
