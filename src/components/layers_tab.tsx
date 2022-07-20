@@ -60,7 +60,7 @@ export const LayersTab: React.FC<Props> = ({ children }) => {
               className={tabVisibilityAClassName(layerKey)}
               href="#"
             >
-              {layerKey}
+              layer {layerKey}
             </a>
           </li>
         ))}
