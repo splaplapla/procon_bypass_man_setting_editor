@@ -3,6 +3,8 @@
 import { jsx, css } from "@emotion/react";
 import React, { useState } from "react";
 import { Button, buttons } from "../types/button";
+import Form from "react-bootstrap/Form";
+import { Button as BootstrapButton } from "react-bootstrap";
 
 export type ModalProps = {
   callbackOnSubmit: (param: Array<Button>) => void;
@@ -40,7 +42,7 @@ export const ButtonsModal = ({
     )
   );
 
-  const handleSubmit = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const bs = Object.entries(checkedButtonMap)
       .reduce((acc, item) => {
@@ -54,15 +56,10 @@ export const ButtonsModal = ({
     callbackOnSubmit(bs);
     callbackOnClose(false);
   };
-  const handleCancel = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     callbackOnClose(false);
   };
-  const titlestyle = css(`
-    margin-top: 10px;
-    font-size: 1.17em;
-    font-weight: bold;
-  `);
   const style = () => {
     return css(`
       position: absolute;
@@ -70,24 +67,12 @@ export const ButtonsModal = ({
       top: 0px;
       left: 20px;
       width: 400px;
-      height: 400px;
+      height: 450px;
       border: solid;
       background-color: white;
       z-index: 100;
     `);
   };
-  const aStyle = css`
-    background-color: #4669ff;
-    border-bottom: solid 2px #003aff;
-    border-right: solid 2px #003aff;
-    border-radius: 20px;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
-    display: inline-block;
-    margin-left: 10px;
-  `;
 
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheckedButtonMap((previousButtonStats) => {
@@ -100,19 +85,18 @@ export const ButtonsModal = ({
     <>
       <div className="container" css={style()}>
         <div className="row">
-          <div className="col-sm">
-            <div>{title}</div>
+          <div className="col">
+            <h5>{title}</h5>
             {buttons.map((b, index) => (
               <div key={index}>
-                <label>
-                  <input
-                    type="checkbox"
-                    value={b}
-                    defaultChecked={checkedButtonMap[b]}
-                    onChange={handleClick}
-                  />
-                  {b}
-                </label>
+                <Form.Check
+                  type="checkbox"
+                  value={b}
+                  defaultChecked={checkedButtonMap[b]}
+                  onChange={handleClick}
+                  label={b}
+                  id={`${title}-${b}`}
+                />
               </div>
             ))}
           </div>
@@ -120,13 +104,13 @@ export const ButtonsModal = ({
         <hr />
 
         <div className="row">
-          <div className="col-sm">
-            <a href={"#"} onClick={handleCancel} css={aStyle}>
+          <div className="col">
+            <BootstrapButton variant="secondary" onClick={handleCancel}>
               変更せず閉じる
-            </a>
-            <a href={"#"} onClick={handleSubmit} css={aStyle}>
+            </BootstrapButton>{" "}
+            <BootstrapButton variant="primary" onClick={handleSubmit}>
               決定する
-            </a>
+            </BootstrapButton>
           </div>
         </div>
       </div>
