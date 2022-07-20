@@ -24,7 +24,7 @@ export const Editor: React.FC = () => {
       >
         <Row>
           <Col sm={{ span: 8 }} md={{ span: 8 }}>
-            <h1>PBM Setting Editor</h1>
+            <h1>PBM Setting Generator</h1>
           </Col>
           <Col>
             <EditorPreview />
