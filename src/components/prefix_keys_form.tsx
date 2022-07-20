@@ -35,9 +35,11 @@ export const PrefixKeysForm: React.FC = () => {
         <input
           type="text"
           value={setting.prefixKeys.join(", ")}
-          onClick={handlePrefixKeysField}
+          readOnly={true}
           className="form-control"
         />
+        <a onClick={handlePrefixKeysField} className="form-control">変更する</a>
+
         <div
           css={css`
             position: absolute;

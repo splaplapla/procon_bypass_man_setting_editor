@@ -39,7 +39,7 @@ export const Editor: React.FC = () => {
             </div>
 
             <div className="border p-2 mt-4">
-              <h3>設定中のプレフィックスキー</h3>
+              <h3>レイヤーを変更するプレフィックスキー</h3>
               <PrefixKeysForm />
             </div>
 
