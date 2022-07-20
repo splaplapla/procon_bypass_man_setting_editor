@@ -6,13 +6,22 @@ const output = {
 }
 output.path = path.resolve(__dirname, "dist");
 
-module.exports = {
-  mode: process.env.NODE_ENV || "development",
-  entry:  [
+let entries = undefined;
+if (process.env.NODE_ENV === 'production') {
+  entries =  [
+    "./src/app.tsx",
+  ]
+} else {
+  entries =  [
     "webpack/hot/dev-server.js",
     "webpack-dev-server/client/index.js?hot=true&live-reload=true",
     "./src/app.tsx",
-  ],
+  ]
+}
+
+module.exports = {
+  mode: process.env.NODE_ENV || "development",
+  entry:  entries,
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
   },
@@ -20,10 +29,10 @@ module.exports = {
   output: output,
   plugins: [
     new HtmlWebpackPlugin({
-      title: "PBM Web",
+      title: "PBM Setting Generator",
       filename: "index.html",
       template: "src/index.html",
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist/index.html'),
     }),
   ],
   module: {
