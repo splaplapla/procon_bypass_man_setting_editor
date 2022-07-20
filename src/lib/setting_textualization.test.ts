@@ -37,6 +37,7 @@ describe("prefixKeysに値があるとき", () => {
     const expected = `version: 1.0
 setting: |-
   prefix_keys_for_changing_layer %i(b)
+
   layer :up do
 
   end
@@ -57,6 +58,7 @@ setting: |-
     const expected = `version: 1.0
 setting: |-
   prefix_keys_for_changing_layer %i(b y)
+
   layer :up do
 
   end
@@ -83,6 +85,7 @@ setting: |-
   install_macro_plugin BBB
 
   prefix_keys_for_changing_layer %i()
+
   layer :up do
 
   end
@@ -125,6 +128,7 @@ describe("layer.#{button}.flipに値があるとき", () => {
     const expected = `version: 1.0
 setting: |-
   prefix_keys_for_changing_layer %i()
+
   layer :up do
     flip :a, force_neutral: %i(y)
     flip :b, if_pressed: %i(a), force_neutral: %i(y)
@@ -162,6 +166,7 @@ setting: |-
   install_macro_plugin ProconBypassMan::Splatoon2::Macro::FastReturn
 
   prefix_keys_for_changing_layer %i()
+
   layer :up do
     macro ProconBypassMan::Splatoon2::Macro::FastReturn, if_pressed: %i(y l)
   end

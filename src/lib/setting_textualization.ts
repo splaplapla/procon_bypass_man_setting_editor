@@ -86,6 +86,7 @@ setting: |-
 ${Object.keys(normalizedInstalledMacros).map((name) => `${topLevelIndent}install_macro_plugin ${name}`).join("\n")}
 
   prefix_keys_for_changing_layer %i(${pk.join(" ")})
+
   ${buttons.reduce((a, b) => {
     const m = createButtonMethod({ layer: layers.up, button: b });
     if (m) {
