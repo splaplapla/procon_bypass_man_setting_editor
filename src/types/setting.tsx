@@ -37,7 +37,7 @@ type _ButtonsSettingInLayer = {
   [key in Button]: ButtonsSettingInLayer;
 };
 
-type InstalledPlugin = {
+export type InstalledPlugin = {
   [key in string]: boolean;
 };
 
