@@ -99,12 +99,12 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
 
   return (
     <>
-      <fieldset className="border m-2 p-2">
+      <div className="border m-2 p-2">
         <ButtonsModal {...modalProps} />
 
-        <legend>
-          <strong>連打設定</strong>
-        </legend>
+        <div>
+          <b>連打設定</b>
+        </div>
 
         <label>
           <input
@@ -151,10 +151,10 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
             `(${flipIfPressedSomeButtons.join(", ")})`}
         </label>
 
-        <fieldset className="border m-2 p-2">
-          <legend>
-            <strong>連打オプション</strong>
-          </legend>
+        <div className="border m-2 p-2">
+          <div>
+            <b>連打オプション</b>
+          </div>
           <label>
             <input
               type="checkbox"
@@ -166,8 +166,8 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
             {forceNeutralButtons.length > 0 &&
               `(${forceNeutralButtons.join(", ")})`}
           </label>
-        </fieldset>
-      </fieldset>
+        </div>
+      </div>
     </>
   );
 };

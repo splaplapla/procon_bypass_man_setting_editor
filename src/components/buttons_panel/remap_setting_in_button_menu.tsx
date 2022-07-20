@@ -44,10 +44,10 @@ export const RemapSettingInButtonMenu: React.FC<ButtonProps> = ({
     <>
       <ButtonsModal {...modalProps} />
 
-      <fieldset className="border m-2 p-2">
-        <legend>
-          <strong>リマップ設定</strong>
-        </legend>
+      <div className="border m-2 p-2">
+        <div>
+          <b>リマップ設定</b>
+        </div>
         <label>
           <input
             type="checkbox"
@@ -58,7 +58,7 @@ export const RemapSettingInButtonMenu: React.FC<ButtonProps> = ({
           別のボタンに置き換える
           {buttonState.isRemap() && `(${buttonValue.remap?.to?.join(", ")})`}
         </label>
-      </fieldset>
+      </div>
     </>
   );
 };
