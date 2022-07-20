@@ -1,6 +1,11 @@
 import { Button, buttons } from "../types/button";
 import { LayerKey } from "../types/layer_key";
-import { InstalledPlugin, LayersSetting, Layer, MacroTable } from "../types/setting";
+import {
+  InstalledPlugin,
+  LayersSetting,
+  Layer,
+  MacroTable,
+} from "../types/setting";
 
 type Props = {
   layers: LayersSetting;
@@ -8,7 +13,11 @@ type Props = {
   installed_macros: InstalledPlugin;
 };
 
-export const SettingTextualization = ({ layers, prefixKeys, installed_macros }: Props) => {
+export const SettingTextualization = ({
+  layers,
+  prefixKeys,
+  installed_macros,
+}: Props) => {
   const pk = prefixKeys || [];
   const normalizedInstalledMacros = installed_macros || {};
   if (!layers.up.macro) {
@@ -76,14 +85,14 @@ export const SettingTextualization = ({ layers, prefixKeys, installed_macros }: 
     });
   };
 
-
   const layerBlockIndent = "    ";
   const topLevelIndent = "  ";
 
-
   const result = `version: 1.0
 setting: |-
-${Object.keys(normalizedInstalledMacros).map((name) => `${topLevelIndent}install_macro_plugin ${name}`).join("\n")}
+${Object.keys(normalizedInstalledMacros)
+  .map((name) => `${topLevelIndent}install_macro_plugin ${name}`)
+  .join("\n")}
 
   prefix_keys_for_changing_layer %i(${pk.join(" ")})
 

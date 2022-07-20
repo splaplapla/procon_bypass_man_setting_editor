@@ -1,0 +1,49 @@
+version: 2.1
+
+orbs:
+  pbm:
+    executors:
+      node:
+        resource_class: small
+        docker:
+          - image: 'circleci/node:stretch'
+
+    commands:
+      install-yarn:
+        steps:
+          - checkout
+          - restore_cache:
+              name: Restore Yarn Package Cache
+              keys:
+                - yarn-packages-{{ checksum "yarn.lock" }}
+          - run:
+              name: Install Dependencies
+              command: yarn install --immutable
+          - save_cache:
+              name: Save Yarn Package Cache
+              key: yarn-packages-{{ checksum "yarn.lock" }}
+              paths:
+                - ~/.cache/yarn
+          - run: node --version
+
+    jobs:
+      run-prettier:
+        executor: node
+        steps:
+          - install-yarn
+          - run:
+              name: run prettier
+              command: yarn -s run prettier --check src
+      run-jest:
+        executor: node
+        steps:
+          - install-yarn
+          - run:
+              name: run jest
+              command: yarn test
+workflows:
+  version: 2
+  build:
+    jobs:
+      - pbm/run-prettier
+      - pbm/run-jest

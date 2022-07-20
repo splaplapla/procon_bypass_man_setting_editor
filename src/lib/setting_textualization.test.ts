@@ -15,25 +15,31 @@ function makeEmptyData() {
     right: _.cloneDeep(defaultLayer),
   };
 
-  return { layers }
+  return { layers };
 }
-
 
 describe("内容が空のとき", () => {
   it("validなyamlであること", () => {
     const actual = SettingTextualization({ layers: makeEmptyData().layers });
     yaml.load(actual);
   });
-})
+});
 
 describe("prefixKeysに値があるとき", () => {
   it("validなyamlであること", () => {
-    const actual = SettingTextualization({ layers: makeEmptyData().layers, prefixKeys: ["b"] });
+    const actual = SettingTextualization({
+      layers: makeEmptyData().layers,
+      prefixKeys: ["b"],
+    });
     yaml.load(actual);
   });
 
   it("設定ファイルを出力すること", () => {
-    const actual = SettingTextualization({ layers: makeEmptyData().layers, prefixKeys: ["b"], installed_macros: null });
+    const actual = SettingTextualization({
+      layers: makeEmptyData().layers,
+      prefixKeys: ["b"],
+      installed_macros: null,
+    });
     const expected = `version: 1.0
 setting: |-
   prefix_keys_for_changing_layer %i(b)
@@ -54,7 +60,11 @@ setting: |-
   });
 
   it("設定ファイルを出力すること2", () => {
-    const actual = SettingTextualization({ layers: makeEmptyData().layers, prefixKeys: ["b", "y"], installed_macros: null });
+    const actual = SettingTextualization({
+      layers: makeEmptyData().layers,
+      prefixKeys: ["b", "y"],
+      installed_macros: null,
+    });
     const expected = `version: 1.0
 setting: |-
   prefix_keys_for_changing_layer %i(b y)
@@ -73,11 +83,15 @@ setting: |-
   end`;
     expect(actual).toBe(expected);
   });
-})
+});
 
 describe("installed_macrosに値があるとき", () => {
   it("設定ファイルを出力すること", () => {
-    const actual = SettingTextualization({ layers: makeEmptyData().layers, prefixKeys: null, installed_macros: { AAA: true, BBB: true } });
+    const actual = SettingTextualization({
+      layers: makeEmptyData().layers,
+      prefixKeys: null,
+      installed_macros: { AAA: true, BBB: true },
+    });
     yaml.load(actual);
     const expected = `version: 1.0
 setting: |-
@@ -100,8 +114,7 @@ setting: |-
   end`;
     expect(actual).toBe(expected);
   });
-})
-
+});
 
 describe("layer.#{button}.flipに値があるとき", () => {
   it("設定ファイルを出力すること", () => {
@@ -146,8 +159,7 @@ setting: |-
   end`;
     expect(actual).toBe(expected);
   });
-})
-
+});
 
 describe("layer.#{button}.macroに値があるとき", () => {
   it("設定ファイルを出力すること", () => {
@@ -159,7 +171,13 @@ describe("layer.#{button}.macroに値があるとき", () => {
       flip: { if_pressed: ["a", "b"], enable: true, force_neutral: ["y", "x"] },
       open: true,
     };
-    const actual = SettingTextualization({ layers: layers, prefixKeys: null, installed_macros: { "ProconBypassMan::Splatoon2::Macro::FastReturn": true } });
+    const actual = SettingTextualization({
+      layers: layers,
+      prefixKeys: null,
+      installed_macros: {
+        "ProconBypassMan::Splatoon2::Macro::FastReturn": true,
+      },
+    });
     yaml.load(actual);
     const expected = `version: 1.0
 setting: |-
@@ -181,5 +199,5 @@ setting: |-
 
   end`;
     expect(actual).toBe(expected);
-  })
-})
+  });
+});

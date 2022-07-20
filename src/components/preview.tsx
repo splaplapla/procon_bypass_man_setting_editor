@@ -2,9 +2,9 @@ import { jsx, css } from "@emotion/react";
 import React, { useState, useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 import { SettingContext } from "./../contexts/buttons_setting";
-import { SettingTextualization } from "../lib/setting_textualization"
+import { SettingTextualization } from "../lib/setting_textualization";
 
 export const Preview: React.FC = () => {
   const [show, setShow] = useState(false);
@@ -12,7 +12,11 @@ export const Preview: React.FC = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const settingText = SettingTextualization({ layers: layersSetting, prefixKeys: setting.prefixKeys, installed_macros: setting.installed_macros });
+  const settingText = SettingTextualization({
+    layers: layersSetting,
+    prefixKeys: setting.prefixKeys,
+    installed_macros: setting.installed_macros,
+  });
 
   return (
     <>
@@ -28,10 +32,9 @@ export const Preview: React.FC = () => {
           <Form.Control
             as="textarea"
             value={settingText}
-            style={{ "height": '100%' }}
+            style={{ height: "100%" }}
             rows={30}
           />
-
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
