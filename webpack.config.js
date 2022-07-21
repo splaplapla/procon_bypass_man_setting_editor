@@ -23,7 +23,7 @@ module.exports = {
   mode: process.env.NODE_ENV || "development",
   entry:  entries,
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
   },
   watch: false,
   output: output,

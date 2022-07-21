@@ -1,12 +1,12 @@
 import React, { useState, useReducer, useContext } from "react";
 import { Editor } from "../components/editor";
-import { buttons, Button } from "../types/button";
+import { buttons } from "../types/button";
 import { Layer, Setting, LayersSetting } from "../types/setting";
 import { SettingReducer } from "../reducers/setting_reducer";
 import { LayersSettingReducer } from "../reducers/layers_setting_reducer";
 import { SettingContext } from "./../contexts/buttons_setting";
 import _ from "lodash";
-import ThemeProvider from "react-bootstrap/ThemeProvider";
+import { TopLayout } from "./top_layout";
 
 type EditorProviderProps = {
   children: React.ReactNode;
@@ -51,10 +51,10 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
 
 export const Top: React.FC = () => {
   return (
-    <ThemeProvider breakpoints={["md", "sm"]} minBreakpoint="xxs">
+    <TopLayout>
       <EditorProvider>
         <Editor />
       </EditorProvider>
-    </ThemeProvider>
+    </TopLayout>
   );
 };
