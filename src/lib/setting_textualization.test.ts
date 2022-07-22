@@ -45,16 +45,15 @@ setting: |-
   prefix_keys_for_changing_layer %i(b)
 
   layer :up do
-
   end
+
   layer :right do
-
   end
+
   layer :down do
-
   end
-  layer :left do
 
+  layer :left do
   end`;
     expect(actual).toBe(expected);
   });
@@ -70,16 +69,15 @@ setting: |-
   prefix_keys_for_changing_layer %i(b y)
 
   layer :up do
-
   end
+
   layer :right do
-
   end
+
   layer :down do
-
   end
-  layer :left do
 
+  layer :left do
   end`;
     expect(actual).toBe(expected);
   });
@@ -101,16 +99,15 @@ setting: |-
   prefix_keys_for_changing_layer %i()
 
   layer :up do
-
   end
+
   layer :right do
-
   end
+
   layer :down do
-
   end
-  layer :left do
 
+  layer :left do
   end`;
     expect(actual).toBe(expected);
   });
@@ -145,17 +142,16 @@ setting: |-
   layer :up do
     flip :a, force_neutral: %i(y)
     flip :b, if_pressed: %i(a), force_neutral: %i(y)
-
   end
+
   layer :right do
-
   end
+
   layer :down do
     flip :y, if_pressed: %i(a b), force_neutral: %i(y x)
-
   end
-  layer :left do
 
+  layer :left do
   end`;
     expect(actual).toBe(expected);
   });
@@ -164,6 +160,10 @@ setting: |-
 describe("layer.#{button}.macroに値があるとき", () => {
   it("設定ファイルを出力すること", () => {
     const layers = makeEmptyData().layers;
+    layers.up.a = {
+      flip: { if_pressed: [], enable: true, force_neutral: ["y"] },
+      open: true,
+    };
     layers.up.macro = {
       "ProconBypassMan::Splatoon2::Macro::FastReturn": ["y", "l"],
     };
@@ -186,17 +186,18 @@ setting: |-
   prefix_keys_for_changing_layer %i()
 
   layer :up do
+    flip :a, force_neutral: %i(y)
     macro ProconBypassMan::Splatoon2::Macro::FastReturn, if_pressed: %i(y l)
   end
-  layer :right do
 
+  layer :right do
   end
+
   layer :down do
     flip :y, if_pressed: %i(a b), force_neutral: %i(y x)
-
   end
-  layer :left do
 
+  layer :left do
   end`;
     expect(actual).toBe(expected);
   });
