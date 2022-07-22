@@ -45,5 +45,11 @@ workflows:
   version: 2
   build:
     jobs:
-      - pbm/run-prettier
-      - pbm/run-jest
+      - pbm/run-prettier:
+        filters:
+          branches:
+            ignore: gh-pages
+      - pbm/run-jest:
+        filters:
+          branches:
+            ignore: gh-pages
