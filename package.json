@@ -58,6 +58,7 @@
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
     "react-github-fork-ribbon": "^0.7.1",
+    "react-nintendo-switch-procon-renderer": "/Users/koji/src/react-nintendo-switch-procon-renderer",
     "react-router-dom": "^6.3.0"
   }
 }

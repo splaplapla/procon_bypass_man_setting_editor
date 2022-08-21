@@ -3,6 +3,7 @@
 import { jsx, css } from "@emotion/react";
 import React, { useState } from "react";
 import { Button, buttons } from "../types/button";
+import { Procon } from "react-nintendo-switch-procon-renderer";
 import Form from "react-bootstrap/Form";
 import { Button as BootstrapButton } from "react-bootstrap";
 
@@ -99,6 +100,7 @@ export const ButtonsModal = ({
                 />
               </div>
             ))}
+            <Procon pressedButtons={["zr", "up"]} />
           </div>
         </div>
         <hr />
