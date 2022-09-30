@@ -47,12 +47,12 @@ export const AvailablePlugins: Array<Plugin> = [
         {
           display_name: "炭酸ボムのチャージ",
           class_namespace:
-            "ProconBypassMan::Splatoon2::Plugin::Macro::ChargeTansanBomb",
+            "ProconBypassMan::Plugin::Splatoon2::Macro::ChargeTansanBomb",
         },
         {
           display_name: "バブル即割",
           class_namespace:
-            "ProconBypassMan::Splatoon2::Plugin::Macro::SokuwariForSplashBomb",
+            "ProconBypassMan::Plugin::Splatoon2::Macro::SokuwariForSplashBomb",
         },
       ],
     },
