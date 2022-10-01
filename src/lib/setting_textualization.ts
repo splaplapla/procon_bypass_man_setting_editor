@@ -92,7 +92,7 @@ export const SettingTextualization = ({
   const topLevelIndent = envelope ? "  " : "";
 
   let result = "";
-  if(envelope) {
+  if (envelope) {
     result = result + `version: 1.0\n`;
     result = result + `setting: |-\n`;
   }

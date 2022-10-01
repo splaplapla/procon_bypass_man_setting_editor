@@ -5,8 +5,8 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { SettingContext } from "./../contexts/buttons_setting";
 import { SettingTextualization } from "../lib/setting_textualization";
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 
 export const Preview: React.FC = () => {
   const [show, setShow] = useState(false);

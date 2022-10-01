@@ -20,7 +20,10 @@ function makeEmptyData() {
 
 describe("内容が空のとき", () => {
   it("validなyamlであること", () => {
-    const actual = SettingTextualization({ layers: makeEmptyData().layers, envelope: true });
+    const actual = SettingTextualization({
+      layers: makeEmptyData().layers,
+      envelope: true,
+    });
     yaml.load(actual);
   });
 });
@@ -160,7 +163,11 @@ describe("layer.#{button}.flipに値があるとき", () => {
       open: true,
     };
 
-    const actual = SettingTextualization({ layers: layers, prefixKeys: null, envelope: true,});
+    const actual = SettingTextualization({
+      layers: layers,
+      prefixKeys: null,
+      envelope: true,
+    });
     yaml.load(actual);
     const expected = `version: 1.0
 setting: |-
