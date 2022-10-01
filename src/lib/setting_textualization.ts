@@ -88,7 +88,7 @@ export const SettingTextualization = ({
     return null;
   };
 
-  const layerBlockIndent = envelope ? "    " : "";
+  const layerBlockIndent = envelope ? "    " : "  ";
   const topLevelIndent = envelope ? "  " : "";
 
   let result = "";

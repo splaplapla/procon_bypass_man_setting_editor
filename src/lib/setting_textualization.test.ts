@@ -230,3 +230,47 @@ setting: |-
     expect(actual).toBe(expected);
   });
 });
+
+describe("layer.#{button}.macroに値があるとき(envelope: false)", () => {
+  it("設定ファイルを出力すること", () => {
+    const layers = makeEmptyData().layers;
+    layers.up.a = {
+      flip: { if_pressed: [], enable: true, force_neutral: ["y"] },
+      open: true,
+    };
+    layers.up.macro = {
+      "ProconBypassMan::Splatoon2::Macro::FastReturn": ["y", "l"],
+    };
+    layers.down.y = {
+      flip: { if_pressed: ["a", "b"], enable: true, force_neutral: ["y", "x"] },
+      open: true,
+    };
+    const actual = SettingTextualization({
+      layers: layers,
+      prefixKeys: null,
+      installed_macros: {
+        "ProconBypassMan::Splatoon2::Macro::FastReturn": true,
+      },
+      envelope: false,
+    });
+    const expected = `install_macro_plugin ProconBypassMan::Splatoon2::Macro::FastReturn
+
+prefix_keys_for_changing_layer %i()
+
+layer :up do
+  flip :a, force_neutral: %i(y)
+  macro ProconBypassMan::Splatoon2::Macro::FastReturn, if_pressed: %i(y l)
+end
+
+layer :right do
+end
+
+layer :down do
+  flip :y, if_pressed: %i(a b), force_neutral: %i(y x)
+end
+
+layer :left do
+end`;
+    expect(actual).toBe(expected);
+  });
+});
