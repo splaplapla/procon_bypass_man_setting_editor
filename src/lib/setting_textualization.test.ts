@@ -20,7 +20,7 @@ function makeEmptyData() {
 
 describe("内容が空のとき", () => {
   it("validなyamlであること", () => {
-    const actual = SettingTextualization({ layers: makeEmptyData().layers });
+    const actual = SettingTextualization({ layers: makeEmptyData().layers, envelope: true });
     yaml.load(actual);
   });
 });
@@ -30,6 +30,7 @@ describe("prefixKeysに値があるとき", () => {
     const actual = SettingTextualization({
       layers: makeEmptyData().layers,
       prefixKeys: ["b"],
+      envelope: true,
     });
     yaml.load(actual);
   });
@@ -39,6 +40,7 @@ describe("prefixKeysに値があるとき", () => {
       layers: makeEmptyData().layers,
       prefixKeys: ["b"],
       installed_macros: null,
+      envelope: true,
     });
     const expected = `version: 1.0
 setting: |-
@@ -63,6 +65,7 @@ setting: |-
       layers: makeEmptyData().layers,
       prefixKeys: ["b", "y"],
       installed_macros: null,
+      envelope: true,
     });
     const expected = `version: 1.0
 setting: |-
@@ -81,6 +84,29 @@ setting: |-
   end`;
     expect(actual).toBe(expected);
   });
+
+  it("設定ファイルを出力すること2", () => {
+    const actual = SettingTextualization({
+      layers: makeEmptyData().layers,
+      prefixKeys: ["b", "y"],
+      installed_macros: null,
+      envelope: false,
+    });
+    const expected = `prefix_keys_for_changing_layer %i(b y)
+
+layer :up do
+end
+
+layer :right do
+end
+
+layer :down do
+end
+
+layer :left do
+end`;
+    expect(actual).toBe(expected);
+  });
 });
 
 describe("installed_macrosに値があるとき", () => {
@@ -89,6 +115,7 @@ describe("installed_macrosに値があるとき", () => {
       layers: makeEmptyData().layers,
       prefixKeys: null,
       installed_macros: { AAA: true, BBB: true },
+      envelope: true,
     });
     yaml.load(actual);
     const expected = `version: 1.0
@@ -133,7 +160,7 @@ describe("layer.#{button}.flipに値があるとき", () => {
       open: true,
     };
 
-    const actual = SettingTextualization({ layers: layers, prefixKeys: null });
+    const actual = SettingTextualization({ layers: layers, prefixKeys: null, envelope: true,});
     yaml.load(actual);
     const expected = `version: 1.0
 setting: |-
@@ -177,6 +204,7 @@ describe("layer.#{button}.macroに値があるとき", () => {
       installed_macros: {
         "ProconBypassMan::Splatoon2::Macro::FastReturn": true,
       },
+      envelope: true,
     });
     yaml.load(actual);
     const expected = `version: 1.0

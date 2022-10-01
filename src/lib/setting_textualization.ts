@@ -11,12 +11,14 @@ type Props = {
   layers: LayersSetting;
   prefixKeys: Array<Button>;
   installed_macros: InstalledPlugin;
+  envelope: boolean;
 };
 
 export const SettingTextualization = ({
   layers,
   prefixKeys,
   installed_macros,
+  envelope,
 }: Props) => {
   const pk = prefixKeys || [];
   const normalizedInstalledMacros = installed_macros || {};
@@ -86,12 +88,14 @@ export const SettingTextualization = ({
     return null;
   };
 
-  const layerBlockIndent = "    ";
-  const topLevelIndent = "  ";
+  const layerBlockIndent = envelope ? "    " : "";
+  const topLevelIndent = envelope ? "  " : "";
 
   let result = "";
-  result = result + `version: 1.0\n`;
-  result = result + `setting: |-\n`;
+  if(envelope) {
+    result = result + `version: 1.0\n`;
+    result = result + `setting: |-\n`;
+  }
 
   // install_macro_plugin
   if (Object.keys(normalizedInstalledMacros).length) {

@@ -5,6 +5,8 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { SettingContext } from "./../contexts/buttons_setting";
 import { SettingTextualization } from "../lib/setting_textualization";
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 export const Preview: React.FC = () => {
   const [show, setShow] = useState(false);
@@ -16,6 +18,13 @@ export const Preview: React.FC = () => {
     layers: layersSetting,
     prefixKeys: setting.prefixKeys,
     installed_macros: setting.installed_macros,
+    envelope: true,
+  });
+  const settingTextForPbmCloud = SettingTextualization({
+    layers: layersSetting,
+    prefixKeys: setting.prefixKeys,
+    installed_macros: setting.installed_macros,
+    envelope: false,
   });
 
   return (
@@ -28,14 +37,34 @@ export const Preview: React.FC = () => {
         <Modal.Header closeButton>
           <Modal.Title>現在の設定ファイル</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form.Control
-            as="textarea"
-            value={settingText}
-            style={{ height: "100%" }}
-            rows={30}
-          />
-        </Modal.Body>
+
+        <Tabs
+          defaultActiveKey="profile"
+          id="uncontrolled-tab-example"
+          className="m-3"
+        >
+          <Tab eventKey="profile" title="plain">
+            <Modal.Body>
+              <Form.Control
+                as="textarea"
+                value={settingText}
+                style={{ height: "100%" }}
+                rows={30}
+              />
+            </Modal.Body>
+          </Tab>
+          <Tab eventKey="home" title="pbm-cloud用">
+            <Modal.Body>
+              <Form.Control
+                as="textarea"
+                value={settingTextForPbmCloud}
+                style={{ height: "100%" }}
+                rows={30}
+              />
+            </Modal.Body>
+          </Tab>
+        </Tabs>
+
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
