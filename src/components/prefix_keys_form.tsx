@@ -19,7 +19,7 @@ export const PrefixKeysForm: React.FC = () => {
   };
   const handlePrefixKeysField = () => {
     openModal({
-      title: "キープレフィックスの変更",
+      title: "プレフィックスキーの変更",
       prefill: setting.prefixKeys,
       callbackOnSubmit: updatePrefixKeys,
     });
