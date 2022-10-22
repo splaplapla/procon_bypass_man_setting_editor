@@ -41,13 +41,15 @@ export const SettingTextualization = ({
   };
 
   const expandMacroInLayer = (macro: MacroTable) => {
-    return Object.entries(macro).map((m) => {
-      const name = m[0] as string;
-      const ifPressed = m[1] as Array<Button>;
-      return `${layerBlockIndent}macro ${name}, if_pressed: %i(${ifPressed.join(
-        " "
-      )})`;
-    });
+    return Object.entries(macro)
+      .map((m) => {
+        const name = m[0] as string;
+        const ifPressed = m[1] as Array<Button>;
+        return `${layerBlockIndent}macro ${name}, if_pressed: %i(${ifPressed.join(
+          " "
+        )})`;
+      })
+      .join("\n");
   };
 
   const createButtonItemInLayer = ({
