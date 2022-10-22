@@ -11,6 +11,9 @@
 * $ yarn server
 * Open http://localhost:8080/
 
+## test
+* yarn test
+
 ## リリース手順
 * $ yarn release-build
 * ./dist/index.html を開いて動作確認をする

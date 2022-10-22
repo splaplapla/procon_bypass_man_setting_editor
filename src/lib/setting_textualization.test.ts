@@ -200,6 +200,7 @@ describe("layer.#{button}.macroに値があるとき", () => {
     };
     layers.up.macro = {
       "ProconBypassMan::Splatoon2::Macro::FastReturn": ["y", "l"],
+      "ProconBypassMan::Plugin::Splatoon3::Macro::JumpToRightKey": ["b"],
     };
     layers.down.y = {
       flip: { if_pressed: ["a", "b"], enable: true, force_neutral: ["y", "x"] },
@@ -210,6 +211,7 @@ describe("layer.#{button}.macroに値があるとき", () => {
       prefixKeys: null,
       installed_macros: {
         "ProconBypassMan::Splatoon2::Macro::FastReturn": true,
+        "ProconBypassMan::Plugin::Splatoon3::Macro::JumpToRightKey": true,
       },
       envelope: true,
     });
@@ -217,12 +219,14 @@ describe("layer.#{button}.macroに値があるとき", () => {
     const expected = `version: 1.0
 setting: |-
   install_macro_plugin ProconBypassMan::Splatoon2::Macro::FastReturn
+  install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::JumpToRightKey
 
   prefix_keys_for_changing_layer %i()
 
   layer :up do
     flip :a, force_neutral: %i(y)
     macro ProconBypassMan::Splatoon2::Macro::FastReturn, if_pressed: %i(y l)
+    macro ProconBypassMan::Plugin::Splatoon3::Macro::JumpToRightKey, if_pressed: %i(b)
   end
 
   layer :right do
