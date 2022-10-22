@@ -57,6 +57,51 @@ export const AvailablePlugins: Array<Plugin> = [
       ],
     },
   },
+  {
+    splatoon3: {
+      modes: [
+        {
+          display_name: "splatoon3.guruguru",
+          class_namespace: "ProconBypassMan::Plugin::Splatoon2::Mode::Guruguru",
+        },
+      ],
+      macros: [
+        {
+          display_name: "試合中にリスポーンにスーパージャンプ",
+          class_namespace:
+            "ProconBypassMan::Plugin::Splatoon3::Macro::FastReturn",
+        },
+        {
+          display_name:
+            "試合中に右キーに割り当てられている味方へのスーパージャンプ",
+          class_namespace:
+            "ProconBypassMan::Plugin::Splatoon3::Macro::JumpToRightKey",
+        },
+        {
+          display_name:
+            "試合中に上キーに割り当てられている味方へのスーパージャンプ",
+          class_namespace:
+            "ProconBypassMan::Plugin::Splatoon3::Macro::JumpToUpKey",
+        },
+        {
+          display_name:
+            "試合中に左キーに割り当てられている味方へのスーパージャンプ",
+          class_namespace:
+            "ProconBypassMan::Plugin::Splatoon3::Macro::JumpToLeftKey",
+        },
+        {
+          display_name: "炭酸ボムのチャージ",
+          class_namespace:
+            "ProconBypassMan::Plugin::Splatoon3::Macro::ChargeTansanBomb",
+        },
+        {
+          display_name: "イカロール",
+          class_namespace:
+            "ProconBypassMan::Plugin::Splatoon3::Macro::ForwardIkarole",
+        },
+      ],
+    },
+  },
 ];
 
 export let gameMacroTable = {} as any;
