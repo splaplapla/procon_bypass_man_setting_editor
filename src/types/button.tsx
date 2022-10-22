@@ -1,4 +1,5 @@
 export const buttons = [
+  "thumbl",
   "a",
   "b",
   "x",
