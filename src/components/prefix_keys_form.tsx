@@ -7,6 +7,7 @@ import { Button } from "../types/button";
 import { updatePrefixKeysType } from "../reducers/setting_reducer";
 import { SettingContext } from "./../contexts/buttons_setting";
 import { ButtonsModal } from "../components/buttons_modal";
+import { Button as BootstrapButton } from "react-bootstrap";
 
 export const PrefixKeysForm: React.FC = () => {
   const [modalProps, openModal] = useModal();
@@ -38,9 +39,11 @@ export const PrefixKeysForm: React.FC = () => {
           readOnly={true}
           className="form-control"
         />
-        <a onClick={handlePrefixKeysField} className="form-control">
-          変更する
-        </a>
+        <div className="form-control">
+          <BootstrapButton onClick={handlePrefixKeysField} variant="primary">
+            変更する
+          </BootstrapButton>
+        </div>
 
         <div
           css={css`
