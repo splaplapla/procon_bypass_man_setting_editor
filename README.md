@@ -21,8 +21,10 @@
 
 ## TODO
 * 適用可能なマクロがないタイトルの場合はなしってかく
-* import
+* pbm-cloudからimportする機能
+  * oauth2で認証する
+  * importして、pbm-cloudに反映したい
 * 他のオプションを列挙する
-  * manual macroとか
+  * open_macro, 惰性キャンセルマクロ
 * pbmのサポートバージョンを明記する
 * CIでデプロイする
