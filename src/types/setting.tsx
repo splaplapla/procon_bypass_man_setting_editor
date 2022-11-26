@@ -11,16 +11,8 @@ export type StructMacro = {
   if_pressed: Array<Button>;
 };
 
-export type StructMode = {
-  name: string;
-};
-
 export type MacroTable = {
   [key in string]: Array<Button>;
-};
-
-export type ModeTable = {
-  [key in string]: boolean;
 };
 
 export type Remap = {
@@ -43,7 +35,6 @@ export type InstalledPlugin = {
 
 export type Layer = _ButtonsSettingInLayer & {
   macro: MacroTable;
-  mode?: ModeTable;
 };
 
 export type LayersSetting = {
@@ -54,7 +45,6 @@ export type LayersSetting = {
 };
 
 export type Setting = {
-  // installed_modes?: InstalledPlugin; // 優先度が低いので今は実装しない
   prefixKeys: Array<Button>;
   installed_macros: InstalledPlugin;
 };

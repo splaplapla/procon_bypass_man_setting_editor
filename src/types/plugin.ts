@@ -5,7 +5,6 @@ export type PluginBody = {
 
 export type Plugin = {
   [key in string]: {
-    modes: Array<PluginBody>;
     macros: Array<PluginBody>;
   };
 };
@@ -14,12 +13,6 @@ export type Plugin = {
 export const AvailablePlugins: Array<Plugin> = [
   {
     splatoon2: {
-      modes: [
-        {
-          display_name: "splatoon2.guruguru",
-          class_namespace: "ProconBypassMan::Plugin::Splatoon2::Mode::Guruguru",
-        },
-      ],
       macros: [
         {
           display_name: "試合中にリスポーンにスーパージャンプ",
@@ -59,12 +52,6 @@ export const AvailablePlugins: Array<Plugin> = [
   },
   {
     splatoon3: {
-      modes: [
-        {
-          display_name: "splatoon3.guruguru",
-          class_namespace: "ProconBypassMan::Plugin::Splatoon2::Mode::Guruguru",
-        },
-      ],
       macros: [
         {
           display_name: "試合中にリスポーンにスーパージャンプ",
