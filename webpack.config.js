@@ -27,6 +27,7 @@ module.exports = {
   },
   watch: false,
   output: output,
+  devtool: "eval-source-map",
   plugins: [
     new HtmlWebpackPlugin({
       title: "PBM Setting Generator",
