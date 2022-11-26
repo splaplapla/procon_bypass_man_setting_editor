@@ -30,7 +30,7 @@ export const ButtonsPanel: React.FC<Props> = ({ layerKey }) => {
       <Container>
         <Row>
           {buttons.slice(0, 3).map((button, index) => (
-            <Col>
+            <Col key={`${button}_${index}`}>
               <div key={index} css={liStyle}>
                 <ButtonInPanel layerKey={layerKey} name={button} />
               </div>
@@ -40,7 +40,7 @@ export const ButtonsPanel: React.FC<Props> = ({ layerKey }) => {
 
         <Row>
           {buttons.slice(3, 6).map((button, index) => (
-            <Col>
+            <Col key={`${button}_${index}`}>
               <div key={index} css={liStyle}>
                 <ButtonInPanel layerKey={layerKey} name={button} />
               </div>
@@ -50,7 +50,7 @@ export const ButtonsPanel: React.FC<Props> = ({ layerKey }) => {
 
         <Row>
           {buttons.slice(6, 9).map((button, index) => (
-            <Col>
+            <Col key={`${button}_${index}`}>
               <div key={index} css={liStyle}>
                 <ButtonInPanel layerKey={layerKey} name={button} />
               </div>
@@ -60,7 +60,7 @@ export const ButtonsPanel: React.FC<Props> = ({ layerKey }) => {
 
         <Row>
           {buttons.slice(9, 12).map((button, index) => (
-            <Col>
+            <Col key={`${button}_${index}`}>
               <div key={index} css={liStyle}>
                 <ButtonInPanel layerKey={layerKey} name={button} />
               </div>
