@@ -20,7 +20,6 @@
 * $ yarn deploy
 
 ## TODO
-* 適用可能なマクロがないタイトルの場合はなしってかく
 * pbm-cloudからimportする機能
   * oauth2で認証する
   * importして、pbm-cloudに反映したい

@@ -23,7 +23,7 @@ export const ButtonsPanel: React.FC<Props> = ({ layerKey }) => {
 
   return (
     <>
-      <h4>適用可能なマクロ</h4>
+      <h4>インストール可能なマクロ</h4>
       <MacroSettings layerKey={layerKey} />
 
       <h4>各ボタンの設定</h4>
