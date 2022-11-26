@@ -105,10 +105,12 @@ export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
       <>
         {Object.keys(gameTitleAndInstalledMacros).map((gameTitle, index) => {
           return (
-            <>
+            <div key={index}>
               <h5>{gameTitle}</h5>
               {gameTitleAndInstalledMacros[gameTitle].length == 0 && (
-                <div className="pb-2">インストール可能なマクロはありません</div>
+                <div key={index} className="pb-2">
+                  インストール可能なマクロはありません
+                </div>
               )}
               {gameTitleAndInstalledMacros[gameTitle].map(
                 (item: PluginBody, index: number) => {
@@ -123,7 +125,7 @@ export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
                   );
                 }
               )}
-            </>
+            </div>
           );
         })}
       </>
