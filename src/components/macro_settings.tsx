@@ -77,15 +77,41 @@ type Props = {
 
 export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
   const { setting } = useContext(SettingContext);
-  return (
-    <>
-      {Object.keys(gameMacroTable).map((gameTitle, index) => {
-        return (
-          <div key={index}>
-            <h3>{gameTitle}</h3>
-            {gameMacroTable[gameTitle].map(
-              (item: PluginBody, index: number) => {
-                if (setting.installed_macros[item["class_namespace"]]) {
+  type PluginBodyTable = {
+    [key in string]: Array<PluginBody>;
+  };
+
+  const getGameTitleAndInstalledMacros = () => {
+    return Object.keys(gameMacroTable).reduce(
+      (acc: PluginBodyTable, gameTitle: string) => {
+        gameMacroTable[gameTitle].map((item: PluginBody, index: number) => {
+          if (!acc[gameTitle]) {
+            acc[gameTitle] = [] as Array<PluginBody>;
+          }
+          if (setting.installed_macros[item.class_namespace]) {
+            acc[gameTitle].push(item);
+          }
+        });
+        return acc;
+      },
+      {}
+    );
+  };
+
+  const render = () => {
+    const gameTitleAndInstalledMacros = getGameTitleAndInstalledMacros();
+
+    return (
+      <>
+        {Object.keys(gameTitleAndInstalledMacros).map((gameTitle, index) => {
+          return (
+            <>
+              <h5>{gameTitle}</h5>
+              {gameTitleAndInstalledMacros[gameTitle].length == 0 && (
+                <div className="pb-2">インストール可能なマクロはありません</div>
+              )}
+              {gameTitleAndInstalledMacros[gameTitle].map(
+                (item: PluginBody, index: number) => {
                   return (
                     <div key={index} className="pb-2">
                       <MacroSetting
@@ -96,11 +122,13 @@ export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
                     </div>
                   );
                 }
-              }
-            )}
-          </div>
-        );
-      })}
-    </>
-  );
+              )}
+            </>
+          );
+        })}
+      </>
+    );
+  };
+
+  return render();
 };
