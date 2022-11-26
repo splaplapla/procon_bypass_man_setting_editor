@@ -47,6 +47,10 @@ export const AvailablePlugins: Array<Plugin> = [
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon2::Macro::SokuwariForSplashBomb",
         },
+        {
+          display_name: "惰性キャンセル",
+          class_namespace: "ProconBypassMan::Plugin::Splatoon2::Macro::DaseiCancel",
+        }
       ],
     },
   },
@@ -86,6 +90,11 @@ export const AvailablePlugins: Array<Plugin> = [
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon3::Macro::ForwardIkarole",
         },
+        {
+          display_name: "惰性キャンセル",
+          class_namespace: "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel",
+          // force_configuration: { if_tilted_left_stick: true, if_pressed: [:zl] }
+        }
       ],
     },
   },
