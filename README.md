@@ -24,6 +24,6 @@
   * oauth2で認証する
   * importして、pbm-cloudに反映したい
 * 他のオプションを列挙する
-  * open_macro, 惰性キャンセルマクロ
+  * open_macro
 * pbmのサポートバージョンを明記する
 * CIでデプロイする
