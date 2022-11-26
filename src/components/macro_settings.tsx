@@ -10,6 +10,7 @@ import {
   Plugin,
   PluginBody,
   AvailablePlugins,
+  PluginBodyForceParams,
   gameMacroTable,
 } from "../types/plugin";
 import { applyMacroType } from "../reducers/layers_setting_reducer";
@@ -18,6 +19,7 @@ type SettingProps = {
   layerKey: LayerKey;
   macroClassName: string;
   macroDisplayName: string;
+  macroForceParams: PluginBodyForceParams | undefined;
 };
 
 // MacroSetting
@@ -28,6 +30,7 @@ const MacroSetting: React.FC<SettingProps> = ({
   macroClassName,
   layerKey,
   macroDisplayName,
+  macroForceParams,
 }) => {
   const { layersSetting, layersSettingDispatch } = useContext(SettingContext);
   const [modalProps, openModal] = useModal();
@@ -43,14 +46,26 @@ const MacroSetting: React.FC<SettingProps> = ({
       },
     });
   };
-  const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    openModal({
-      title: "マクロを発動するキーの変更",
-      prefill: ifPressedOfTheMacro,
-      callbackOnSubmit: setButtonsForModal,
-    });
-  };
+
   const isEnable = ifPressedOfTheMacro.length > 0;
+
+  const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (macroForceParams?.ifPressed) {
+      // NOTE: モーダルを出す時と、モーダルを出さない時の2度押しの挙動が違う.
+      // モーダルを出さない時には、2回目を押すとcheckが外れて欲しい.
+      if (isEnable) {
+        setButtonsForModal([]);
+      } else {
+        setButtonsForModal(macroForceParams.ifPressed);
+      }
+    } else {
+      openModal({
+        title: "マクロを発動するキーの変更",
+        prefill: ifPressedOfTheMacro,
+        callbackOnSubmit: setButtonsForModal,
+      });
+    }
+  };
 
   return (
     <>
@@ -120,6 +135,7 @@ export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
                         layerKey={layerKey}
                         macroClassName={item["class_namespace"]}
                         macroDisplayName={item["display_name"]}
+                        macroForceParams={item["forceParams"]}
                       />
                     </div>
                   );

@@ -2,13 +2,13 @@ import { Button } from "./button";
 
 export type PluginBodyForceParams = {
   if_tilted_left_stick?: boolean;
-  if_pressed?: Array<Button>;
+  ifPressed?: Array<Button>;
 };
 
 export type PluginBody = {
   display_name: string;
   class_namespace: string;
-  force_params?: PluginBodyForceParams;
+  forceParams?: PluginBodyForceParams;
 };
 
 export type Plugin = {
@@ -59,7 +59,7 @@ export const AvailablePlugins: Array<Plugin> = [
           display_name: "惰性キャンセル",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon2::Macro::DaseiCancel",
-          force_params: { if_tilted_left_stick: true, if_pressed: ["zl"] },
+          forceParams: { if_tilted_left_stick: true, ifPressed: ["zl"] },
         },
       ],
     },
@@ -104,7 +104,7 @@ export const AvailablePlugins: Array<Plugin> = [
           display_name: "惰性キャンセル",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel",
-          force_params: { if_tilted_left_stick: true, if_pressed: ["zl"] },
+          forceParams: { if_tilted_left_stick: true, ifPressed: ["zl"] },
         },
       ],
     },
