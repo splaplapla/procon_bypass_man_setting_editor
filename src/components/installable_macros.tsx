@@ -3,7 +3,7 @@
 import { jsx, css } from "@emotion/react";
 import React, { useState, useEffect, useContext } from "react";
 import { SettingContext } from "./../contexts/buttons_setting";
-import { AvailablePlugins, PluginBody, gameMacroTable } from "../types/plugin";
+import { PluginBody, AvailablePluginMacros } from "../types/plugin";
 import {
   installMacroType,
   uninstallMacroType,
@@ -45,22 +45,24 @@ export const InstallableMacro = ({ classNamespace }: Props) => {
 export const InstallableMacros = () => {
   return (
     <>
-      {Object.keys(gameMacroTable).map((key, index) => {
+      {Object.keys(AvailablePluginMacros).map((key, index) => {
         return (
           <div key={index}>
             <h3>{key}</h3>
-            {gameMacroTable[key].map((item: PluginBody, index: number) => {
-              return (
-                <div key={index} className="pb-2">
-                  <label>
-                    <InstallableMacro
-                      classNamespace={item["class_namespace"]}
-                    />
-                    {item["display_name"]}
-                  </label>
-                </div>
-              );
-            })}
+            {AvailablePluginMacros[key].map(
+              (item: PluginBody, index: number) => {
+                return (
+                  <div key={index} className="pb-2">
+                    <label>
+                      <InstallableMacro
+                        classNamespace={item["class_namespace"]}
+                      />
+                      {item["display_name"]}
+                    </label>
+                  </div>
+                );
+              }
+            )}
           </div>
         );
       })}

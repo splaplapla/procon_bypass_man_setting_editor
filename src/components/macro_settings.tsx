@@ -11,7 +11,7 @@ import {
   PluginBody,
   AvailablePlugins,
   PluginBodyForceParams,
-  gameMacroTable,
+  AvailablePluginMacros,
 } from "../types/plugin";
 import { applyMacroType } from "../reducers/layers_setting_reducer";
 
@@ -97,16 +97,18 @@ export const MacroSettings: React.FC<Props> = ({ layerKey }) => {
   };
 
   const getGameTitleAndInstalledMacros = () => {
-    return Object.keys(gameMacroTable).reduce(
+    return Object.keys(AvailablePluginMacros).reduce(
       (acc: PluginBodyTable, gameTitle: string) => {
-        gameMacroTable[gameTitle].map((item: PluginBody, index: number) => {
-          if (!acc[gameTitle]) {
-            acc[gameTitle] = [] as Array<PluginBody>;
+        AvailablePluginMacros[gameTitle].map(
+          (item: PluginBody, index: number) => {
+            if (!acc[gameTitle]) {
+              acc[gameTitle] = [] as Array<PluginBody>;
+            }
+            if (setting.installed_macros[item.class_namespace]) {
+              acc[gameTitle].push(item);
+            }
           }
-          if (setting.installed_macros[item.class_namespace]) {
-            acc[gameTitle].push(item);
-          }
-        });
+        );
         return acc;
       },
       {}

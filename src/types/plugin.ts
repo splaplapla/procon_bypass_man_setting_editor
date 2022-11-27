@@ -11,10 +11,16 @@ export type PluginBody = {
   forceParams?: PluginBodyForceParams;
 };
 
+// 1タイトル分. keyは1つのみ
 export type Plugin = {
   [key in string]: {
     macros: Array<PluginBody>;
   };
+};
+
+// 複数のタイトルを入れる
+export type PluginMacroTable = {
+  [key in string]: Array<PluginBody>;
 };
 
 // plugins.
@@ -111,11 +117,9 @@ export const AvailablePlugins: Array<Plugin> = [
   },
 ];
 
-export let gameMacroTable = {} as any;
-const gamesAndMacros = AvailablePlugins.forEach((plugins) => {
-  for (let pluginKey in plugins) {
-    let gameAssetTable = plugins[pluginKey];
-    gameMacroTable[pluginKey] = [];
-    gameMacroTable[pluginKey] = gameAssetTable["macros"];
+export const AvailablePluginMacros = AvailablePlugins.reduce((acc, plugins) => {
+  for (let gameTitle in plugins) {
+    acc[gameTitle] = plugins[gameTitle]["macros"] as Array<PluginBody>;
   }
-});
+  return acc;
+}, {} as PluginMacroTable);
