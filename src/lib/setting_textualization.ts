@@ -7,6 +7,8 @@ import {
   MacroTable,
 } from "../types/setting";
 
+import { AvailablePluginMacrosTable } from "./../types/plugin";
+
 type Props = {
   layers: LayersSetting;
   prefixKeys: Array<Button>;
@@ -45,9 +47,16 @@ export const SettingTextualization = ({
       .map((m) => {
         const name = m[0] as string;
         const ifPressed = m[1] as Array<Button>;
-        return `${layerBlockIndent}macro ${name}, if_pressed: %i(${ifPressed.join(
-          " "
-        )})`;
+        AvailablePluginMacrosTable[name];
+        if (AvailablePluginMacrosTable[name]?.forceParams) {
+          return `${layerBlockIndent}macro ${name}, if_pressed: %i(${ifPressed.join(
+            " "
+          )}), if_tilted_left_stick: true`;
+        } else {
+          return `${layerBlockIndent}macro ${name}, if_pressed: %i(${ifPressed.join(
+            " "
+          )})`;
+        }
       })
       .join("\n");
   };
