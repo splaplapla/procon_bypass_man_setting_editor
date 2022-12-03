@@ -285,3 +285,42 @@ end`;
     expect(actual).toBe(expected);
   });
 });
+
+describe("forceParamsを持つlayer.#{button}.macroに値があるとき(envelope: false)", () => {
+  it("設定ファイルを出力すること", () => {
+    const layers = makeEmptyData().layers;
+    layers.up.a = {
+      flip: { if_pressed: [], enable: true, force_neutral: ["y"] },
+      open: true,
+    };
+    layers.up.macro = {
+      "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel": ["y", "l"],
+    };
+    const actual = SettingTextualization({
+      layers: layers,
+      prefixKeys: null,
+      installed_macros: {
+        "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel": true,
+      },
+      envelope: false,
+    });
+    const expected = `install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel
+
+prefix_keys_for_changing_layer %i()
+
+layer :up do
+  flip :a, force_neutral: %i(y)
+  macro ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel, if_pressed: %i(y l), if_tilted_left_stick: true
+end
+
+layer :right do
+end
+
+layer :down do
+end
+
+layer :left do
+end`;
+    expect(actual).toBe(expected);
+  });
+});
