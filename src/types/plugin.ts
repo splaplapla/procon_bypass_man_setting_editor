@@ -23,6 +23,11 @@ export type PluginMacroTable = {
   [key in string]: Array<PluginBody>;
 };
 
+// class_namespaceがキー
+export type PluginMacrosTable = {
+  [key in string]: PluginBody;
+};
+
 // plugins.
 export const AvailablePlugins: Array<Plugin> = [
   {
@@ -123,3 +128,15 @@ export const AvailablePluginMacros = AvailablePlugins.reduce((acc, plugins) => {
   }
   return acc;
 }, {} as PluginMacroTable);
+
+export const AvailablePluginMacrosTable = AvailablePlugins.reduce(
+  (acc, plugins) => {
+    for (let gameTitle in plugins) {
+      for (let macro of plugins[gameTitle]["macros"]) {
+        acc[macro.class_namespace] = macro as PluginBody;
+      }
+    }
+    return acc;
+  },
+  {} as PluginMacrosTable
+);
