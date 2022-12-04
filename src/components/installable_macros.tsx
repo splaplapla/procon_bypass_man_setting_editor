@@ -43,29 +43,25 @@ export const InstallableMacro = ({ classNamespace }: Props) => {
 };
 
 export const InstallableMacros = () => {
-  return (
-    <>
-      {Object.keys(AvailablePluginMacros).map((key, index) => {
-        return (
-          <div key={index}>
-            <h3>{key}</h3>
-            {AvailablePluginMacros[key].map(
-              (item: PluginBody, index: number) => {
-                return (
-                  <div key={index} className="pb-2">
-                    <label>
-                      <InstallableMacro
-                        classNamespace={item["class_namespace"]}
-                      />
-                      {item["display_name"]}
-                    </label>
-                  </div>
-                );
-              }
-            )}
-          </div>
-        );
-      })}
-    </>
-  );
+  const render = () => {
+    return Object.keys(AvailablePluginMacros).map((key, index) => {
+      return (
+        <div key={index}>
+          <h3>{key}</h3>
+          {AvailablePluginMacros[key].map((item: PluginBody, index: number) => {
+            return (
+              <div key={index} className="pb-2">
+                <label>
+                  <InstallableMacro classNamespace={item["class_namespace"]} />
+                  {item["display_name"]}
+                </label>
+              </div>
+            );
+          })}
+        </div>
+      );
+    });
+  };
+
+  return <>{render()}</>;
 };
