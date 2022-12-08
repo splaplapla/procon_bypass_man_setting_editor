@@ -1,9 +1,8 @@
-/** @jsx jsx */
-
 import { jsx, css } from "@emotion/react";
 import React, { useState, useEffect, useContext } from "react";
-import { SettingContext } from "./../contexts/buttons_setting";
 import { PluginBody, AvailablePluginMacros } from "../types/plugin";
+import { SettingContext } from "./../contexts/buttons_setting";
+import { Toggleable } from "./toggleable";
 import {
   installMacroType,
   uninstallMacroType,
@@ -47,17 +46,23 @@ export const InstallableMacros = () => {
     return Object.keys(AvailablePluginMacros).map((key, index) => {
       return (
         <div key={index}>
-          <h3>{key}</h3>
-          {AvailablePluginMacros[key].map((item: PluginBody, index: number) => {
-            return (
-              <div key={index} className="pb-2">
-                <label>
-                  <InstallableMacro classNamespace={item["class_namespace"]} />
-                  {item["display_name"]}
-                </label>
-              </div>
-            );
-          })}
+          <h3 style={{ display: "inline-block" }}>{key}</h3>
+          <Toggleable>
+            {AvailablePluginMacros[key].map(
+              (item: PluginBody, index: number) => {
+                return (
+                  <div key={index} className="pb-2">
+                    <label>
+                      <InstallableMacro
+                        classNamespace={item["class_namespace"]}
+                      />
+                      {item["display_name"]}
+                    </label>
+                  </div>
+                );
+              }
+            )}
+          </Toggleable>
         </div>
       );
     });
