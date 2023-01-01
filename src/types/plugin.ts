@@ -9,6 +9,7 @@ export type PluginBody = {
   display_name: string;
   class_namespace: string;
   forceParams?: PluginBodyForceParams;
+  requirePbmVersion?: string;
 };
 
 // 1タイトル分. keyは1つのみ
@@ -27,6 +28,8 @@ export type PluginMacroTable = {
 export type PluginMacrosTable = {
   [key in string]: PluginBody;
 };
+
+export type MinimumRequirePbmVersion = "0.3.0";
 
 // plugins.
 export const AvailablePlugins: Array<Plugin> = [
@@ -110,17 +113,20 @@ export const AvailablePlugins: Array<Plugin> = [
           display_name: "イカロール",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon3::Macro::ForwardIkarole",
+          requirePbmVersion: "0.3.1",
         },
         {
           display_name: "惰性キャンセル",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel",
           forceParams: { if_tilted_left_stick: true, ifPressed: ["zl"] },
+          requirePbmVersion: "0.3.3.1",
         },
         {
           display_name: "左スティック1回転",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon3::Macro::RotationLeftStick",
+          requirePbmVersion: "0.3.4",
         },
       ],
     },
