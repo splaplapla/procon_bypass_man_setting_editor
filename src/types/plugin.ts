@@ -117,6 +117,11 @@ export const AvailablePlugins: Array<Plugin> = [
             "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel",
           forceParams: { if_tilted_left_stick: true, ifPressed: ["zl"] },
         },
+        {
+          display_name: "左スティック1回転",
+          class_namespace:
+            "ProconBypassMan::Plugin::Splatoon3::Macro::RotationLeftStick",
+        },
       ],
     },
   },
