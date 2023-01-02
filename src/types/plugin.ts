@@ -29,7 +29,7 @@ export type PluginMacrosTable = {
   [key in string]: PluginBody;
 };
 
-export type MinimumRequirePbmVersion = "0.3.0";
+export const MinimumRequirePbmVersion = "0.3.0";
 
 // plugins.
 export const AvailablePlugins: Array<Plugin> = [
