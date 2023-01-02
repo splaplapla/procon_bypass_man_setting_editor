@@ -1,3 +1,4 @@
+import { compareVersions } from "compare-versions";
 import { Button, buttons } from "../types/button";
 import { LayerKey } from "../types/layer_key";
 import {
@@ -7,7 +8,10 @@ import {
   MacroTable,
 } from "../types/setting";
 
-import { AvailablePluginMacrosTable } from "./../types/plugin";
+import {
+  AvailablePluginMacrosTable,
+  MinimumRequirePbmVersion,
+} from "./../types/plugin";
 
 type Props = {
   layers: LayersSetting;
@@ -107,6 +111,15 @@ export const SettingTextualization = ({
     result = result + `version: 1.0\n`;
     result = result + `setting: |-\n`;
   }
+  // metadata
+  const requireVersions = Object.keys(normalizedInstalledMacros)
+    .map((macro) => AvailablePluginMacrosTable[macro]?.requirePbmVersion)
+    .filter((noneOrVersion) => noneOrVersion) as Array<string>;
+  requireVersions.push(MinimumRequirePbmVersion);
+  const requirePbmVersion = requireVersions.sort(compareVersions).reverse()[0];
+  result =
+    result +
+    `${topLevelIndent}# metadata-require_pbm_version: ${requirePbmVersion}\n\n`;
 
   // install_macro_plugin
   if (Object.keys(normalizedInstalledMacros).length) {
