@@ -318,7 +318,7 @@ describe("forceParamsを持つlayer.#{button}.macroに値があるとき(envelop
       },
       envelope: false,
     });
-    const expected = `# metadata-require_pbm_version: 0.3.0
+    const expected = `# metadata-require_pbm_version: 0.3.3.1
 
 install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel
 
@@ -327,6 +327,51 @@ prefix_keys_for_changing_layer %i()
 layer :up do
   flip :a, force_neutral: %i(y)
   macro ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel, if_pressed: %i(y l), if_tilted_left_stick: true
+end
+
+layer :right do
+end
+
+layer :down do
+end
+
+layer :left do
+end`;
+    expect(actual).toBe(expected);
+  });
+});
+
+describe("イカロールマクロと左スティック1回転マクロがあるとき(envelope: false)", () => {
+  it("設定ファイルを出力すること", () => {
+    const layers = makeEmptyData().layers;
+    layers.up.a = {
+      flip: { if_pressed: [], enable: true, force_neutral: ["y"] },
+      open: true,
+    };
+    layers.up.macro = {
+      "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel": ["y", "l"],
+      "ProconBypassMan::Plugin::Splatoon3::Macro::RotationLeftStick": ["left"],
+    };
+    const actual = SettingTextualization({
+      layers: layers,
+      prefixKeys: null,
+      installed_macros: {
+        "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel": true,
+        "ProconBypassMan::Plugin::Splatoon3::Macro::RotationLeftStick": true,
+      },
+      envelope: false,
+    });
+    const expected = `# metadata-require_pbm_version: 0.3.4
+
+install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel
+install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::RotationLeftStick
+
+prefix_keys_for_changing_layer %i()
+
+layer :up do
+  flip :a, force_neutral: %i(y)
+  macro ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel, if_pressed: %i(y l), if_tilted_left_stick: true
+  macro ProconBypassMan::Plugin::Splatoon3::Macro::RotationLeftStick, if_pressed: %i(left)
 end
 
 layer :right do
