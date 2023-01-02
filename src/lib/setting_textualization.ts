@@ -107,6 +107,7 @@ export const SettingTextualization = ({
     result = result + `version: 1.0\n`;
     result = result + `setting: |-\n`;
   }
+  result = result + `${topLevelIndent}# metadata-require_pbm_version: 0.3.0\n\n`;
 
   // install_macro_plugin
   if (Object.keys(normalizedInstalledMacros).length) {

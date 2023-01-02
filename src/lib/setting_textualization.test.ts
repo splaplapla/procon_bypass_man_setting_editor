@@ -47,6 +47,8 @@ describe("prefixKeysに値があるとき", () => {
     });
     const expected = `version: 1.0
 setting: |-
+  # metadata-require_pbm_version: 0.3.0
+
   prefix_keys_for_changing_layer %i(b)
 
   layer :up do
@@ -72,6 +74,8 @@ setting: |-
     });
     const expected = `version: 1.0
 setting: |-
+  # metadata-require_pbm_version: 0.3.0
+
   prefix_keys_for_changing_layer %i(b y)
 
   layer :up do
@@ -95,7 +99,9 @@ setting: |-
       installed_macros: null,
       envelope: false,
     });
-    const expected = `prefix_keys_for_changing_layer %i(b y)
+    const expected = `# metadata-require_pbm_version: 0.3.0
+
+prefix_keys_for_changing_layer %i(b y)
 
 layer :up do
 end
@@ -123,6 +129,8 @@ describe("installed_macrosに値があるとき", () => {
     yaml.load(actual);
     const expected = `version: 1.0
 setting: |-
+  # metadata-require_pbm_version: 0.3.0
+
   install_macro_plugin AAA
   install_macro_plugin BBB
 
@@ -171,6 +179,8 @@ describe("layer.#{button}.flipに値があるとき", () => {
     yaml.load(actual);
     const expected = `version: 1.0
 setting: |-
+  # metadata-require_pbm_version: 0.3.0
+
   prefix_keys_for_changing_layer %i()
 
   layer :up do
@@ -218,6 +228,8 @@ describe("layer.#{button}.macroに値があるとき", () => {
     yaml.load(actual);
     const expected = `version: 1.0
 setting: |-
+  # metadata-require_pbm_version: 0.3.0
+
   install_macro_plugin ProconBypassMan::Splatoon2::Macro::FastReturn
   install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::JumpToRightKey
 
@@ -264,7 +276,9 @@ describe("layer.#{button}.macroに値があるとき(envelope: false)", () => {
       },
       envelope: false,
     });
-    const expected = `install_macro_plugin ProconBypassMan::Splatoon2::Macro::FastReturn
+    const expected = `# metadata-require_pbm_version: 0.3.0
+
+install_macro_plugin ProconBypassMan::Splatoon2::Macro::FastReturn
 
 prefix_keys_for_changing_layer %i()
 
@@ -304,7 +318,9 @@ describe("forceParamsを持つlayer.#{button}.macroに値があるとき(envelop
       },
       envelope: false,
     });
-    const expected = `install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel
+    const expected = `# metadata-require_pbm_version: 0.3.0
+
+install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel
 
 prefix_keys_for_changing_layer %i()
 
