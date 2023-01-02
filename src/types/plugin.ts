@@ -64,18 +64,23 @@ export const AvailablePlugins: Array<Plugin> = [
           display_name: "炭酸ボムのチャージ",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon2::Macro::ChargeTansanBomb",
+          docsUrl:
+            "https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon2_shake_tansan.md",
         },
         {
           display_name: "バブル即割",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon2::Macro::SokuwariForSplashBomb",
+          docsUrl:
+            "https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon2_macro_sokuwari_bubble.md",
         },
         {
           display_name: "惰性キャンセル",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon2::Macro::DaseiCancel",
           forceParams: { if_tilted_left_stick: true, ifPressed: ["zl"] },
-          docsUrl: 'https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon2_macro_dasei_cancel.md',
+          docsUrl:
+            "https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon2_macro_dasei_cancel.md",
         },
       ],
     },
@@ -110,14 +115,16 @@ export const AvailablePlugins: Array<Plugin> = [
           display_name: "炭酸ボムのチャージ",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon3::Macro::ChargeTansanBomb",
-          docsUrl: 'https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon2_shake_tansan.md',
+          docsUrl:
+            "https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon2_shake_tansan.md",
         },
         {
           display_name: "イカロール",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon3::Macro::ForwardIkarole",
           requirePbmVersion: "0.3.1",
-          docsUrl: 'https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon3_macro_forward_ikarole.md',
+          docsUrl:
+            "https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon3_macro_forward_ikarole.md",
         },
         {
           display_name: "惰性キャンセル",
@@ -125,14 +132,16 @@ export const AvailablePlugins: Array<Plugin> = [
             "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel",
           forceParams: { if_tilted_left_stick: true, ifPressed: ["zl"] },
           requirePbmVersion: "0.3.3.1",
-          docsUrl: 'https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon3_macro_dasei_cancel.md',
+          docsUrl:
+            "https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon3_macro_dasei_cancel.md",
         },
         {
           display_name: "左スティック1回転",
           class_namespace:
             "ProconBypassMan::Plugin::Splatoon3::Macro::RotationLeftStick",
           requirePbmVersion: "0.3.4",
-          docsUrl: 'https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon3_rotation_left_stick.md',
+          docsUrl:
+            "https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon3_rotation_left_stick.md",
         },
       ],
     },
