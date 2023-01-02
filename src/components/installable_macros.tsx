@@ -42,6 +42,14 @@ export const InstallableMacro = ({ classNamespace }: Props) => {
 };
 
 export const InstallableMacros = () => {
+  const renderDocsUrl = (url: string) => {
+    return (
+      <a style={{ margin: "5px" }} target={"_blank"} href={url}>
+        [解説ページ]
+      </a>
+    );
+  };
+
   const render = () => {
     return Object.keys(AvailablePluginMacros).map((key, index) => {
       return (
@@ -58,6 +66,8 @@ export const InstallableMacros = () => {
                       />
                       {item["display_name"]}
                     </label>
+
+                    {item["docsUrl"] && renderDocsUrl(item["docsUrl"])}
                   </div>
                 );
               }
