@@ -47,7 +47,7 @@ describe("prefixKeysに値があるとき", () => {
     });
     const expected = `version: 1.0
 setting: |-
-  # metadata-require_pbm_version: 0.3.0
+  # metadata-required_pbm_version: 0.3.0
 
   prefix_keys_for_changing_layer %i(b)
 
@@ -74,7 +74,7 @@ setting: |-
     });
     const expected = `version: 1.0
 setting: |-
-  # metadata-require_pbm_version: 0.3.0
+  # metadata-required_pbm_version: 0.3.0
 
   prefix_keys_for_changing_layer %i(b y)
 
@@ -99,7 +99,7 @@ setting: |-
       installed_macros: null,
       envelope: false,
     });
-    const expected = `# metadata-require_pbm_version: 0.3.0
+    const expected = `# metadata-required_pbm_version: 0.3.0
 
 prefix_keys_for_changing_layer %i(b y)
 
@@ -129,7 +129,7 @@ describe("installed_macrosに値があるとき", () => {
     yaml.load(actual);
     const expected = `version: 1.0
 setting: |-
-  # metadata-require_pbm_version: 0.3.0
+  # metadata-required_pbm_version: 0.3.0
 
   install_macro_plugin AAA
   install_macro_plugin BBB
@@ -179,7 +179,7 @@ describe("layer.#{button}.flipに値があるとき", () => {
     yaml.load(actual);
     const expected = `version: 1.0
 setting: |-
-  # metadata-require_pbm_version: 0.3.0
+  # metadata-required_pbm_version: 0.3.0
 
   prefix_keys_for_changing_layer %i()
 
@@ -228,7 +228,7 @@ describe("layer.#{button}.macroに値があるとき", () => {
     yaml.load(actual);
     const expected = `version: 1.0
 setting: |-
-  # metadata-require_pbm_version: 0.3.0
+  # metadata-required_pbm_version: 0.3.0
 
   install_macro_plugin ProconBypassMan::Splatoon2::Macro::FastReturn
   install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::JumpToRightKey
@@ -276,7 +276,7 @@ describe("layer.#{button}.macroに値があるとき(envelope: false)", () => {
       },
       envelope: false,
     });
-    const expected = `# metadata-require_pbm_version: 0.3.0
+    const expected = `# metadata-required_pbm_version: 0.3.0
 
 install_macro_plugin ProconBypassMan::Splatoon2::Macro::FastReturn
 
@@ -318,7 +318,7 @@ describe("forceParamsを持つlayer.#{button}.macroに値があるとき(envelop
       },
       envelope: false,
     });
-    const expected = `# metadata-require_pbm_version: 0.3.3.1
+    const expected = `# metadata-required_pbm_version: 0.3.3.1
 
 install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel
 
@@ -361,7 +361,7 @@ describe("イカロールマクロと左スティック1回転マクロがある
       },
       envelope: false,
     });
-    const expected = `# metadata-require_pbm_version: 0.3.4
+    const expected = `# metadata-required_pbm_version: 0.3.4
 
 install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel
 install_macro_plugin ProconBypassMan::Plugin::Splatoon3::Macro::RotationLeftStick
