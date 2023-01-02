@@ -21,7 +21,9 @@ export const Toggleable: React.FC<Props> = ({ children }) => {
 
   return (
     <>
-      <span onClick={handleClick}>[{visibleMark}]</span>
+      <span style={{ cursor: "pointer" }} onClick={handleClick}>
+        [{visibleMark}]
+      </span>
       {available && children}
     </>
   );
