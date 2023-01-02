@@ -112,14 +112,16 @@ export const SettingTextualization = ({
     result = result + `setting: |-\n`;
   }
   // metadata
-  const requireVersions = Object.keys(normalizedInstalledMacros)
-    .map((macro) => AvailablePluginMacrosTable[macro]?.requirePbmVersion)
+  const requiredVersions = Object.keys(normalizedInstalledMacros)
+    .map((macro) => AvailablePluginMacrosTable[macro]?.requiredPbmVersion)
     .filter((noneOrVersion) => noneOrVersion) as Array<string>;
-  requireVersions.push(MinimumRequirePbmVersion);
-  const requirePbmVersion = requireVersions.sort(compareVersions).reverse()[0];
+  requiredVersions.push(MinimumRequirePbmVersion);
+  const requiredPbmVersion = requiredVersions
+    .sort(compareVersions)
+    .reverse()[0];
   result =
     result +
-    `${topLevelIndent}# metadata-require_pbm_version: ${requirePbmVersion}\n\n`;
+    `${topLevelIndent}# metadata-required_pbm_version: ${requiredPbmVersion}\n\n`;
 
   // install_macro_plugin
   if (Object.keys(normalizedInstalledMacros).length) {
