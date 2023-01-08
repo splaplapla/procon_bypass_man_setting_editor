@@ -49,3 +49,7 @@ export type Setting = {
   installed_macros: InstalledPlugin;
   rumbleOnLayerChange: boolean;
 };
+
+export const optionalConfiguration = {
+  rumbleOnLayerChange: { requiredPbmVersion: '0.3.1' },
+}

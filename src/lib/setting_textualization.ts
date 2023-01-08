@@ -1,6 +1,7 @@
 import { compareVersions } from "compare-versions";
 import { Button, buttons } from "../types/button";
 import { LayerKey } from "../types/layer_key";
+import { optionalConfiguration } from "../types/setting";
 import {
   InstalledPlugin,
   LayersSetting,
@@ -118,6 +119,10 @@ export const SettingTextualization = ({
     .map((macro) => AvailablePluginMacrosTable[macro]?.requiredPbmVersion)
     .filter((noneOrVersion) => noneOrVersion) as Array<string>;
   requiredVersions.push(MinimumRequirePbmVersion);
+  // TODO: booleanを渡しているrumbleOnLayerChangeをキーの配列に渡してここの分岐を消す
+  if(rumbleOnLayerChange) {
+    requiredVersions.push(optionalConfiguration['rumbleOnLayerChange']['requiredPbmVersion']);
+  }
   const requiredPbmVersion = requiredVersions
     .sort(compareVersions)
     .reverse()[0];
