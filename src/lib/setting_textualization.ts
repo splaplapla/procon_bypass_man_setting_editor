@@ -1,6 +1,7 @@
 import { compareVersions } from "compare-versions";
 import { Button, buttons } from "../types/button";
 import { LayerKey } from "../types/layer_key";
+import { optionalConfiguration } from "../types/setting";
 import {
   InstalledPlugin,
   LayersSetting,
@@ -17,6 +18,7 @@ type Props = {
   layers: LayersSetting;
   prefixKeys: Array<Button>;
   installed_macros: InstalledPlugin;
+  rumbleOnLayerChange: boolean;
   envelope: boolean;
 };
 
@@ -24,6 +26,7 @@ export const SettingTextualization = ({
   layers,
   prefixKeys,
   installed_macros,
+  rumbleOnLayerChange,
   envelope,
 }: Props) => {
   const pk = prefixKeys || [];
@@ -116,12 +119,25 @@ export const SettingTextualization = ({
     .map((macro) => AvailablePluginMacrosTable[macro]?.requiredPbmVersion)
     .filter((noneOrVersion) => noneOrVersion) as Array<string>;
   requiredVersions.push(MinimumRequirePbmVersion);
+  // TODO: booleanを渡しているrumbleOnLayerChangeをキーの配列に渡してここの分岐を消す
+  if (rumbleOnLayerChange) {
+    requiredVersions.push(
+      optionalConfiguration["rumbleOnLayerChange"]["requiredPbmVersion"]
+    );
+  }
   const requiredPbmVersion = requiredVersions
     .sort(compareVersions)
     .reverse()[0];
   result =
     result +
     `${topLevelIndent}# metadata-required_pbm_version: ${requiredPbmVersion}\n\n`;
+
+  if (rumbleOnLayerChange) {
+    result =
+      result +
+      `${topLevelIndent}# レイヤー変更時にコントローラーを振動させます\n`;
+    result = result + `${topLevelIndent}enable(:rumble_on_layer_change)\n\n`;
+  }
 
   // install_macro_plugin
   if (Object.keys(normalizedInstalledMacros).length) {

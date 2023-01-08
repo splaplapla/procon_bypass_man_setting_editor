@@ -8,6 +8,7 @@ import { updatePrefixKeysType } from "../reducers/setting_reducer";
 import { SettingContext } from "./../contexts/buttons_setting";
 import { ButtonsModal } from "../components/buttons_modal";
 import { Button as BootstrapButton } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 
 export const PrefixKeysForm: React.FC = () => {
   const [modalProps, openModal] = useModal();
@@ -33,17 +34,23 @@ export const PrefixKeysForm: React.FC = () => {
           margin-bottom: 20px;
         `}
       >
-        <input
-          type="text"
-          value={setting.prefixKeys.join(", ")}
-          readOnly={true}
-          className="form-control"
-        />
-        <div className="form-control">
-          <BootstrapButton onClick={handlePrefixKeysField} variant="primary">
-            変更する
-          </BootstrapButton>
-        </div>
+        <Form.Group className="mb-3">
+          <Form.Label>レイヤーを変更するプレフィックスキー</Form.Label>
+          <input
+            type="text"
+            value={setting.prefixKeys.join(", ")}
+            readOnly={true}
+            className="form-control"
+            disabled
+          />
+        </Form.Group>
+        <BootstrapButton
+          onClick={handlePrefixKeysField}
+          variant="primary"
+          className="pull-right"
+        >
+          変更する
+        </BootstrapButton>
 
         <div
           css={css`

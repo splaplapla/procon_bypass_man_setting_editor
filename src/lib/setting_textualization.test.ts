@@ -43,6 +43,7 @@ describe("prefixKeysに値があるとき", () => {
       layers: makeEmptyData().layers,
       prefixKeys: ["b"],
       installed_macros: null,
+      rumbleOnLayerChange: false,
       envelope: true,
     });
     const expected = `version: 1.0
@@ -70,6 +71,7 @@ setting: |-
       layers: makeEmptyData().layers,
       prefixKeys: ["b", "y"],
       installed_macros: null,
+      rumbleOnLayerChange: false,
       envelope: true,
     });
     const expected = `version: 1.0
@@ -97,6 +99,7 @@ setting: |-
       layers: makeEmptyData().layers,
       prefixKeys: ["b", "y"],
       installed_macros: null,
+      rumbleOnLayerChange: false,
       envelope: false,
     });
     const expected = `# metadata-required_pbm_version: 0.3.0
@@ -124,6 +127,7 @@ describe("installed_macrosに値があるとき", () => {
       layers: makeEmptyData().layers,
       prefixKeys: null,
       installed_macros: { AAA: true, BBB: true },
+      rumbleOnLayerChange: false,
       envelope: true,
     });
     yaml.load(actual);
@@ -223,6 +227,7 @@ describe("layer.#{button}.macroに値があるとき", () => {
         "ProconBypassMan::Splatoon2::Macro::FastReturn": true,
         "ProconBypassMan::Plugin::Splatoon3::Macro::JumpToRightKey": true,
       },
+      rumbleOnLayerChange: false,
       envelope: true,
     });
     yaml.load(actual);
@@ -274,6 +279,7 @@ describe("layer.#{button}.macroに値があるとき(envelope: false)", () => {
       installed_macros: {
         "ProconBypassMan::Splatoon2::Macro::FastReturn": true,
       },
+      rumbleOnLayerChange: false,
       envelope: false,
     });
     const expected = `# metadata-required_pbm_version: 0.3.0
@@ -316,6 +322,7 @@ describe("forceParamsを持つlayer.#{button}.macroに値があるとき(envelop
       installed_macros: {
         "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel": true,
       },
+      rumbleOnLayerChange: false,
       envelope: false,
     });
     const expected = `# metadata-required_pbm_version: 0.3.3.1
@@ -359,6 +366,7 @@ describe("イカロールマクロと左スティック1回転マクロがある
         "ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel": true,
         "ProconBypassMan::Plugin::Splatoon3::Macro::RotationLeftStick": true,
       },
+      rumbleOnLayerChange: false,
       envelope: false,
     });
     const expected = `# metadata-required_pbm_version: 0.3.4
@@ -372,6 +380,44 @@ layer :up do
   flip :a, force_neutral: %i(y)
   macro ProconBypassMan::Plugin::Splatoon3::Macro::DaseiCancel, if_pressed: %i(y l), if_tilted_left_stick: true
   macro ProconBypassMan::Plugin::Splatoon3::Macro::RotationLeftStick, if_pressed: %i(left)
+end
+
+layer :right do
+end
+
+layer :down do
+end
+
+layer :left do
+end`;
+    expect(actual).toBe(expected);
+  });
+});
+
+describe("rumbleOnLayerChange(envelope: false)", () => {
+  it("設定ファイルを出力すること", () => {
+    const layers = makeEmptyData().layers;
+    layers.up.a = {
+      flip: { if_pressed: [], enable: true, force_neutral: ["y"] },
+      open: true,
+    };
+    layers.up.macro = {};
+    const actual = SettingTextualization({
+      layers: layers,
+      prefixKeys: null,
+      installed_macros: {},
+      rumbleOnLayerChange: true,
+      envelope: false,
+    });
+    const expected = `# metadata-required_pbm_version: 0.3.1
+
+# レイヤー変更時にコントローラーを振動させます
+enable(:rumble_on_layer_change)
+
+prefix_keys_for_changing_layer %i()
+
+layer :up do
+  flip :a, force_neutral: %i(y)
 end
 
 layer :right do
