@@ -18,12 +18,14 @@ export const Preview: React.FC = () => {
     layers: layersSetting,
     prefixKeys: setting.prefixKeys,
     installed_macros: setting.installed_macros,
+    rumbleOnLayerChange: setting.rumbleOnLayerChange,
     envelope: true,
   });
   const settingTextForPbmCloud = SettingTextualization({
     layers: layersSetting,
     prefixKeys: setting.prefixKeys,
     installed_macros: setting.installed_macros,
+    rumbleOnLayerChange: setting.rumbleOnLayerChange,
     envelope: false,
   });
 

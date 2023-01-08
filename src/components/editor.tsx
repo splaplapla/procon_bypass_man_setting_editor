@@ -4,6 +4,7 @@ import { jsx, css } from "@emotion/react";
 import React, { useState } from "react";
 import { InstallableMacros } from "../components/installable_macros";
 import { PrefixKeysForm } from "../components/prefix_keys_form";
+import { RumbleOnLayerChangeForm } from "../components/rumble_on_layer_change_form";
 import { LayersTab } from "../components/layers_tab";
 import { layerKeys } from "../types/layer_key";
 import { ButtonsPanel } from "../components/buttons_panel";
@@ -43,8 +44,11 @@ export const Editor: React.FC = () => {
             </div>
 
             <div className="border p-2 mt-4">
-              <h3>レイヤーを変更するプレフィックスキー</h3>
+              <h3>全体設定</h3>
               <PrefixKeysForm />
+              <hr />
+
+              <RumbleOnLayerChangeForm />
             </div>
 
             <LayersTab>

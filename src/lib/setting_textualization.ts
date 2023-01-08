@@ -17,6 +17,7 @@ type Props = {
   layers: LayersSetting;
   prefixKeys: Array<Button>;
   installed_macros: InstalledPlugin;
+  rumbleOnLayerChange: boolean;
   envelope: boolean;
 };
 
@@ -24,6 +25,7 @@ export const SettingTextualization = ({
   layers,
   prefixKeys,
   installed_macros,
+  rumbleOnLayerChange,
   envelope,
 }: Props) => {
   const pk = prefixKeys || [];
@@ -122,6 +124,13 @@ export const SettingTextualization = ({
   result =
     result +
     `${topLevelIndent}# metadata-required_pbm_version: ${requiredPbmVersion}\n\n`;
+
+  if (rumbleOnLayerChange) {
+    result =
+      result +
+      `${topLevelIndent}# レイヤー変更時にコントローラーを振動させます\n`;
+    result = result + `${topLevelIndent}enable(:rumble_on_layer_change)\n\n`;
+  }
 
   // install_macro_plugin
   if (Object.keys(normalizedInstalledMacros).length) {

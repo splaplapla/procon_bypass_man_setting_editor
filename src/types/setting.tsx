@@ -47,4 +47,5 @@ export type LayersSetting = {
 export type Setting = {
   prefixKeys: Array<Button>;
   installed_macros: InstalledPlugin;
+  rumbleOnLayerChange: boolean;
 };
