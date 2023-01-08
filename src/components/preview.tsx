@@ -51,6 +51,7 @@ export const Preview: React.FC = () => {
                 as="textarea"
                 value={settingText}
                 style={{ height: "100%" }}
+                readOnly={true}
                 rows={30}
               />
             </Modal.Body>
@@ -61,6 +62,7 @@ export const Preview: React.FC = () => {
                 as="textarea"
                 value={settingTextForPbmCloud}
                 style={{ height: "100%" }}
+                readOnly={true}
                 rows={30}
               />
             </Modal.Body>
