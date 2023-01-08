@@ -120,8 +120,10 @@ export const SettingTextualization = ({
     .filter((noneOrVersion) => noneOrVersion) as Array<string>;
   requiredVersions.push(MinimumRequirePbmVersion);
   // TODO: booleanを渡しているrumbleOnLayerChangeをキーの配列に渡してここの分岐を消す
-  if(rumbleOnLayerChange) {
-    requiredVersions.push(optionalConfiguration['rumbleOnLayerChange']['requiredPbmVersion']);
+  if (rumbleOnLayerChange) {
+    requiredVersions.push(
+      optionalConfiguration["rumbleOnLayerChange"]["requiredPbmVersion"]
+    );
   }
   const requiredPbmVersion = requiredVersions
     .sort(compareVersions)

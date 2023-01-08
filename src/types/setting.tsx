@@ -51,5 +51,5 @@ export type Setting = {
 };
 
 export const optionalConfiguration = {
-  rumbleOnLayerChange: { requiredPbmVersion: '0.3.1' },
-}
+  rumbleOnLayerChange: { requiredPbmVersion: "0.3.1" },
+};

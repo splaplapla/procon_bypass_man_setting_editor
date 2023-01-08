@@ -393,3 +393,41 @@ end`;
     expect(actual).toBe(expected);
   });
 });
+
+describe("rumbleOnLayerChange(envelope: false)", () => {
+  it("設定ファイルを出力すること", () => {
+    const layers = makeEmptyData().layers;
+    layers.up.a = {
+      flip: { if_pressed: [], enable: true, force_neutral: ["y"] },
+      open: true,
+    };
+    layers.up.macro = {};
+    const actual = SettingTextualization({
+      layers: layers,
+      prefixKeys: null,
+      installed_macros: {},
+      rumbleOnLayerChange: true,
+      envelope: false,
+    });
+    const expected = `# metadata-required_pbm_version: 0.3.1
+
+# レイヤー変更時にコントローラーを振動させます
+enable(:rumble_on_layer_change)
+
+prefix_keys_for_changing_layer %i()
+
+layer :up do
+  flip :a, force_neutral: %i(y)
+end
+
+layer :right do
+end
+
+layer :down do
+end
+
+layer :left do
+end`;
+    expect(actual).toBe(expected);
+  });
+});
