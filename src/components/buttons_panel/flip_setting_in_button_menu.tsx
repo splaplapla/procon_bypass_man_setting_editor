@@ -74,7 +74,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
     e: React.MouseEvent<HTMLInputElement>
   ) => {
     openModal({
-      title: "特定のキーを押したときだけ",
+      title: "指定のキーを押したときだけ",
       prefill: flipIfPressedSomeButtons,
       callbackOnSubmit: setFlipIfPressedSomeButtonsWithPersistence,
     });
@@ -91,7 +91,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
   };
   const handleIgnoreButton = (e: React.ChangeEvent<HTMLInputElement>) => {
     openModal({
-      title: "連打中は特定のボタンの入力を無視する",
+      title: "連打中は指定のボタンの入力を無視する",
       prefill: buttonValue.flip?.force_neutral || ([] as Array<Button>),
       callbackOnSubmit: setIgnoreButtonsOnFlipingWithPersistence,
     });
@@ -146,7 +146,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
             checked={buttonState.isFlipIfPressedSomeButtons()}
             readOnly={true}
           />
-          特定のボタンを押したときだけ連打する
+          指定のボタンを押したときだけ連打する
           {flipIfPressedSomeButtons.length > 0 &&
             `(${flipIfPressedSomeButtons.join(", ")})`}
         </label>
@@ -162,7 +162,7 @@ export const FlipSettingInButtonMenu: React.FC<ButtonProps> = ({
               checked={forceNeutralButtons.length > 0}
               disabled={buttonState.isDisabledFlip()}
             />
-            連打中は特定のボタンの入力を無視する
+            連打中は指定のボタンの入力を無視する
             {forceNeutralButtons.length > 0 &&
               `(${forceNeutralButtons.join(", ")})`}
           </label>
