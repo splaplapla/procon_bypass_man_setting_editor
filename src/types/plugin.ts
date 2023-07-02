@@ -74,14 +74,6 @@ export const AvailablePlugins: Array<Plugin> = [
           docsUrl:
             "https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon2_macro_sokuwari_bubble.md",
         },
-        {
-          display_name: "惰性キャンセル",
-          class_namespace:
-            "ProconBypassMan::Plugin::Splatoon2::Macro::DaseiCancel",
-          forceParams: { if_tilted_left_stick: true, ifPressed: ["zl"] },
-          docsUrl:
-            "https://github.com/splaplapla/procon_bypass_man/blob/master/docs/setting/splatoon2_macro_dasei_cancel.md",
-        },
       ],
     },
   },
