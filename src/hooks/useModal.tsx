@@ -12,8 +12,11 @@ export const useModal = () => {
   const [visible, toggleModal] = useReducer((m: boolean) => {
     return !m;
   }, false);
-  const [callbackOnSubmit, setCallbackOnSubmit] = useState(undefined as any);
-  const [callbackOnClose, setCallbackOnClose] = useState(undefined as any);
+
+  const [callbackOnSubmit, setCallbackOnSubmit] = useState<
+    (param: Array<Button>) => void
+  >(() => {});
+  const [callbackOnClose, setCallbackOnClose] = useState<() => void>(() => {});
   const [title, setTitle] = useState<string>("");
   const [prefill, setPrefillButtons] = useState<Array<Button>>([]);
 
