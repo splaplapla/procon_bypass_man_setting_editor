@@ -66,7 +66,7 @@ export const ButtonsModal = ({
       align: left;
       top: 0px;
       left: 20px;
-      width: 400px;
+      width: 500px;
       height: 450px;
       border: solid;
       background-color: white;
