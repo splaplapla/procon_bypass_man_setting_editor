@@ -25,6 +25,7 @@ jobs:
       run: |
         git config --global user.email "jiikko@users.noreply.github.com"
         git config --global user.name "jiikko"
+        git config --global credential.helper wincred
         yarn deploy
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
