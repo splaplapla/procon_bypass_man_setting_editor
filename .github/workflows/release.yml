@@ -23,7 +23,5 @@ jobs:
 
     - name: Run yarn deploy
       run: |
-        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        git remote set-url origin https://git:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git
         yarn deploy
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
