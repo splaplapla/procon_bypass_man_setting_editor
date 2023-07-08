@@ -44,7 +44,7 @@
   "scripts": {
     "build": "webpack",
     "server": "webpack serve",
-    "deploy": "yarn run release-build && gh-pages -d dist",
+    "deploy": "yarn run release-build && gh-pages -d dist  -u 'github-actions-bot <support+actions@github.com>'",
     "release-build": "NODE_ENV=production webpack",
     "test": "jest",
     "test:lint": "eslint src",
