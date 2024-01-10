@@ -1,13 +1,6 @@
-import { compareVersions } from "compare-versions";
-import { Button, buttons } from "../types/button";
-import { LayerKey } from "../types/layer_key";
-import { optionalConfiguration } from "../types/setting";
-import {
-  InstalledPlugin,
-  LayersSetting,
-  Layer,
-  MacroTable,
-} from "../types/setting";
+import {compareVersions} from "compare-versions";
+import {Button, buttons} from "../types/button";
+import {InstalledPlugin, Layer, LayersSetting, MacroTable, optionalConfiguration} from "../types/setting";
 
 import {
   AvailablePluginMacrosTable,

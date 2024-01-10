@@ -48,8 +48,10 @@ export type Setting = {
   prefixKeys: Array<Button>;
   installed_macros: InstalledPlugin;
   rumbleOnLayerChange: boolean;
+  proconColor: string | undefined;
 };
 
 export const optionalConfiguration = {
   rumbleOnLayerChange: { requiredPbmVersion: "0.3.1" },
+  proconColor: { requiredPbmVersion: "0.3.12" },
 };
