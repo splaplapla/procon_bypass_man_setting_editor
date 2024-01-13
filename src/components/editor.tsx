@@ -7,7 +7,7 @@ import { InstallableMacros } from "../components/installable_macros";
 import { LayersTab } from "../components/layers_tab";
 import { PrefixKeysForm } from "../components/prefix_keys_form";
 import { Preview } from "../components/preview";
-import { RumbleOnLayerChangeForm } from "../components/rumble_on_layer_change_form";
+import { RumbleOnLayerChangeForm } from "components/rumble_on_layer_change_form";
 import { layerKeys } from "../types/layer_key";
 
 import Col from "react-bootstrap/Col";
