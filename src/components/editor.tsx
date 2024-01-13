@@ -1,15 +1,14 @@
-/** @jsx jsx */
-
-import { css } from "@emotion/react";
+import {css} from "@emotion/react";
+import {RumbleOnLayerChangeForm} from "components/rumble_on_layer_change_form";
 import React from "react";
-import { ButtonsPanel } from "../components/buttons_panel";
-import { InstallableMacros } from "../components/installable_macros";
-import { LayersTab } from "../components/layers_tab";
-import { PrefixKeysForm } from "../components/prefix_keys_form";
-import { Preview } from "../components/preview";
-import { RumbleOnLayerChangeForm } from "components/rumble_on_layer_change_form";
-import { layerKeys } from "../types/layer_key";
+import {ButtonsPanel} from "../components/buttons_panel";
+import {InstallableMacros} from "../components/installable_macros";
+import {LayersTab} from "../components/layers_tab";
+import {PrefixKeysForm} from "../components/prefix_keys_form";
+import {Preview} from "../components/preview";
+import {layerKeys} from "../types/layer_key";
 
+import {ProconColorForm} from "components/porcon_color_form";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -49,6 +48,7 @@ export const Editor: React.FC = () => {
               <hr />
 
               <RumbleOnLayerChangeForm />
+              <ProconColorForm />
             </div>
 
             <LayersTab>

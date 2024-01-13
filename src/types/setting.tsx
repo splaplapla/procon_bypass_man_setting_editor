@@ -1,4 +1,5 @@
 import { Button } from "./button";
+import { ProconColor } from "src/types/procon_color";
 
 export type Flip = {
   if_pressed?: Array<Button>;
@@ -48,7 +49,7 @@ export type Setting = {
   prefixKeys: Array<Button>;
   installed_macros: InstalledPlugin;
   rumbleOnLayerChange: boolean;
-  proconColor: string | undefined;
+  proconColor: ProconColor | null;
 };
 
 export const optionalConfiguration = {

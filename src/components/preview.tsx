@@ -19,6 +19,7 @@ export const Preview: React.FC = () => {
     prefixKeys: setting.prefixKeys,
     installed_macros: setting.installed_macros,
     rumbleOnLayerChange: setting.rumbleOnLayerChange,
+    proconColor: setting.proconColor,
     envelope: true,
   });
   const settingTextForPbmCloud = SettingTextualization({
@@ -26,6 +27,7 @@ export const Preview: React.FC = () => {
     prefixKeys: setting.prefixKeys,
     installed_macros: setting.installed_macros,
     rumbleOnLayerChange: setting.rumbleOnLayerChange,
+    proconColor: setting.proconColor,
     envelope: false,
   });
 
