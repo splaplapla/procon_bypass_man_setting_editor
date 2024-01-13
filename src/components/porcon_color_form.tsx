@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Form from "react-bootstrap/Form";
 import { SettingContext } from "src/contexts/buttons_setting";
 import { updateProconColor } from "src/reducers/setting_reducer";
-import { colors } from "src/types/procon_color";
+import { ProconColor, colors } from "src/types/procon_color";
 
 export const ProconColorForm: React.FC = () => {
   const { setting, settingDispatch } = useContext(SettingContext);
@@ -30,7 +30,7 @@ export const ProconColorForm: React.FC = () => {
         id="proconColor"
       >
         <option value={""}>未選択</option>
-        {colors.map((color: string, index) => (
+        {colors.map((color: ProconColor, index) => (
           <option key={index} value={color}>
             {color}
           </option>
