@@ -1,4 +1,4 @@
-import { Button, buttons } from "../types/button";
+import { Button, buttons } from "src/types/button";
 import { SettingTextualization } from "./setting_textualization";
 import _ from "lodash";
 import yaml from "js-yaml";
@@ -429,5 +429,73 @@ end
 layer :left do
 end`;
     expect(actual).toBe(expected);
+  });
+
+  describe("proconColor(envelope: false)", () => {
+    it("設定ファイルを出力すること", () => {
+      const layers = makeEmptyData().layers;
+      const actual = SettingTextualization({
+        layers: layers,
+        prefixKeys: null,
+        installed_macros: {},
+        proconColor: "red",
+        envelope: false,
+      });
+
+      const expected = `# metadata-required_pbm_version: 0.3.12
+
+# Switchで認識されるプロコンの色を変更します
+enable(:procon_color, :red)
+
+prefix_keys_for_changing_layer %i()
+
+layer :up do
+end
+
+layer :right do
+end
+
+layer :down do
+end
+
+layer :left do
+end`;
+      expect(actual).toBe(expected);
+    });
+  });
+
+  describe("proconColor(envelope: true)", () => {
+    it("設定ファイルを出力すること", () => {
+      const layers = makeEmptyData().layers;
+      const actual = SettingTextualization({
+        layers: layers as any,
+        prefixKeys: [],
+        installed_macros: {},
+        proconColor: "red",
+        envelope: true,
+      });
+
+      const expected = `version: 1.0
+setting: |-
+  # metadata-required_pbm_version: 0.3.12
+
+  # Switchで認識されるプロコンの色を変更します
+  enable(:procon_color, :red)
+
+  prefix_keys_for_changing_layer %i()
+
+  layer :up do
+  end
+
+  layer :right do
+  end
+
+  layer :down do
+  end
+
+  layer :left do
+  end`;
+      expect(actual).toBe(expected);
+    });
   });
 });

@@ -24,7 +24,11 @@ export const ProconColorForm: React.FC = () => {
   return (
     <Form.Group className="mt-4 mb-3">
       <Form.Label htmlFor="proconColor">プロコンの色を変更する</Form.Label>
-      <Form.Select value={setting.proconColor} onChange={handleSelect} id="proconColor">
+      <Form.Select
+        value={setting.proconColor}
+        onChange={handleSelect}
+        id="proconColor"
+      >
         <option value={""}>未選択</option>
         {colors.map((color: string, index) => (
           <option key={index} value={color}>

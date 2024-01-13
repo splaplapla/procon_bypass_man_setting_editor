@@ -18,7 +18,7 @@ type Props = {
   layers: LayersSetting;
   prefixKeys: Array<Button>;
   installed_macros: InstalledPlugin;
-  rumbleOnLayerChange: boolean;
+  rumbleOnLayerChange?: boolean;
   proconColor: ProconColor;
   envelope: boolean;
 };
@@ -146,11 +146,12 @@ export const SettingTextualization = ({
       `${topLevelIndent}# レイヤー変更時にコントローラーを振動させます\n`;
     result = result + `${topLevelIndent}enable(:rumble_on_layer_change)\n\n`;
   }
-  if (proconColor){
+  if (proconColor) {
     result =
       result +
       `${topLevelIndent}# Switchで認識されるプロコンの色を変更します\n`;
-    result = result + `${topLevelIndent}enable(:procon_color, :${proconColor})\n\n`;
+    result =
+      result + `${topLevelIndent}enable(:procon_color, :${proconColor})\n\n`;
   }
 
   // install_macro_plugin
