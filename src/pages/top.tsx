@@ -23,6 +23,7 @@ const EditorProvider: React.FC<EditorProviderProps> = ({ children }) => {
     prefixKeys: [],
     installed_macros: {},
     rumbleOnLayerChange: false,
+    proconColor: null,
   };
 
   const initLayersSetting: LayersSetting = {
