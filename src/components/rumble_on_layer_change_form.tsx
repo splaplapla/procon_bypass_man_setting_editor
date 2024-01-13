@@ -1,9 +1,7 @@
-import { jsx, css } from "@emotion/react";
 import React, { useContext } from "react";
-import { Button as BootstrapButton } from "react-bootstrap";
-import { SettingContext } from "./../contexts/buttons_setting";
-import { updateRumbleOnLayerChangeType } from "../reducers/setting_reducer";
 import Form from "react-bootstrap/Form";
+import { updateRumbleOnLayerChangeType } from "../reducers/setting_reducer";
+import { SettingContext } from "./../contexts/buttons_setting";
 
 export const RumbleOnLayerChangeForm: React.FC = () => {
   const { setting, settingDispatch } = useContext(SettingContext);

@@ -1,18 +1,18 @@
 /** @jsx jsx */
 
-import { jsx, css } from "@emotion/react";
-import React, { useState } from "react";
-import { InstallableMacros } from "../components/installable_macros";
-import { PrefixKeysForm } from "../components/prefix_keys_form";
-import { RumbleOnLayerChangeForm } from "../components/rumble_on_layer_change_form";
-import { LayersTab } from "../components/layers_tab";
-import { layerKeys } from "../types/layer_key";
+import { css } from "@emotion/react";
+import React from "react";
 import { ButtonsPanel } from "../components/buttons_panel";
+import { InstallableMacros } from "../components/installable_macros";
+import { LayersTab } from "../components/layers_tab";
+import { PrefixKeysForm } from "../components/prefix_keys_form";
 import { Preview } from "../components/preview";
+import { RumbleOnLayerChangeForm } from "../components/rumble_on_layer_change_form";
+import { layerKeys } from "../types/layer_key";
 
+import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 export const Editor: React.FC = () => {
   return (
